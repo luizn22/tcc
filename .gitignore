@@ -1,4 +1,5 @@
 # LaTeX-specific
+.out/
 *.aux
 *.log
 *.out
