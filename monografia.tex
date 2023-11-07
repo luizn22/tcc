@@ -44,6 +44,7 @@
 \usepackage{tocvsec2}
 \usepackage{boxhandler}
 \usepackage[font={bf,small},labelfont=small]{caption}
+\usepackage{tikz}
 
 
 \newcommand{\source}[1]{\caption*{\normalfont Fonte: {#1}}}
@@ -107,7 +108,6 @@
 \preambulo{Trabalho de Conclusão de Curso /  Monografia / Dissertação submetido ao Instituto Federal de Educação, Ciência e Tecnologia de Santa Catarina como parte dos requisitos para obtenção do título de Engenheiro/Tecnólogo/Especialista/Mestre em xxx.}
 
 % \textoaprovacao{Este Trabalho foi julgado adequado para obtenção do Título de Engenheira Eletrônica em abril de 2021 e aprovado na sua forma final pela banca examinadora do Curso de Engenharia Eletrônica do instituto Federal de Educação Ciência, e Tecnologia de Santa Catarina.}
-
 
 
 %---------------------------------------------------------------------%
@@ -273,7 +273,7 @@
 
 \setlength{\cftbeforechapterskip}{4pt plus 0pt}
 \pdfbookmark[0]{\contentsname}{toc}
-\tableofcontents*
+\tableofcontents *
 \cleardoublepage
 
 % ----------------------------------------------------------
@@ -307,10 +307,10 @@
 % ----------------------------------------------------------
 % Apêndices
 % ----------------------------------------------------------
- \begin{apendicesenv}         
-     \partapendices
-     \include{tex/Apendices}
- \end{apendicesenv}
+% \begin{apendicesenv}
+%     \partapendices
+%     \include{tex/Apendices}
+% \end{apendicesenv}
 
 % ----------------------------------------------------------
 % Anexos
