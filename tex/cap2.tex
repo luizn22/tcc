@@ -62,7 +62,7 @@ como impulso, degrau, rampa e senoidal.
 Um modelo clássico e comumente utilizado para representação de sistemas de controle de primeira ordem com atraso é
 representado pela seguinte função de transferência:
 \begin{equation}
-\label{eq:first_order_tf}
+\label{eq:firstordertf}
 G(s) = \frac{K}{\tau s + 1}e^{-\theta s}
 \end{equation}
 onde cada termo tem um significado específico:
@@ -121,14 +121,58 @@ parâmetros não citados é ajustado para zero.
 
 Fundamentação sobre Métodos de Identificação.
 
-Um modelo bem construído permite a previsão dos estados futuros do sistema e a análise do comportamento dinâmico sob
-perturbações atuantes.
-A identificação e a modelagem de sistemas, portanto, constituem a base para a aplicação efetiva de técnicas de controle
-em ambientes industriais.
+Segundo Coelho\cite[Cap 2]{CoelhoIdentificacao}, métodos de identificação de sistemas referem-se ao conjunto de técnicas
+utilizadas para construir modelos matemáticos que capturam a dinâmica de sistemas reais a partir de dados de entrada e
+saída.
+Estes métodos buscam determinar os parâmetros do sistema que melhor se ajustam às medidas observadas,
+permitindo que o modelo matemático reproduza o comportamento do sistema.
+A identificação pode ser conduzida de duas formas principais: \textit{off-line} e \textit{on-line}.
+
+Na identificação \textit{off-line}, coleta-se um conjunto de dados de entrada e saída, comumente referidos como dados discretos,
+processados posteriormente para estimar os parâmetros do modelo.
+Este processo não possui restrições de tempo computacional e é tipicamente realizado utilizando algoritmos
+não-recursivos.
+Já a identificação \textit{on-line} ajusta os parâmetros do modelo em tempo real, sem a necessidade de armazenar previamente as
+medidas.
+Utiliza-se um algoritmo recursivo que atualiza os parâmetros após cada amostra coletada,
+o que é particularmente útil para sistemas que mudam com o tempo ou quando é necessário um ajuste contínuo do modelo.
+
+Devido ao escopo deste trabalho, métodos de identificação \textit{on-line} não serão abordados, apenas métodos \textit{off-line} baseados
+nos dados discretos de resposta do sistema.
 
 \subsubsection{Ziegler Nichols}
 
-Fundamentação sobre o método de identificação Ziegler Nichols
+O método Ziegler-Nichols é um clássico da literatura para identificação de modelos dinâmicos de
+processos industriais.
+Desenvolvido por Ziegler e Nichols em 1942 \cite[Cap 4]{CoelhoIdentificacao}.
+
+O processo de identificação de um modelo por esse método envolve a análise da resposta de um sistema a um sinal
+degrau, para obter os parâmetros da equação\eqref{eq:firstordertf}, $K$, $\tau$ e $\theta$ e criar
+a função de transferência representativa do modelo do sistema analisado.
+
+Os parâmetros são calculados conforme indicado pela figura a seguir:
+    \begin{figure}[H]
+    	\centering
+    	\caption{Métodos de ZN e HAG para a modelagem de processos de primeira ordem}
+    	\includegraphics[scale=1]{figuras/zn_hg_ident_meth}
+    	\label{fig:zn_hg_ident_meth}
+    	\\
+        \vspace{0cm}\hspace{0cm}\small{Fonte: \cite[Fig 4.3]{CoelhoIdentificacao}}
+    \end{figure}
+
+A reta traçada corresponde à tangente no ponto de máxima inclinação da curva de reação.
+
+A constante de tempo $\tau$ é determinada pelo intervalo de tempo entre $t_1$, e o instante
+$t_3$, onde a reta tangente toca o eixo $t$, e onde cruza com a reta $y(t)$ = $y_f$,
+respectivamente.
+O valor de  $\theta$ é considerado como $t_1$, o intervalo entre a aplicação do sinal degrau e o
+momento em que a reta tangente toca o eixo $t$.
+Por fim o valor de $K$ pode ser obtido a través da equação,
+\begin{equation}
+\label{eq:dydu}
+K = \frac{\Delta y}{\Delta u}
+\end{equation}
+Ou seja $y_f$ dividido pelo valor do sinal degrau. \cite[Cap 4]{CoelhoIdentificacao}.
 
 \subsubsection{Hagglund}
 
@@ -148,7 +192,21 @@ Fundamentação sobre o método de identificação Nishikawa
 
 \subsection{Métodos de Aproximação de Controlador PID}
 
-Fundamentação sobre Métodos de Aproximação de Controlador PID
+A sintonia de controladores PID é um componente crucial no desenvolvimento de sistemas de controle automatizados,
+fundamental para assegurar a eficiência e a estabilidade operacional.
+A importância da sintonia reside na sua capacidade de ajustar o comportamento do sistema de controle para atender às
+especificações de desempenho, como precisão, rapidez de resposta e estabilidade a longo prazo.
+A sintonia adequada consegue compensar as incertezas inerentes ao modelo do sistema e as variações ambientais,
+garantindo que o sistema mantenha seu desempenho ótimo sob uma gama de condições operacionais.
+
+Realizar a sintonia de um controlador PID envolve a aproximação dos ganhos do controlador capazes de causar o efeito no
+sistema.
+Para isso é comumente feita a análise o modelo do sistema a ser controlado.
+Através da análise do modelo, é possível prever como o sistema responde a diferentes configurações de controle e
+identificar os parâmetros de ganho que resultarão na resposta desejada.
+Este processo de aproximação dos ganhos, permite a sintonia do sistema, assegurando que o controlador PID opere de forma
+eficiente, mantendo a saída do sistema nos parâmetros desejados, minimizando o erro e otimizando a resposta a
+perturbações.
 
 \subsubsection{Ziegler Nichols}
 
@@ -157,7 +215,6 @@ Fundamentação sobre método de aproximação de ganhos Ziegler Nichols
 \subsubsection{Cohen Coon}
 
 Fundamentação sobre método de aproximação de ganhos Cohen Coon
-
 
 \section{Software}
 
