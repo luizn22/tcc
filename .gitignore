@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+venv/
+.env
+
+# PyCharm
+.idea/
+
+# LaTeX
+*.aux
+*.log
+*.synctex.gz
+*.pdf
+*.out
+*.toc
+*.idx
+*.lof
+*.lot
+
+auxil
