@@ -1,3 +1,43 @@
+# LaTeX-specific
+out/
+auxil/
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+*.bbl
+*.bcf
+*.blg
+*.run.xml
+*.glo
+*.idx
+*.ilg
+*.ind
+*.lof
+*.lot
+*.nlo
+*.nls
+*.snm
+*.nav
+*.vrb
+*.dvi
+*.xdv
+*.listing
+*.lol
+*.loa
+*.soc
+
+# PyCharm specific
+.idea/
+*.iml
+*.iws
+*.ipr
+*.ids
+*.pyc
+__pycache__/
 # Python
 __pycache__/
 *.pyc
