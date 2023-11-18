@@ -19,12 +19,12 @@ Um sistema de controle em malha aberta opera sem a leitura de qualquer variável
 Nesse arranjo, o controlador atua baseado apenas no sinal de entrada, sem ajustar sua ação em resposta a distúrbios ou
 variações na saída.
 Um exemplo clássico é o controle de velocidade de um motor, onde a quantidade de combustível é ajustada apenas com base
-na velocidade desejada, sem considerar a velocidade real do motor. \cite[Cap 2.3]{ogata2010engenharia}.
+na velocidade desejada, sem considerar a velocidade real do motor. \cite{ogata2010engenharia}.
 
 Em contraste, um sistema de controle em malha fechada inclui um ciclo de realimentação, onde a saída é continuamente
 monitorada e comparada com o sinal de referência.
 A diferença entre esses dois, conhecida como erro, é utilizada pelo controlador para ajustar o sinal de controle e,
-assim, minimizar o erro. \cite[Cap 2.3]{ogata2010engenharia}.
+assim, minimizar o erro. \cite{ogata2010engenharia}.
 
 \begin{figure}[H]
     \centering
@@ -93,7 +93,7 @@ observada e a saída desejada, conhecida como sinal de referência.
 Os controladores podem ser classificados de acordo com suas ações de controle, alguns exemplos são controladores,
 como on-off, proporcionais, integrais, proporcional-integrais (PI), proporcional-derivativos (PD) e
 proporcional-integral-derivativos (PID), cada um com características distintas que os tornam adequados para diferentes
-aplicações industriais. \cite[Cap 2.3]{ogata2010engenharia}.
+aplicações industriais. \cite{ogata2010engenharia}.
 
 %chck
 O controlador PID é um dos tipos mais prevalentes de controladores em sistemas de controle, caracterizado pela sua
@@ -112,14 +112,14 @@ um \( K_i \) excessivo pode introduzir oscilações devido ao atraso na resposta
 e um \( K_d \) significativo pode melhorar a estabilidade e a resposta rápida, mas é sensível ao ruído do sinal de
 medição.
 O ajuste dos três efeitos do controlador PID é essencial para otimizar o desempenho do sistema, tanto em resposta
-transitória quanto em regime estacionário. \cite[Cap 2.3 e 8]{ogata2010engenharia}.
+transitória quanto em regime estacionário. \cite{ogata2010engenharia}.
 
 Vale ressaltar que controladores como P, PI e PD, podem ser vistos como um controlador PID onde o ganho para os
 parâmetros não citados é ajustado para zero.
 
 \subsection{Métodos de Identificação}
 
-Segundo \cite[Cap 2]{CoelhoIdentificacao}, métodos de identificação de sistemas referem-se ao conjunto de técnicas
+Segundo \cite{CoelhoIdentificacao}, métodos de identificação de sistemas referem-se ao conjunto de técnicas
 utilizadas para construir modelos matemáticos que capturam a dinâmica de sistemas reais a partir de dados de entrada e
 saída.
 Estes métodos buscam determinar os parâmetros do sistema que melhor se ajustam às medidas observadas,
@@ -142,7 +142,7 @@ nos dados discretos de resposta do sistema.
 
 O método Ziegler-Nichols é um clássico da literatura para identificação de modelos dinâmicos de
 processos industriais.
-Desenvolvido por Ziegler e Nichols em 1942 \cite[Cap 4]{CoelhoIdentificacao}.
+Desenvolvido por Ziegler e Nichols em 1942 \cite{CoelhoIdentificacao}.
 
 O processo de identificação de um modelo por esse método envolve a análise da resposta de um sistema a um sinal
 degrau, para obter os parâmetros da equação\eqref{eq:firstordertf}, $K$, $\tau$ e $\theta$ e criar
@@ -155,7 +155,7 @@ Os parâmetros são calculados conforme indicado pela figura a seguir:
     \includegraphics[scale=0.3]{figuras/zn_hg_ident_meth}
     \label{fig:zn_hg_ident_meth}
     \\
-    \vspace{0cm}\hspace{0cm}\small{Fonte: \cite[Fig 4.3]{CoelhoIdentificacao}}
+    \vspace{0cm}\hspace{0cm}\small{Fonte: \cite{CoelhoIdentificacao}}
 \end{figure}
 
 A reta traçada corresponde à tangente no ponto de máxima inclinação da curva de reação.
@@ -170,13 +170,13 @@ Por fim o valor de $K$ pode ser obtido a través da equação,
     \label{eq:dydu}
     K = \frac{\Delta y}{\Delta u}
 \end{equation}
-Ou seja $y_f$ dividido pelo valor do sinal degrau. \cite[Cap 4]{CoelhoIdentificacao}.
+Ou seja $y_f$ dividido pelo valor do sinal degrau. \cite{CoelhoIdentificacao}.
 
 \subsubsection{Hagglund}
 
 O método Hagglund é mais um clássico da literatura para identificação de modelos dinâmicos de
 processos industriais.
-Desenvolvido por Hagglund em 1991 \cite[Cap 4]{CoelhoIdentificacao}.
+Desenvolvido por Hagglund em 1991 \cite{CoelhoIdentificacao}.
 
 A identificação de modelo pelo método de Hägglund é muito similar a de Ziegler e Nichols (\ref{subsubsec:znfun}), com a
 única diferença sendo que $\tau$ é determinado pelo intervalo de tempo entre $t_1$, e o instante $t_2$, sendo $t_2$
@@ -187,7 +187,7 @@ Isso pode ser visualizado na figura \ref{fig:zn_hg_ident_meth}.
 
 Desenvolvido por Smith em 1985, o método Smith, assim como os métodos Hagglund e Ziegler-Nichols, busca encontrar
 valores para os parâmetros $K$, $\tau$ e $\theta$ e criar a função de transferência representativa do modelo do sistema
-analisado \cite[Cap 4]{CoelhoIdentificacao}.
+analisado \cite{CoelhoIdentificacao}.
 
 \begin{figure}[H]
     \centering
@@ -195,7 +195,7 @@ analisado \cite[Cap 4]{CoelhoIdentificacao}.
     \includegraphics[scale=0.3]{figuras/sm_ident_meth}
     \label{fig:sm_ident_meth}
     \\
-    \vspace{0cm}\hspace{0cm}\small{Fonte: \cite[Fig 4.3]{CoelhoIdentificacao}}
+    \vspace{0cm}\hspace{0cm}\small{Fonte: \cite{CoelhoIdentificacao}}
 \end{figure}
 
 Na figura \ref{fig:sm_ident_meth} podem ser observados os momentos $t1$ e $t2$, eles correspondem a passagem da resposta
@@ -219,7 +219,7 @@ Por fim o valor de $K$ pode ser obtido através da equação \eqref{eq:dydu}.
 O método de Sundaresan e Krishnaswamy, desenvolvido em 1977 é bastante similar ao método Smith \ref{subsubsec:smfun}.
 Apresentando algumas alterações nos valores para o cácluculo das constantes de tempo $t1$ e $t2$, calculadas como
 $y(t) = y(0) + 0.353y(\infty)$ e $y(t) = y(0) + 0.853y(\infty)$, respectivamente, como pode ser visto na figura
-\ref{fig:sd_kr_ident_meth} \cite[Cap 4]{CoelhoIdentificacao}:
+\ref{fig:sd_kr_ident_meth} \cite{CoelhoIdentificacao}:
 
 
 \begin{figure}[H]
@@ -228,7 +228,7 @@ $y(t) = y(0) + 0.353y(\infty)$ e $y(t) = y(0) + 0.853y(\infty)$, respectivamente
     \includegraphics[scale=0.3]{figuras/sd_kr_ident_meth}
     \label{fig:sd_kr_ident_meth}
     \\
-    \vspace{0cm}\hspace{0cm}\small{Fonte: \cite[Fig 4.3]{CoelhoIdentificacao}}
+    \vspace{0cm}\hspace{0cm}\small{Fonte: \cite{CoelhoIdentificacao}}
 \end{figure}
 
 Além de ter diferenças nas equações de $\tau$ e $\theta$, como pode ser visto nas equações \eqref{eq:sktau} e
@@ -256,7 +256,7 @@ observado na figura \ref{fig:ni_ident_meth}.
     \includegraphics[scale=0.3]{figuras/ni_ident_meth}
     \label{fig:ni_ident_meth}
     \\
-    \vspace{0cm}\hspace{0cm}\small{Fonte: \cite[Fig 4.3]{CoelhoIdentificacao}}
+    \vspace{0cm}\hspace{0cm}\small{Fonte: \cite{CoelhoIdentificacao}}
 \end{figure}
 
 As áreas e a constante de tempo podem ser calculadas conforme as seguintes equações:
@@ -359,26 +359,181 @@ Utiliza a seguinte tabela para determinar os ganhos de controlador PID:
 
 Os valores de $T_I$ e $T_D$ são $1/K_i$ e $1/K_d$, respectivamente.
 
-\section{Implementação em Python}
+\section{Implementação em {Python}}
 
-Introdução sobre técnicas e ferramentas para implementação de uma lib em python
+\subsection{Bibliotecas em {Python}}
 
-\subsection{Bibliotecas em Python}
+No ecossistema de programação {Python}, bibliotecas desempenham um papel fundamental, servindo como repositórios ricos de
+funções e métodos pré-construídos que permitem aos desenvolvedores executar uma gama ampla de tarefas com eficiência e
+precisão.
+Essas bibliotecas podem variar em seu escopo e aplicação, abrangendo desde operações matemáticas complexas, como as
+oferecidas pelo NumPy, até a manipulação avançada de dados com o pandas, e interações de rede simplificadas através da
+biblioteca requests.
+A habilidade de reutilizar e adaptar código pré-existente não apenas acelera o processo de desenvolvimento, mas também
+assegura a adesão a padrões de código testados e confiáveis \cite{pipy,pydocs} .
 
-Fundamentação Bibliotecas em Python (cite pip and pypi)
+A ferramenta pip e o {Python} Package Index (PyPI) são componentes centrais na gestão e instalação de bibliotecas {Python}.
+O pip, recomendado pela {Python} Packaging Authority (PyPA), é essencial para a instalação de pacotes {Python},
+facilitando a integração de bibliotecas de terceiros em projetos de desenvolvimento.
+Por meio do pip, os usuários podem instalar pacotes diretamente do PyPI, um vasto repositório que hospeda milhares de
+pacotes criados pela comunidade {Python} global.
+Essa centralização de recursos no PyPI, acessível via pip, não apenas proporciona uma plataforma unificada para a
+distribuição de software, mas também simplifica significativamente o gerenciamento de dependências em projetos de
+{Python}.
+O uso combinado de pip e PyPI é uma prática padrão no desenvolvimento Python, garantindo que os desenvolvedores tenham
+acesso fácil a uma ampla gama de ferramentas e bibliotecas \cite{pip}.
 
 \subsection{Documentação de código}
 
-Fundamentação Documentação de código (sphinx, rtd)
+A documentação de código é uma parte essencial do desenvolvimento de software, especialmente em linguagens dinâmicas e
+flexíveis como Python.
+Uma boa documentação não apenas facilita a compreensão e o uso do código por outros desenvolvedores, mas também serve
+como uma referência valiosa para o autor durante manutenções e atualizações futuras.
+Em Python, a documentação eficaz geralmente inclui docstrings detalhadas para funções, classes e módulos, além de
+comentários explicativos no código.
+Essas práticas de documentação são fundamentais para garantir a legibilidade e a manutenção do código, permitindo que
+outros desenvolvedores e usuários compreendam rapidamente a finalidade e o funcionamento das diversas partes do software
+\cite{pydocs}.
+
+Sphinx é uma ferramenta robusta e versátil para a criação de documentação, amplamente utilizada na comunidade Python.
+Ela transforma docstrings escritas em reStructuredText em uma variedade de formatos de saída ricos, incluindo HTML,
+LaTeX, man pages e outros.
+O Sphinx é particularmente conhecido por sua capacidade de gerar automaticamente documentação a partir do código-fonte,
+além de suportar a escrita de documentação extensiva separadamente.
+Esta ferramenta desempenha um papel crucial na manutenção de documentações claras e atualizadas, essencial para projetos
+de software de qualquer escala, especialmente em ambientes colaborativos e de código aberto \cite{sphinx}.
+
+Complementando as ferramentas de documentação como o Sphinx, plataformas como o Read the Docs oferecem um serviço de
+hospedagem para documentações de software.
+O Read the Docs simplifica o processo de publicação e atualização de documentações, integrando-se diretamente com
+repositórios de código como GitHub, GitLab e Bitbucket.
+Ele automatiza a construção e atualização da documentação sempre que o código-fonte é atualizado, garantindo que a
+documentação permaneça sincronizada com as versões mais recentes do software.
+Esta plataforma é amplamente adotada em projetos de código aberto, proporcionando aos desenvolvedores uma maneira
+eficiente e eficaz de manter suas documentações acessíveis e atualizadas para usuários e colaboradores \cite{rtd}.
 
 \subsection{Controle em Python}
 
-Fundamentação Controle em Python (control)
+A biblioteca de controle Python, conhecida como \textit{Python Control Systems Library}, é uma ferramenta muito útil no campo da
+engenharia de controle.
+Ela oferece uma gama de funcionalidades para análise e projeto de sistemas de controle.
+Esta biblioteca é projetada para ser compatível com as convenções e práticas de controle já estabelecidas, facilitando
+a transição para aqueles que já estão familiarizados com ferramentas de controle tradicionais como MATLAB.
+A Python Control Systems Library inclui recursos para a modelagem de sistemas dinâmicos, análise de resposta em
+frequência, projeto de controladores, entre outras funcionalidades essenciais no estudo e aplicação de sistemas de
+controle.
+A utilização desta biblioteca em ambientes educacionais e profissionais tem se mostrado cada vez mais prevalente,
+devido à sua eficiência e capacidade de integração com outras ferramentas Python para cálculos numéricos e análise de
+dados \cite{ctrlib}.
+
+A bibliotéca possui uma documentação extensiva, oferecendo uma visão abrangente das capacidades da biblioteca,
+com exemplos e tutoriais detalhados.
 
 \subsection{Outras Bibliotecas}
 
-Fundamentação Outras libs usadas
+\subsubsection{NumPy}
+
+NumPy é uma biblioteca essencial para a computação científica em Python, oferecendo suporte para grandes arrays e
+matrizes multidimensionais, juntamente com uma vasta coleção de funções matemáticas de alto nível para operar nessas
+estruturas de dados.
+É a base sobre a qual muitas outras bibliotecas científicas e de análise de dados, incluindo Pandas, são construídas.
+NumPy é especialmente valorizado por sua eficiência em cálculos numéricos, devido à sua implementação por trás dos panos
+em linguagens de baixo nível como C e Fortran.
+Isso permite que operações que seriam lentas em Python puro sejam executadas de maneira muito mais rápida.
+A biblioteca é amplamente utilizada em diversas áreas que requerem cálculos numéricos e análise de dados, incluindo
+engenharia, física, estatística e machine learning \cite{numpy}.
+
+\subsubsection{Pandas}
+
+Pandas é uma biblioteca escrita para Python, focada na manipulação e análise de dados.
+Ela oferece estruturas de dados e operações para manipular tabelas numéricas e séries temporais, tornando-se uma
+ferramenta indispensável na ciência de dados e em aplicações analíticas.
+A biblioteca é construída sobre o NumPy e torna a análise de dados complexos acessível e eficiente, com estruturas como
+DataFrame e Series.
+A biblioteca facilita tarefas como a leitura de dados de várias fontes, limpeza de dados, transformações, e visualização
+de dados \cite{pandas}.
+
+\subsubsection{SymPy}
+
+SymPy é uma biblioteca de matemática simbólica para Python, utilizada para realizar computações simbólicas em vez de
+numéricas.
+Isso significa que, com o SymPy, é possível manipular expressões matemáticas exatamente, em vez de aproximá-las
+numericamente.
+A biblioteca permite a execução de tarefas como a simplificação de expressões, cálculo de derivadas, integrais e
+limites, solução de equações, manipulação de algebra linear, entre outras operações simbólicas.
+O SymPy é especialmente útil em contextos educacionais e de pesquisa, onde a precisão das expressões matemáticas é
+crucial.
+Sua natureza simbólica o torna uma ferramenta valiosa para a verificação analítica de soluções, exploração matemática e
+ensino de conceitos matemáticos \cite{sympy}.
+
+\subsubsection{Matplotlib}
+
+Matplotlib é uma biblioteca de plotagem, amplamente usada na comunidade científica e analítica, ela permite a criação de
+gráficos e visualizações de dados em 2D e 3D de alta qualidade.
+É conhecida pela sua flexibilidade e capacidade de gerar uma ampla variedade de gráficos e diagramas, incluindo
+histogramas, gráficos de dispersão, gráficos de linhas, gráficos de área, barras de erro, boxplots, entre outros.
+A biblioteca é altamente personalizável e pode ser usada em \textit{scripts Python}, \textit{shell Python} e Jupyter,
+interfaces gráficas de aplicativos e servidores de aplicativos da ‘web’.
+Sua capacidade de integrar-se bem com muitas plataformas de desenvolvimento e sua interface semelhante ao MATLAB tornam
+ela uma escolha popular para visualização de dados, análise exploratória de dados e apresentação de resultados
+científicos \cite{matplotlib}.
 
 \subsection{Ferramentas Auxiliares ao Desenvolvimento}
 
+\subsubsection{Controle de Versão}
+
+\abreviatura{CI/CD}{Integração Contínua e Entrega Contínua}
+
+O controle de versão é uma prática essencial no desenvolvimento de software, e o Git é uma das ferramentas mais
+populares e poderosas nesse domínio.
+Git é um sistema de controle de versão distribuído que facilita o rastreamento de mudanças em arquivos e coordena o
+trabalho entre múltiplos colaboradores.
+Ele permite que desenvolvedores criem \textit{branches} para desenvolver funcionalidades ou testar ideias em ambientes
+isolados, sem afetar o código principal.
+Além disso, o Git oferece robustas funcionalidades de \textit{merge} para integrar diferentes linhas de desenvolvimento
+\cite{git}.
+
+GitHub, é uma plataforma baseada no Git, mas que adiciona novas funcionalidades ao controle de versão, oferecendo uma
+interface \textit{web} rica e uma série de recursos para colaboração em projetos de software.
+Além de hospedar repositórios Git, ele também fornece ferramentas para revisão de código, gerenciamento de projetos,
+integração contínua e entre outras.
+Uma das funcionalidades notáveis do GitHub é o GitHub Actions, um recurso de CI/CD que automatiza fluxos de trabalho
+de software.
+Com GitHub Actions, os desenvolvedores podem criar \textit{pipelines} personalizados para testar, construir e implantar
+aplicações diretamente no GitHub, facilitando a automação de processos e a entrega contínua de software \cite{github}.
+
+\subsubsection{Mypy}
+Mypy é uma ferramenta importante no ecossistema Python, oferecendo suporte à checagem de tipos estáticos.
+Ele permite que os desenvolvedores adicionem anotações de tipo ao seu código, sendo então verificadas pelo Mypy para
+erros de tipo em tempo de compilação.
+Isso ajuda a garantir programas corretos e a prevenir \textit{bugs} relacionados a tipos, especialmente em bases de
+código maiores ou mais complexas \cite{mypy}.
+
+\subsubsection{Flake8}
+
+Flake8 é uma ferramenta de verificação de código para Python, que combina PyFlakes, pycodestyle (anteriormente conhecido
+como pep8), e Ned Batchelder’s McCabe script.
+Ela verifica o código-fonte contra erros de programação, estilos inconsistentes e construções complexas ou duvidosas.
+Ao aderir ao PEP 8, as diretrizes de estilo do Python, o Flake8 ajuda a manter a legibilidade e a consistência do
+código \cite{flake8}.
+
+\subsubsection{Pytest}
+
+Pytest é um \textit{framework} de testes para Python, conhecido por sua simplicidade, escalabilidade e capacidade de
+suportar testes simples e complexos.
+Ele permite escrever testes de forma rápida e organizada, com suporte a \textit{fixtures} e \textit{plugins} que podem
+estender ainda mais suas funcionalidades.
+Pytest torna os testes mais expressivos e fáceis de escrever, com uma sintaxe simples e a capacidade de executar testes
+em paralelo, acelerando o processo de teste.
+A ferramenta é uma escolha popular entre desenvolvedores Python para testes unitários, testes de integração e até mesmo
+testes de sistema devido à sua flexibilidade e capacidade \cite{pytest}.
+
+\subsubsection{Tox}
+
+Tox é uma ferramenta para automação de testes em ambientes virtuais Python, facilitando o teste de pacotes em múltiplas
+versões do Python.
+Ele cria ambientes de teste isolados, onde pode-se testar a compatibilidade do código com diferentes versões do Python
+e dependências de terceiros.
+Tox é amplamente usado em projetos Python para automação de testes e integração contínua, garantindo que o software
+funcione conforme esperado em vários ambientes e configurações \cite{tox}.
 
