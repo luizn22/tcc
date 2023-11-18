@@ -1,26 +1,80 @@
 \chapter{Introdução}
 
+\abreviatura{PID}{Proporcional-Integral-Derivativo}
 
-Texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto. \abreviatura{IFSC}{Instituto Federal de Santa Catarina}
+O desenvolvimento tecnológico na área de controle de sistemas tem experimentado um crescimento significativo nas
+últimas décadas.
+Os controladores Proporcional-Integral-Derivativo (PID) são utilizados na maioria das aplicações de controle de
+processos automáticos na indústria atualmente, regulando fluxo, temperatura, pressão, nível e muitas outras variáveis
+de processos industriais.
+Esses controladores, que datam de 1939, são a base dos sistemas modernos de controle de processos, automatizando tarefas
+de regulação que, de outra forma, teriam que ser feitas manualmente \cite{introart1}.
 
+Apesar de sua ampla utilização, a configuração eficaz de um controlador PID permanece um desafio, especialmente em
+sistemas com dinâmicas complexas e variáveis.
+A sintonização desses controladores exige um entendimento profundo do sistema a ser controlado e habilidades
+especializadas para ajustar os parâmetros adequadamente \cite{introart2}.
+
+A implementação de controladores PID, embora bem estabelecida, envolve processos que podem ser complexos e demorados,
+especialmente na identificação de modelos e na aproximação de ganhos.
+A integração de tecnologias computacionais modernas, como a programação em Python, tem aberto caminhos para a
+realização desses processos, possibilitando realizar eles de forma assistida por software.
+Ao empregar algoritmos e softwares especializados, é possível simplificar e agilizar as etapas tradicionais de
+identificação de modelo e configuração dos controladores PID, tornando-os mais acessíveis e eficientes, especialmente
+em ambientes industriais com sistemas dinâmicos.
+
+Neste contexto, a automação e a otimização dos processos de identificação de sistemas, sintonização e modelagem de
+controladores PID através de ferramentas computacionais tornam-se uma ferramenta útil, visto que podem proporcionar
+uma dinâmica mais ágil a esses processos, possibilitando a análise de mais formas de identificação e parâmetros de
+ganho PID, além de reduzir erros de cálculo ou aplicação de método.
 
 \section{Justificativa}
 
-Texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto.
+A automatização no processo de identificação e sintonização de controladores PID oferecida por uma biblioteca em Python
+pode representar um avanço interessante na eficiência e precisão desses processos.
+A complexidade e o tempo necessários para a sintonização eficaz são podem ser reduzidos, e erros
+associados às abordagens manuais ou menos automatizadas também podem ser minimizados.
 
-\section{Definição do Problema}
+Outra vantagem significativa é a construção da biblioteca em Python utilizando a biblioteca de
+controle para Python já existente, a \textit{Python Control Systems Library} em vez de ferramentas como MATLAB.
+Python, sendo uma linguagem de programação gratuita e de código aberto, oferece várias vantagens sobre o MATLAB, que é
+proprietário e licenciado individualmente \cite{introart3}.
+Além de ser uma opção mais econômica, o Python permite uma maior transparência e colaboração dentro da comunidade de
+desenvolvedores, graças à sua natureza de código aberto.
 
-Texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto \cite{ref:vazquez}.
+A relevância deste projeto está em fornecer uma ferramenta de software de código aberto que possa ser utilizada na área
+de controle.
+A biblioteca desenvolvida pode ser uma contribuição relevante para a comunidade profissional, possivelmente promovendo
+o avanço da área de controle, até mesmo de sistemas mais complexos, e facilitando a aplicação prática desses
+conhecimentos em diversos setores da indústria.
+
+Por fim, existe também o potencial significativo para uso didático com a documentação detalhada dos métodos
+implementados e o acesso fácil proporcionado pela linguagem Python.
+Isso pode tornar a biblioteca uma ferramenta valiosa, tanto para educadores quanto para estudantes no campo da
+engenharia de controle, facilitando o aprendizado e a experimentação com conceitos de controle PID em um ambiente mais
+acessível e flexível.
 
 \section{Objetivo Geral}
 
-Texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto.
+O objetivo central deste trabalho é desenvolver uma biblioteca em Python para análise
+e controle de sistemas de primeira ordem, visando agilizar e facilitar o processo de
+análise e desenvolvimento de sistemas de controle.
 
 \section{Objetivos Específicos}
 
-Texto texto texto texto:
+Para atingir o objetivo principal, os seguintes itens se fazem importantes e necessários:
 \begin{alineas}
-    \item texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto;
-    \item texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto; 
-    \item texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto.
+    \item Criar uma biblioteca em python disponível para instalação em ambientes Windows e Linux;
+    \item Utilizar uma arquitetura de código compreensível e escalável, a fim de facilitar implementações futuras
+    que aumentem as funcionalidades da biblioteca;
+    \item Usar a biblioteca de controle para Python já existente nas implementações, possibilitando o uso dos modelos
+    criados para fins não previstos pela biblioteca;
+    \item Projetar a biblioteca com facilidade de uso em mente, para que mesmo estudantes ou pessoas pouco instruídas
+    em ferramentas da linguagem Python possam fazer uso da biblioteca;
+    \item Desenvolver métodos de identificação de modelo da planta, com o mínimo de ações e informações necessárias por
+    parte do usuário;
+    \item Implementar funções para obtenção de ganhos de controle PID aproximados, de forma automática ou simplificada,
+    com base no modelo da planta e em metas de desempenho do sistema;
+    \item Fornecer ferramentas para visualização dos dados, desempenho e análise gráfica dos resultados;
+    \item Documentar o uso e funcionamento da biblioteca de forma compreensível e acessível.
 \end{alineas}
