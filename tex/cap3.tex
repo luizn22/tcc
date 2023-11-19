@@ -309,10 +309,10 @@ Por fim o pacote foi carregado o PyPI utilizando a ferramenta twine, garantindo 
 Este processo tornou o a biblioteca acessível para instalação via pip para qualquer pessoa.
 
 \section{Implementação}
-Esta seção detalha a implementação do código-fonte principal, contendo todas as funcionalidades disponibilizadas a
-usuários dela.
+Esta seção detalha a implementação do código-fonte principal da biblioteca, contendo todas as funcionalidades
+disponibilizadas a usuários dela.
 Da mesma forma que na documentação da biblioteca as subseções desta seção representam grupos de classes implementadas
-com paralelos diretos aos diagramas apresentados na seção \ref{sec:descarc}.
+baseando-se nos diagramas apresentados na seção \ref{sec:descarc}.
 
 \subsection{Modelo}
 
@@ -328,10 +328,10 @@ denominador em potências de $s$, como, por exemplo:
     P(s) = \frac{ s + 1 }{ s^2 + s + 1 }
 \end{equation}
 
-Essa classe funciona guardando um objeto de Função de Transferência (tf) da biblioteca de sistemas de controle do Python
+Esta classe funciona guardando um objeto de Função de Transferência (tf) da biblioteca de sistemas de controle do Python
 (control), representando o modelo matemático de uma planta no domínio da frequenica, além de guardar alguns outros
-metadados sobre a função de transferência, que poderão ser utilizados para identificação de modelo posteriormente,
-por exemplo.
+metadados sobre a função de transferência, que poderão ser utilizados para aproximação de controlador PID
+posteriormente, por exemplo.
 
 Além disso o atributo view, um objeto da classe ModelView possibilita a visualização de dados, estatísticas e gráficos
 referentes a função de transferência.
@@ -342,16 +342,15 @@ referente aos dados utilizados como base para gerar o modelo, caso o modelo tenh
 \subsubsection{ModelView}
 
 Classe utilizada pra visualização de dados de um objeto da classe Model.
-
-Esta classe recebe Model como parâmetro e tem como foco a visualização dos dados do mesmo.
+Recebe Model como parâmetro e tem como foco a visualização dos dados do mesmo.
 Para as apresentações visuais, faz uso dos métodos explorados em \ref{subsec:dataviz}, e implementa os seguintes
-métodos para possibilitar essa visualização são implementados:
+métodos para possibilitar essa visualização:
 \begin{alineas}
     \item \textbf{plot\_model\_step\_response\_graph}: Realiza a plotagem do gráfico da resposta a sinal degrau do
     Modelo, bem como as retas de tempo de acomodação, sobressinal, e valor de regime e os dados discretos caso tenham
     sido informados;
     \item \textbf{get\_model\_step\_response\_data}: Utiliza control.step\_info da biblioteca de controle para
-    obtenção dos dados de resposta a sinal degrau do Sistema no formato de dicionário do Python;
+    obtenção dos dados de resposta a sinal degrau do sistema no formato de dicionário do Python;
     \item \textbf{print\_model\_step\_response\_data}: Imprime em tela os dados de resposta a sinal degrau do sistema;
     \item \textbf{print\_tf}: Imprime em tela a função de transferência do modelo, com formatação matemática caso
     esteja sendo executado em ambiente Jupyter.
@@ -368,7 +367,7 @@ Nele é salva a aproximação de padê para o atraso do sistema.
 
 \subsection{Métodos de Identificação}
 
-Classes de Identificação são subclasses de BaseModelIdentification, e implementam o método get\_model, que faz a
+Classes de identificação são subclasses de BaseModelIdentification, e implementam o método get\_model, que faz a
 identificação de dados discretos de resposta a sinal degrau de um sistema de controle e retorna objeto da classe Model
 ou de uma de suas subclasses.
 
@@ -380,13 +379,13 @@ matemático do sistema que produziu os dados recebidos.
 
 Em geral, implementações farão a Identificação com base nos dados de resposta a sinal degrau.
 Para tanto, o método get\_data\_input\_layout oferece um leiaute para serem informados os dados referentes a resposta
-do Sistema a um sinal degrau em relação ao tempo.
+do sistema a um sinal degrau em relação ao tempo.
 Implementações de get\_model podem ler os dados e aplicar seus métodos de identificação específicos.
 
 \subsubsection{ZieglerNicholsModelIdentification}
 
-Esta é uma subclasse de BaseModelIdentification que implementa o método de identificação de Ziegler e Nichols, descrito
-em \ref{subsubsec:znfun}.
+Como uma uma subclasse de BaseModelIdentification, implementa o método de identificação de Ziegler e Nichols,
+descrito em \ref{subsubsec:znfun}.
 Ela sobreescreve o método abstrato da classe pai get\_model, implementando para que, com base nos dados de resposta a
 sinal degrau fornecidos e em outros parâmetros opcionais, sejam calculados os parâmetros para instanciar um objeto da
 classe FirstOrderModel:
@@ -394,7 +393,7 @@ classe FirstOrderModel:
 \begin{alineas}
     \item Utiliza DataInputUtils.get\_model\_data\_default para obter a tabela (pandas.DataFrame) com os dados de
     resposta do modelo;
-    \item Então obtém a pandas.Series tf\_data (lista cujo index representa o tempo e os valores a saida)
+    \item Então obtém a pandas.Series tf\_data (lista cujo índice representa o tempo e os valores a saida)
     e o valor do sinal degrau através do método DataUtils.setup\_data\_default;
     \item Obtém o valor de regime e o momento de entrada em valor de regime através do método
     DataUtils.get\_vreg;
@@ -414,49 +413,233 @@ classe FirstOrderModel:
 
 \subsubsection{HagglundModelIdentification}
 
-dev identificação Hagglund
+Muito similar a ZieglerNicholsModelIdentification a classe HagglundModelIdentification implementa o método de
+identificação de Hägglund descrito em \ref{subsubsec:hagfun}.
+Com a única diferença sendo a determinação de $t2$ baseado em $y_f*0.632$ e o calculo de $\theta$ baseado em $t_1$ e
+$t_2$.
 
 \subsubsection{SmithModelIdentification}
 
-dev identificação Smith
+Seguindo o que foi descrito em \ref{subsubsec:smfun} a classe SmithModelIdentification implementa o método get\_model da
+segunte forma:
+
+\begin{alineas}
+    \item Utiliza DataInputUtils.get\_model\_data\_default para obter a tabela (pandas.DataFrame) com os dados de resposta do modelo;
+    \item Então obtém a pandas.Series tf\_data (lista cujo index representa o tempo e os valores a saida) e o valor do sinal degrau através do método DataUtils.setup\_data\_default;
+    \item Obtém o valor de regime e o momento de entrada em valor de regime através do método DataUtils.get\_vreg;
+    \item Calcula $t_1$ e $t_2$ baseado no instante em que a curva atinge 28.3\% e 63.2\% do valor de regime, respectivamente;
+    \item Obtém $K$ dividindo o valor de regime, pelo valor do sinal degrau;
+    \item Com os valores de $t_1$ e $t_2$ em mãos, calcula o valor de tau e theta, sendo $\tau = 1.5*(t_2 - t_1)$ e $\theta = t_2 - \tau$;
+    \item Dependendo do valor de theta e de ignore\_delay\_threshold zera o valor de theta;
+    \item Instancia um objeto da classe FirstOrderModel com os valores obtidos.
+\end{alineas}
 
 \subsubsection{SundaresanKrishnaswamyModelIdentification}
 
-dev identificação Sundaresan Krishnaswamy
+Implementado de forma idêntica a SmithModelIdentification e com base na seção \ref{subsubsec:skfun}, as únicas
+diferenças na implementação são o cálculo de $t_1$ e $t_2$ baseado no instante em que a curva atinge 35.3\% e 85.3\% do
+valor de regime, respectivamente, e o cálculo do valor de tau e theta, sendo $\tau = 0.67*(t_2 - t_1)$ e
+$\theta = 1.3t_1 - 0.29t_2$.
 
 \subsubsection{NishikawaModelIdentification}
+A implementação de get\_model de NishikawaModelIdentification funciona da seguinte forma:
 
-dev identificação Nishikawa
+\begin{alineas}
+    \item Utiliza DataInputUtils.get\_model\_data\_default para obter a tabela (pandas.DataFrame) com os dados de resposta do modelo.
+    \item Então obtém a pandas.Series tf\_data (lista cujo index representa o tempo e os valores a saida) e o valor do sinal degrau através do método DataUtils.setup\_data\_default.
+    \item Obtém o valor de regime e o momento de entrada em valor de regime através do método DataUtils.get\_vreg.
+    \item Calcula $A_0$ como a área de um retângulo de lados $\Delta y(\infty)$ e o momento de entrada em valor de regime menos a integral da curva de $t = 0$ até momento de entrada em valor de regime.
+    \item Calcula $t_0$ como $A_0$ dividido pelo valor de regime.
+    \item Calcula $A_1$ como a integral da curva de $t = 0$ até $t = t_0$.
+    \item Obtém $K$ dividindo o valor de regime, pelo valor do sinal degrau.
+    \item Com os valores de $A_0$, $A_1$ e $t_0$ em mãos, calcula o valor de tau e theta, sendo $\tau$ igual a $A_0$ dividido por 0.368 vezes o valor de regime e $\theta = t_0 - \tau$.
+    \item Dependendo do valor de theta e de ignore\_delay\_threshold zera o valor de theta.
+    \item Instancia um objeto da classe FirstOrderModel com os valores obtidos.
+\end{alineas}
 
 \subsection{Controlador}
 
-dev Implementaçãp do Controlador
+Classes de controlador, representativas de um sistema em Malha Fechada ocorrendo o controle de um Modelo através de um
+Controlador PID\@.
 
 \subsubsection{Controller}
+
+Classe base para controle PID\@.
+Esta é uma classe representativa do Modelo matemático de uma planta de sistemas de controle em Malha Fechada com
+Controlador PID\@.
+Ela se destina a armazenar os valores de ganhos de controlador, bem como realizar o fechamento da manha de controle
+utilizando os parâmetros PID (kp, ki, kd) e o objeto de modelo (model).
+Para isso, atua encima do objeto de Função de Transferência da biblioteca de controle Model.tf
+(control.TransferFunction) presente no Model fornecido.
+
+Além disso o atributo view possibilita a visualização de dados, estatísticas e gráficos referentes ao resultado do
+controle (função de transferência resultante do fechamento da malha com controlador).
+
 \subsubsection{ControllerView}
+
+Classe utilizada pra visualização de dados de um objeto da classe Controller.
+Recebe Controller como parâmetro e tem como foco a visualização dos dados do mesmo.
+Para as apresentações visuais, faz uso dos métodos explorados em \ref{subsec:dataviz}, e implementa os seguintes
+métodos para possibilitar essa visualização:
+\begin{alineas}
+    \item \textbf{plot\_model\_step\_response\_graph}: Realiza a plotagem do gráfico da resposta a sinal degrau do
+    modelo do sistema em malha fechada com o controlador, bem como as retas de tempo de acomodação, sobressinal, e valor
+    de regime.
+    Também realiza a plotagem da da resposta a sinal degrau de Model, para comparação por padrão;
+    \item \textbf{get\_model\_step\_response\_data}: Utiliza control.step\_info da biblioteca de controle para
+    obtenção dos dados de resposta a sinal degrau do sistema no formato de dicionário do Python;
+    \item \textbf{print\_model\_step\_response\_data}: Imprime em tela os dados de resposta a sinal degrau do sistema;
+    \item \textbf{print\_tf}: Imprime em tela a função de transferência do modelo, com formatação matemática caso
+    esteja sendo executado em ambiente Jupyter.
+\end{alineas}
 
 \subsection{Métodos De Aproximação de Controlador}
 
-dev Metodos De Aproximação De Controlador
+Classes de Aproximação de Controlador são subclasses de BaseControllerAproximation, e implementam o método
+get\_controller, que faz a Aproximação de Ganhos de um Controlador PID para um objeto de Modelo da classe Model ou
+uma de suas subclasses, retornando um objeto da classe Controller.
 
 \subsubsection{BaseControllerAproximation}
 
-\subsubsection{Aproximação de ganhos de controlador para modelos de primeira ordem por tabela}
-FirstOrderTableControllerAproximation
-FirstOrderTableControllerAproximationItem
+Classe base para aproximação de controladores (Controller).
+Métodos de aproximação de controladores devem ser subclasses desta classe.
+Elas também devem implementar o método get\_controller para retornar um objeto da classe Controller com os ganhos
+referentes de Controlador PI\@.
+Subclasses podem sobrescrever o atributo \_accepted\_controllers com os tipos de controlador suportados e utilizar o
+método \_parse\_controller\_option() para verificar se um tipo de controlador é aceito.
+
+\subsubsection{Aproximação de ganhos de controlador para modelos de primeira ordem por tabela}\label{subsubsec:agcmpot}
+
+Na literatura existem diversos métodos de aproximação de ganhos de controlador para modelos de primeira ordem
+como o descrito na equação \ref{eq:firstordertf}, que possuem tabelas de fórmulas para o cálculo dos ganhos de
+controlador PID, que variam de acordo com o tipo de controlador e fazem uso exclusivo dos parâmetros $K$, $\tau$ e
+$\theta$.
+Com isso em mente foi desenvolvida a classe FirstOrderTableControllerAproximation, uma subclasse de
+BaseControllerAproximation especializada para esses casos.
+A classe visa facilitar a implementação destes comumente referidos como “Métodos de Tabela”, pois possuem formulas
+simples e específicas para o ganho de cada parâmetro de PID, a depender do controlador desejado.
+
+Classes de aproximação de controlador PID que se encaixarem podem ser implementadas como subclasses de
+FirstOrderTableControllerAproximation, para isso, devem ser seguidos os seguintes passos:
+
+\begin{alineas}
+    \item Adicionar a classe FirstOrderTableControllerAproximation a herança da nova classe;
+    \item Declarar o \_accepted\_controllers com os tipos de controladores aceitos;
+    \item Declarar o dicionário \_controller\_table com os tipos de controladores como chaves e referências a subclasses de FirstOrderTableControllerAproximationItem como valores;
+    \item Por fim, basta implementar cada uma das classes derivadas de FirstOrderTableControllerAproximationItem.
+\end{alineas}
+
+O método get\_controller da classe FirstOrderTableControllerAproximation se encarrega de receber os dados, verificar
+se o tipo de controlador é permitido e chamar o método get\_controller do FirstOrderTableControllerAproximationItem
+adequado.
+
+Para cada tipo de controlador suportado uma subclasse de FirstOrderTableControllerAproximationItem deve ser criada
+implementando o método abstrato get\_controller, que recebe um objeto FirstOrderModel e deve retornar um objeto de
+Controlador.
 
 \subsubsubsection{ZieglerNicholsControllerAproximation}
 
-dev aproximação de ganhos Ziegler Nichols
+Conforme descrito na seção \ref{subsubsec:znctr} o método de aproximação de controlador Ziegler Nichols se encaixa no
+caso explorado pela classe FirstOrderTableControllerAproximation, desta forma foi realizada a implementação conforme
+descrito em \ref{subsubsec:agcmpot} para os controladores P, PI e PID\@.
 
 \subsubsubsection{CohenCoonControllerAproximation}
 
-dev aproximação de ganhos Cohen Coon
+O método de aproximação de ganhos de controlador PID de Cohen e Coon também se encaixa em
+FirstOrderTableControllerAproximation, conforme pode ser visto em \ref{subsubsec:ccapx} e de maneira similar a
+implementação do método de aproximação de controlador Ziegler Nichols foi implementado como uma subclasse do caso
+especializado.
 
 \subsection{Visualização de Dados}\label{subsec:dataviz}
 
-dev Visualização dos Dados
+A fim de concentrar ferramentas comuns de visualização de dados, foi criada a classe utilitária PlotUtils, utilizada
+tanto nas implementações das classes ModelView como Controller View.
+Desta forma não há a necessidade de repetir o código de funcionalidades comuns entre seções diferentes da biblioteca.
+
+\subsubsection{PlotUtils}
+Classe utilitária para plotagem de funções de transferência e outras informações relacionadas.
+Nela foram implementados os métodos plot\_tf, print\_tf e pprint\_dict, detalhados a seguir.
+
+\subsubsubsection{plot\_tf}
+Com base em uma ou mais funções de transferência informadas, realiza a plotagem da resposta a sinal degrau, das retas de
+do tempo de acomodação, do sobressinal, e do valor de regime para cada uma.
+Também realiza o plot dos dados discretos caso sejam informados, e uma legenda detalhando cada item plotado é
+adicionada.
+
+Reconhece caso esteja sendo executado em ambiente Jupyter e configura a biblioteca matplotlib para que o gráfico
+seja plotado de forma adequada para o ambiente.
+Do contrário configura para que seja aberta uma janela interativa onde o gráfico pode ser explorado.
+
+Algumas opções são fornecidas para a plotagem dos dados como parâmetros opcionais:
+\begin{alineas}
+    \item \textbf{settling\_time\_threshold}: Limiar de tempo de acomodação, por padrão 0.02 (2\%);
+    \item \textbf{pade}: Função de transferência de pade para consideração do atraso na resposta ao sinal degrau;
+
+    \item \textbf{scale}: Fator de escala para as funções de transferência, por padrão 1.
+    Se for informado valor, o fator será aplicado a todas as funções de transferência.
+    Se um dicionário for informado, o fator será aplicado para as funções de transferência cujo sufixo coincidir com
+    alguma chave do dicionário;
+
+    \item \textbf{simulation\_time}: Tempo de simulação, caso não seja informado, o tempo de acomodação da função de
+    transferência será usado como base, se não for possível calcular, será utilizado simulation\_time = 100 no lugar;
+
+    \item \textbf{qt\_points}: Quantidade de pontos para a simulação, por padrão 1000.
+\end{alineas}
+
+\subsubsubsection{print\_tf}
+Imprime uma função de transferência em tela.
+Reconhece caso esteja sendo executado em ambiente Jupyter e chama a função display do ambiente para imprimir a função
+na tela, de forma que a função é apresentada de maneira formatada como expressão matemática.
+
+\subsubsubsection{pprint\_dict}
+Imprime um dicionário de maneira formatada.
+Reconhece caso esteja sendo executado em ambiente Jupyter e, se estiver, instancia um pandas.DataFrame com as
+informações do dicionário e chama a função display do ambiente para imprimir os dados em tela com um visual mais
+agradável.
 
 \subsection{Manipulação de Dados}
 
-dev datamanip
+A fim de concentrar ferramentas comuns de manipulação de dados, foram criadas as classes utilitárias DataInputUtils e
+DataUtils utilizadas em quase todos os módulos da biblioteca.
+
+\subsubsection{DataInputUtils}
+Classe utilitária para facilitar a entrada de dados, nela são implementados diversos métodos para criação e leitura de
+tabelas referentes a entrada dos dados utilizados para identificação de plantas de sistemas de controle.
+Foram implementados os seguintes métodos:
+
+\begin{alineas}
+    \item \textbf{create\_table\_with\_fields}: Cria um arquivo (CSV ou Excel) contendo uma tabela vazia com os campos
+    especificados;
+    \item \textbf{read\_table\_with\_fields}: Lê um arquivo contendo uma tabela e retorna um
+    pandas.DataFrame com **apenas** os campos especificados;
+    \item \textbf{expected\_fields}: Retorna a lista standard\_fields com exceção dos campos sample\_time ou
+    step\_signal caso sejam informados nos parâmetros;
+    \item \textbf{get\_model\_data\_default}: Salva planilha de leiaute com os campos esperados para preenchimento.
+\end{alineas}
+
+\subsubsection{DataUtils}
+
+Classe utilitária para manipulação de dados, nela foram implementados diversos métodos para manipulação de dados e
+cálculo de constantes, como pose ser visto a seguir.
+
+
+\begin{alineas}
+    \item \textbf{linfilter}: Aplica um filtro linear à série temporal de entrada para suavização de dados ruidosos.
+    A intensidade da suavisação depende do parâmetro smoothness;
+    \item \textbf{get\_vreg}: Obtém o valor de regime, dentro de settling\_time\_threshold, de uma resposta a sinal
+    degrau.
+    Obtido iterando pelos dados e ignorando valores iniciais até que todos os pontos estejam dentro do desvio aceitado
+    da média, o valor do momento mais antigo que sobrou é tomado como valor de regime;
+    \item \textbf{get\_max\_tan}: Obtém as coordenadas e o valor da inclinação do ponto de maior inclinação de uma série
+    temporal.
+    Internamente faz uso do método diff da pandas.Series para obter a série diferencial;
+    \item \textbf{get\_time\_at\_value}: Encontra o tempo para um valor de uma reta informada.
+    Utilizado pelos métodos de identificação Ziegles Nichols e Hägglund para obtenção dos tempos $t_1$, $t_2$ e $t_3$;
+    \item \textbf{setup\_data\_default}: Método padrão para preparo dos dados para identificação de modelo.
+    Ele faz o preparo dos dados de adicionando adicionando tempo de aquisição e sinal degrau, caso necessário,
+    e aplicando um filtro linear, caso solicitado.
+    Retorna a pandas.Series referente a série temporal do sinal de saida em relação ao tempo e o valor do sinal degrau;
+    \item \textbf{trunk\_data\_input}: Remove dados onde o valor de entrada é nulo;
+    \item \textbf{offset\_data\_output}: Remove valores negativos e interpola os dados para encostarem no eixo do tempo.
+\end{alineas}
+

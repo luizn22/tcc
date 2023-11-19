@@ -172,11 +172,11 @@ Por fim o valor de $K$ pode ser obtido a través da equação,
 \end{equation}
 Ou seja $y_f$ dividido pelo valor do sinal degrau. \cite{CoelhoIdentificacao}.
 
-\subsubsection{Hagglund}
+\subsubsection{Hägglund}\label{subsubsec:hagfun}
 
-O método Hagglund é mais um clássico da literatura para identificação de modelos dinâmicos de
+O método Hägglund é mais um clássico da literatura para identificação de modelos dinâmicos de
 processos industriais.
-Desenvolvido por Hagglund em 1991 \cite{CoelhoIdentificacao}.
+Desenvolvido por Hägglund em 1991 \cite{CoelhoIdentificacao}.
 
 A identificação de modelo pelo método de Hägglund é muito similar a de Ziegler e Nichols (\ref{subsubsec:znfun}), com a
 única diferença sendo que $\tau$ é determinado pelo intervalo de tempo entre $t_1$, e o instante $t_2$, sendo $t_2$
@@ -185,7 +185,7 @@ Isso pode ser visualizado na figura \ref{fig:zn_hg_ident_meth}.
 
 \subsubsection{Smith}\label{subsubsec:smfun}
 
-Desenvolvido por Smith em 1985, o método Smith, assim como os métodos Hagglund e Ziegler-Nichols, busca encontrar
+Desenvolvido por Smith em 1985, o método Smith, assim como os métodos Hägglund e Ziegler-Nichols, busca encontrar
 valores para os parâmetros $K$, $\tau$ e $\theta$ e criar a função de transferência representativa do modelo do sistema
 analisado \cite{CoelhoIdentificacao}.
 
@@ -214,7 +214,7 @@ conforme as seguintes equações:
 
 Por fim o valor de $K$ pode ser obtido através da equação \eqref{eq:dydu}.
 
-\subsubsection{Sundaresan Krishnaswamy}
+\subsubsection{Sundaresan Krishnaswamy}\label{subsubsec:skfun}
 
 O método de Sundaresan e Krishnaswamy, desenvolvido em 1977 é bastante similar ao método Smith \ref{subsubsec:smfun}.
 Apresentando algumas alterações nos valores para o cácluculo das constantes de tempo $t1$ e $t2$, calculadas como
@@ -242,7 +242,7 @@ Além de ter diferenças nas equações de $\tau$ e $\theta$, como pode ser vist
     \theta = 1.3t_1 - 0.29t_2
 \end{equation}
 
-\subsubsection{Nishikawa}
+\subsubsection{Nishikawa}\label{subsubsec:nkfun}
 
 Um último um método clássico da literatura para Identificação de modelos é o desenvolvido por Nishikawa em 1984.
 A pesar de buscar os mesmos parâmetros que os métodos anteriores, estes parâmetros são obtidos através de áreas
@@ -333,7 +333,7 @@ Desta forma, são aplicadas as fórmulas do método de acordo com a tabela \ref{
 
 Os valores de $T_I$ e $T_D$ são $1/K_i$ e $1/K_d$, respectivamente.
 
-\subsubsection{Cohen Coon}
+\subsubsection{Cohen Coon}\label{subsubsec:ccapx}
 
 Criado por Cohen e Coon como uma forma de obter os ganhos de controlador, de forma similar ao método de Ziegler e Nichols
 (\ref{subsubsec:znctr}), para modelos clássicos de primeira ordem com atraso.
