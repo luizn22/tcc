@@ -266,6 +266,8 @@ modelos, não fornecem dados discretos de resposta a sinal degram para poderem s
 identificação implementados, desta forma esta seção de comparação com a bibliografia tratará apenas dos métodos de
 aproximação de ganhos de controladores PID implementados.
 
+\subsection{Biblioteca versus Apostila sobre PID e Métodos de Sintonia}
+
 O primeiro caso a ser explorado será o do exemplo do tanque aquecido de \cite{apostpidsint}.
 Nele é apresentado o gráfico da figura \ref{fig:bib_comp_1_graph} e determinados os parâmetros $K$, $\tau$ e $\theta$ para
 obtenção do modelo clássico que a classe FirstOrderModel da seção \ref{subsubsec:fom} se especializa.
@@ -335,12 +337,202 @@ controller.view.print_controller_step_response_data()
 controller.view.plot_controller_step_response_graph()
 \end{lstlisting}
 
+A execução de \ref{lst:bib_comp_1_code1} gera o resultado apresentado em \ref{lst:bib_comp_1_code1_out}
+e os gráficos das figuras \ref{fig:bib_comp_1_code1_out_fig1}, \ref{fig:bib_comp_1_code1_out_fig2} e
+\ref{fig:bib_comp_1_code1_out_fig3}.
 
-\section{comaprações com Experimentos Anteriores}
+\begin{lstlisting}[label={lst:bib_comp_1_code1_out}]
+1.95*exp(-1.48*s)/(8.33*s + 1.0)
+{'Overshoot': 0,
+ 'Peak': 1.9476708568782817,
+ 'PeakTime': 57.541601473921176,
+ 'RiseTime': 18.302321365061147,
+ 'SettlingMax': 1.95,
+ 'SettlingMin': 1.755565040374366,
+ 'SettlingTime': 34.082117580267,
+ 'SteadyStateValue': 1.95,
+ 'Undershoot': 0.38160197607648316}
+1.95*(2.56307692307692*s + 3.46361746361746 + 1.1701410350059/s)*exp(-1.48*s)/((1 + 1.95*(2.56307692307692*s + 3.46361746361746 + 1.1701410350059/s)*exp(-1.48*s)/(8.33*s + 1.0))*(8.33*s + 1.0))
+{'Kd': 2.563076923076923,
+ 'Ki': 1.1701410350058998,
+ 'Kp': 3.4636174636174637,
+ 'Overshoot': 8.369513829384001,
+ 'Peak': 1.08369513829384,
+ 'PeakTime': 7.7288758064631535,
+ 'RiseTime': 3.948447422867046,
+ 'SettlingMax': 1.08369513829384,
+ 'SettlingMin': 0.900405905739516,
+ 'SettlingTime': 12.825453331014943,
+ 'SteadyStateValue': 1.0,
+ 'Undershoot': 37.50000000000001}
+1.95*(2.07319868112764*s + 3.97666897666898 + 1.17187743876933/s)*exp(-1.48*s)/((1 + 1.95*(2.07319868112764*s + 3.97666897666898 + 1.17187743876933/s)*exp(-1.48*s)/(8.33*s + 1.0))*(8.33*s + 1.0))
+{'Kd': 2.073198681127638,
+ 'Ki': 1.1718774387693307,
+ 'Kp': 3.9766689766689765,
+ 'Overshoot': 6.845750381802541,
+ 'Peak': 1.0684575038180253,
+ 'PeakTime': 7.255513442274729,
+ 'RiseTime': 3.725804200087023,
+ 'SettlingMax': 1.0684575038180253,
+ 'SettlingMin': 0.9034279684915225,
+ 'SettlingTime': 12.269941651414406,
+ 'SteadyStateValue': 0.9999999999999999,
+ 'Undershoot': 32.67455930152555}
+\end{lstlisting}
 
-Compare results to previous experiments
+
+
+\begin{figure}[H]
+    \centering
+    \caption{Comparação de resultados - Bibliografia 1 - Gráfico do modelo}
+    \includegraphics[scale=0.8]{figuras/bib_comp_1_code1_out_fig1}
+    \label{fig:bib_comp_1_code1_out_fig1}
+    \\
+    \vspace{0cm}\hspace{0cm}\small{Fonte: Do autor}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \caption{Comparação de resultados - Bibliografia 1 - Gráfico Ziegler Nichols}
+    \includegraphics[scale=0.8]{figuras/bib_comp_1_code1_out_fig2}
+    \label{fig:bib_comp_1_code1_out_fig2}
+    \\
+    \vspace{0cm}\hspace{0cm}\small{Fonte: Do autor}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \caption{Comparação de resultados - Bibliografia 1 - Gráfico Cohen Coon}
+    \includegraphics[scale=0.8]{figuras/bib_comp_1_code1_out_fig3}
+    \label{fig:bib_comp_1_code1_out_fig3}
+    \\
+    \vspace{0cm}\hspace{0cm}\small{Fonte: Do autor}
+\end{figure}
+
+Calculando $T_I$ e $T_D$ de acordo com a equação \ref{eq:titd}, podemos verificar que os resultados das aproximações de
+ganhos concordam com a bibliográfica, conforme detalha a tabela \ref{tab:bib_comp_1_pid_comp}.
+
+\begin{equation}
+    \label{eq:titd}
+    Ki = \frac{Kp}{Ti} \;\; , \;\; Kd = Kp \times Td
+\end{equation}
+
+\begin{table}[h]
+    \begin{center}
+        \begin{tabular}{ | l | c | c | c | }
+            \hline
+            {}                         & {$K_P$} & {$T_I$}   & {$T_D$}   \\
+            \hline
+            {\textbf{Ziegler-Nichols}} & {3,46}  & {2,96min} & {0,74min} \\
+            \hline
+            {\textbf{Cohen-Coon}}      & {3,97}  & {3,39min} & {0,52min} \\
+            \hline
+            {\textbf{Ziegler-Nichols Biblioteca}} & {3.4636174636174637}  & {2,96} & {0,74} \\
+            \hline
+            {\textbf{Cohen-Coon Biblioteca}}      & {3.9766689766689765}  & {3.39341713144} & {0.52134052225} \\
+            \hline
+        \end{tabular}
+        \caption{ Métodos da curva de reação para o tanque aquecido}
+        \vspace{0cm}\hspace{0cm}\small{Fonte: Do autor}
+        \label{tab:bib_comp_1_pid_comp}
+    \end{center}
+\end{table}
+
+Contudo, ao comparar os gráficos \ref{fig:bib_comp_1_code1_out_fig2} e \ref{fig:bib_comp_1_code1_out_fig3} com as
+respostas apresentadas na figura \ref{fig:bib_comp_1_ctrl_fig},
+nota-se uma ligeira diferença no sobressinal entre o gráfico da biblioteca e da bibliografia.
+Foram feitos testes em outros sistemas, tentando reproduzir o resultado da bibliografia, contudo apenas resultados
+idênticos ao apresentado pela biblioteca foram observados.
+
+\begin{figure}[H]
+    \centering
+    \caption{Comparação de resultados - Bibliografia 1 - Gráfico Cohen Coon}
+    \includegraphics[scale=0.4]{figuras/bib_comp_1_ctrl_fig}
+    \label{fig:bib_comp_1_ctrl_fig}
+    \\
+    \vspace{0cm}\hspace{0cm}\small{Fonte: Do autor}
+\end{figure}
+
+\subsection{Biblioteca versus Ogata}
+
+Não tem kkkkkkkk
+Vou tentar implementar o método setpoint overshoot que o Francisco recomendou e comparar com algum exemplo dele
+
+
+\section{Comaprações com Experimentos Anteriores}
+
+Para de validar os resultados obtidos, foram pegos dados já existentes de resposta a sinal degrau de algumas plantas
+didáticas do laboratório de controle do Campus do IFSC.
+Optou-se por fazer o processo de identificação utilizando o método Smith e a aproximação de ganhos de controlador
+com o método Cohen Coon.
+
+As plantas trabalhadas são um forno, uma mesa giratória e o nível de um tanque.
+Detalhes sobre variáveis manipulada e controlada foram abstraídos por não serem o foco da comparação.
+As plantas trabalhadas, em geral, possuíam resposta rápida, com atraso baixo ou nulo, o que, em alguns casos,
+impossibilitou o uso do método de Cohen e Coon. Os resultados das identificações e controladores podem ser observados
+nas tabelas \ref{tab:results_forno}, \ref{tab:results_mesa}, \ref{tab:results_tanque}.
+
+
+Não foram recebidas informações sobre os modelos e ganhos obtidos pelos universitários que estavam trabalhando na plata.
+
+
+\begin{table}[!htbp]
+\caption{Resultados obtidos - Forno}
+\centering
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+\textbf{Setpoint} & \textbf{Modelo} & \textbf{Kp} & \textbf{Ki} & \textbf{Kd} & \textbf{Identificação} & \textbf{Malha fechada} \\
+\hline
+15\% & $\frac{18.08 e^{-22.5s}}{1144.5s + 1.0}$ & 3.76 & 0.068 & 30.70 & \includegraphics[width=0.2\linewidth]{figuras/forno_15} & \includegraphics[width=0.2\linewidth]{figuras/forno_15c} \\
+\hline
+20\% & $\frac{6.90 e^{-19.5s}}{919.5s + 1.0}$ & 9.14 & 0.192 & 64.57 & \includegraphics[width=0.2\linewidth]{figuras/forno_20} & \includegraphics[width=0.2\linewidth]{figuras/forno_20c} \\
+\hline
+25\% & $\frac{6.68 e^{-17.5s}}{997.5s + 1.0}$ & 11.42 & 0.267 & 72.41 & \includegraphics[width=0.2\linewidth]{figuras/forno_25} & \includegraphics[width=0.2\linewidth]{figuras/forno_25c} \\
+\hline
+\end{tabular}
+\label{tab:results_forno}
+\vspace{0cm}\hspace{0cm}\small{Fonte: Do autor}
+\end{table}
+
+\begin{table}[!htbp]
+\caption{Resultados obtidos - Mesa Giratória}
+\centering
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+\textbf{Setpoint} & \textbf{Modelo} & \textbf{Kp} & \textbf{Ki} & \textbf{Kd} & \textbf{Identificação} & \textbf{Malha fechada} \\
+\hline
+Mesa (5-10\%) & $\frac{25.93 e^{-1.5s}}{52.5s + 1.0}$ & 1.81 & 0.496 & 0.982 & \includegraphics[width=0.2\linewidth]{figuras/mesa_5_10} & \includegraphics[width=0.2\linewidth]{figuras/mesa_5_10c} \\
+\hline
+Mesa (10-15\%) & $\frac{17.81 e^{-3.5s}}{40.5s + 1.0}$ & 0.88 & 0.106 & 1.10 & \includegraphics[width=0.2\linewidth]{figuras/mesa_10_15} & \includegraphics[width=0.2\linewidth]{figuras/mesa_10_15c} \\
+\hline
+Mesa (15-17\%) & $\frac{15.3}{54.0s + 1.0}$ & - & - & - & \includegraphics[width=0.2\linewidth]{figuras/mesa_15_17} & \textbf{Sem Atraso} \\
+\hline
+Mesa (17-20\%) & $\frac{12.0}{37.5s + 1.0}$ & - & - & - & \includegraphics[width=0.2\linewidth]{figuras/mesa_17_20} & \textbf{Sem Atraso} \\
+\hline
+\end{tabular}
+\label{tab:results_mesa}
+\vspace{0cm}\hspace{0cm}\small{Fonte: Do autor}
+\end{table}
+
+\begin{table}[!htbp]
+\caption{Resultados obtidos - Nível Tanque}
+\centering
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+Tanque (40-50\%) & $\frac{2.58 e^{-2.0s}}{18.0s + 1.0}$ & 4.75 & 1.01 & 3.38 & \includegraphics[width=0.2\linewidth]{figuras/tanque_40_50} & \includegraphics[width=0.2\linewidth]{figuras/tanque_40_50c} \\
+\hline
+Tanque (40-50\%) & $\frac{3.77 e^{-1.0s}}{33.0s + 1.0}$ & 11.73 & 4.83 & 4.24 & \includegraphics[width=0.2\linewidth]{figuras/tanque_50_60} & \includegraphics[width=0.2\linewidth]{figuras/tanque_50_60c} \\
+\hline
+Tanque (40-50\%) & $\frac{3.45}{52.5s + 1.0}$ & - & - & - & \includegraphics[width=0.2\linewidth]{figuras/tanque_60_70} & \textbf{Sem Atraso} \\
+\hline
+Tanque (40-50\%) & $\frac{1.26 e^{-5.0s}}{6.0s + 1.0}$ & 1.47 & 0.156 & 2.32 & \includegraphics[width=0.2\linewidth]{figuras/tanque_70_80} & \includegraphics[width=0.2\linewidth]{figuras/tanque_70_80c} \\
+\hline
+\end{tabular}
+\label{tab:results_tanque}
+\vspace{0cm}\hspace{0cm}\small{Fonte: Do autor}
+\end{table}
+
+
 
 
 \section{Aplicação em Sistema Real}
 
-Use on a real system
+Ainda não ocorreu
