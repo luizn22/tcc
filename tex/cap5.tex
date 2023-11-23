@@ -1,23 +1,122 @@
 \chapter{Considerações Finais}
 
-final considerations (toptop)
+A evolução tecnológica na área de automação e controle de sistemas tem sido um fator determinante no avanço de inúmeras
+indústrias e pesquisas científicas.
+Ferramentas eficientes para a análise e controle de sistemas dinâmicos são essenciais não apenas para o desenvolvimento
+de novas tecnologias, mas também para a otimização de processos existentes.
+Em um contexto onde a precisão e a eficiência são cruciais, a necessidade de ferramentas capazes de simplificar e
+agilizar estas tarefas torna-se evidente.
+A habilidade de modelar e controlar sistemas de maneira eficiente tem implicações diretas na melhoria do desempenho,
+segurança e qualidade em diversos setores.
+
+Nesse cenário, este trabalho apresentou uma contribuição significativa ao desenvolver uma biblioteca em Python que
+aborda a necessidade de ferramentas aprimoradas para análise e controle de sistemas dinâmicos.
+Esta biblioteca, alinhada com as demandas do setor, combina eficácia e facilidade de uso, visando automatizar os
+processos de identificação de modelo e aproximação de ganhos de controlador PID para sistemas de controle.
+Compatível com diversos ambientes operacionais, a solução desenvolvida é acessível e valiosa tanto para profissionais
+da área quanto para estudantes e pesquisadores.
+A geral do trabalho de contribuir para um segmento crucial, atendendo às necessidades práticas e educacionais no
+campo de automação e controle, foi efetivamente alcançado, destacando-se como um recurso inclusivo e acessível para a
+comunidade.
+
+A arquitetura escolhida para a biblioteca, enfatizando a compreensibilidade e a escalabilidade, garante não apenas a
+eficácia imediata da ferramenta, mas também a facilidade de expansão futura.
+A integração bem-sucedida com a biblioteca de controle para Python existente amplia as possibilidades de uso dos modelos
+criados, proporcionando uma versatilidade notável à ferramenta.
+Esta característica sublinha a capacidade da biblioteca de se adaptar e ser aplicável em uma variedade de cenários de
+controle de sistemas.
+
+Um aspecto fundamental deste trabalho é a concentração na usabilidade da biblioteca, especialmente considerando usuários
+com conhecimento limitado em programação Python.
+O design da ferramenta, orientado para a facilidade de uso, a torna acessível e prática, oferecendo uma ponte entre o
+conhecimento teórico e a aplicação prática no campo de controle e automação.
+
+Os métodos desenvolvidos para a identificação de modelos são intuitivos e requerem um mínimo de intervenção do usuário,
+o que simplifica o processo de modelagem.
+Além disso, as funções implementadas para a determinação automática ou simplificada de ganhos de controle PID
+destacam-se pela sua eficiência, baseando-se nos modelos da planta e nas metas de desempenho do sistema.
+Essas características demonstram a praticidade e a aplicabilidade da biblioteca em um contexto real.
+
+A documentação clara e acessível da biblioteca é uma de suas maiores forças.
+Não só facilita o uso da ferramenta, mas também serve como um recurso educativo importante, potencializando o impacto
+da biblioteca tanto no ensino quanto na prática de controle de sistemas.
+Assim, este trabalho não apenas atende às necessidades técnicas dos profissionais da área, mas também contribui
+significativamente para a formação e o desenvolvimento de futuros profissionais e pesquisadores em automação e controle.
 
 \section{Sugestões para trabalhos futuros}
 
-integration with control has root locus
+Desde a fase inicial de concepção, incluindo o levantamento dos objetivos e o projeto, a biblioteca desenvolvida neste
+trabalho foi concebida com a visão de um projeto de CI/CD.
+Essa abordagem estratégica visou estabelecer uma base sólida com funcionalidades essenciais, criando um ambiente
+propício não apenas para atender às necessidades simples, mas também para facilitar o desenvolvimento de soluções
+futuras.
+Esse entendimento claro da necessidade de expansibilidade e adaptabilidade foi considerado durante todo o
+desenvolvimento do projeto.
+Consequentemente, as sugestões para trabalhos futuros, apresentadas nesta seção, são um componente muito importante
+do processo de desenvolvimento desde o início.
+As sugestões apresentadas representam possibilidades de melhoria factíveis e com vantagens claras.
 
+\subsection{Integração com ferramentas da biblioteca de controle}
+A biblioteca de sistemas de controle dispõe de algumas ferramentas para projeto de controlador, nenhuma das quais foi
+abordada pela biblioteca desenvolvida neste trabalho.
+Visto que os modelos gerados pela biblioteca desenvolvida possuem o objeto principal de análise, a função de
+transferência do modelo, e este objeto pertence à biblioteca de controle o uso dessas ferramentas para projeto de
+controlador de já é possível.
+Contudo, isso depende de um conhecimento mais aprofundado tanto da biblioteca desenvolvida quanto da biblioteca de
+controle, e possivelmente conhecimentos em programação com Python.
+A integração dessas ferramentas em novas classes de aproximação de controlador pode proporcionar o uso facilitado destas
+ferramentas.
+
+As seguintes funções da biblioteca de controle foram consideradas boas opções de integração:
+\begin{itemize}
+    \item \textbf{place}: esta função pode ser utilizada para alocação de polos do sistema em lugares específicos do plano $s$.
+    \item \textbf{lqr}: possibilita o projeto de controladores do tipo Linear-Quadrático Regulador.
+    Contudo, envolveria a implementação de um novo objeto de controlador, visto que atualmente apenas controladores PID
+    são suportados;
+    \item \textbf{sisotool}: por fim, a ferramenta sistool proporciona um ambiente interativo para aplicação do método
+    de lugar das raízes;
+    A própria biblioteca de controle disponibiliza a função rootlocus\_pid\_designer que tenta possibilitar o projeto
+    de controlador PID de forma interativa utilizando a função sisotool por trás dos panos.
+\end{itemize}
+
+\subsection{Especialização para casos de ordens mais altas}
+Os métodos de identificação implementados neste trabalho se especializam apenas no caso de sistemas de primeira ordem
+com atraso, que entregam um objeto de modelo do sistema igualmente especializado.
+Para facilitar a implementação de métodos de identificação de modelo e possivelmente de aproximação de ganhos de
+controlador PID para sistemas de ordens mais altas, a criação de uma classe especializada em casos clássicos de
+segunda ordem, por exemplo, é um passo crucial, que deve ser feito antes de qualquer método que trate de sistemas
+de ordens mais altas especializados nesses casos clássicos.
+
+\subsection{Outros métodos de identificação de modelo}
 more id methods
 1
 2
 3
 
+\subsection{Outros métodos de aproximação de ganhos de controlador}
 model aprox methods
 1
 2
 3
 
-higher order work
+\subsection{Análise de resposta a outros sinais de entrada}
+Atualmente os métodos de plotagem de gráficos de resposta dos sistemas se especializam apenas em respostas a sinal
+degrau.
+A biblioteca de controle do python, utilizada para gerar os dados de resposta, também suporta a simulação da resposta
+de funções de transferência a outros sinais de entrada, de modo que não seria muito complexo possibilitar que o mesmo
+fosse feito ao realizar plotagens pela biblioteca desenvolvida.
 
-plot response on other kinds of inputs
+\subsection{Documentação em inglês}
+A documentação de código da biblioteca desenvolvida nesse trabalho foi criada e disponibilizada apenas em português.
+Isso limita o alcance do projeto, dado o alcance da lingua inglesa em comparação, propõe-se a tradução e
+disponibilização da documentação em inglês também.
+A ferramenta de documentação utilizada, sphinx, tem suporte a documentações em múltiplos idiomas, de modo que essa
+melhoria não exigiria grandes refatorações do projeto.
 
-auto pypi
+\subsection{Automatização do versionamento}
+Atualmente o versionamento da biblioteca exige diversas alterações manuais nos arquivos de configuração do projeto para
+cada nova versão liberada, o que pode causar não idealidades na entrega de novas versões.
+Algumas automações podem ser implementadas para facilitar esse processo, como a orientação das versões a tags do git,
+por exemplo.
+Um caso onde essas automações foram implementadas de forma compreensível é o da própria biblioteca de controle para o
+Python utilizada neste trabalho, o código dela pode servir de exemplo para a melhoria proposta.
