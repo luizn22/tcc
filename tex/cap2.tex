@@ -13,18 +13,18 @@ realimentação na estratégia de controle.
 A eficiência de um sistema de controle é determinada pela sua habilidade em alcançar e sustentar um estado operacional
 desejado, reduzindo desvios e oscilações indesejadas.
 A precisão com que um sistema de controle atinge e mantém a saída desejada, apesar das flutuações nos parâmetros ou nas
-condições ambientais, é um indicador crítico de seu desempenho. \cite{ogata2010engenharia}.
+condições ambientais, é um indicador crítico de seu desempenho \cite{ogata2010engenharia}.
 
 Um sistema de controle em malha aberta opera sem a leitura de qualquer variável.
 Nesse arranjo, o controlador atua baseado apenas no sinal de entrada, sem ajustar sua ação em resposta a distúrbios ou
 variações na saída.
 Um exemplo clássico é o controle de velocidade de um motor, onde a quantidade de combustível é ajustada apenas com base
-na velocidade desejada, sem considerar a velocidade real do motor. \cite{ogata2010engenharia}.
+na velocidade desejada, sem considerar a velocidade real do motor \cite{ogata2010engenharia}.
 
 Em contraste, um sistema de controle em malha fechada inclui um ciclo de realimentação, onde a saída é continuamente
 monitorada e comparada com o sinal de referência.
 A diferença entre esses dois, conhecida como erro, é utilizada pelo controlador para ajustar o sinal de controle e,
-assim, minimizar o erro. \cite{ogata2010engenharia}.
+assim, minimizar o erro \cite{ogata2010engenharia}.
 
 \begin{figure}[H]
     \centering
@@ -93,7 +93,7 @@ observada e a saída desejada, conhecida como sinal de referência.
 Os controladores podem ser classificados de acordo com suas ações de controle, alguns exemplos são controladores,
 como on-off, proporcionais, integrais, proporcional-integrais (PI), proporcional-derivativos (PD) e
 proporcional-integral-derivativos (PID), cada um com características distintas que os tornam adequados para diferentes
-aplicações industriais. \cite{ogata2010engenharia}.
+aplicações industriais \cite{ogata2010engenharia}.
 
 %chck
 O controlador PID é um dos tipos mais prevalentes de controladores em sistemas de controle, caracterizado pela sua
@@ -112,7 +112,7 @@ um \( K_i \) excessivo pode introduzir oscilações devido ao atraso na resposta
 e um \( K_d \) significativo pode melhorar a estabilidade e a resposta rápida, mas é sensível ao ruído do sinal de
 medição.
 O ajuste dos três efeitos do controlador PID é essencial para otimizar o desempenho do sistema, tanto em resposta
-transitória quanto em regime estacionário. \cite{ogata2010engenharia}.
+transitória quanto em regime estacionário \cite{ogata2010engenharia}.
 
 Vale ressaltar que controladores como P, PI e PD, podem ser vistos como um controlador PID onde o ganho para os
 parâmetros não citados é ajustado para zero.
@@ -138,9 +138,9 @@ o que é particularmente útil para sistemas que mudam com o tempo ou quando é 
 Devido ao escopo deste trabalho, métodos de identificação \textit{on-line} não serão abordados, apenas métodos \textit{off-line} baseados
 nos dados discretos de resposta do sistema.
 
-\subsubsection{Ziegler Nichols}\label{subsubsec:znfun}
+\subsubsection{Ziegler e Nichols}\label{subsubsec:znfun}
 
-O método Ziegler-Nichols é um clássico da literatura para identificação de modelos dinâmicos de
+O método de Ziegler e Nichols é um clássico da literatura para identificação de modelos dinâmicos de
 processos industriais.
 Desenvolvido por Ziegler e Nichols em 1942 \cite{CoelhoIdentificacao}.
 
@@ -148,7 +148,7 @@ O processo de identificação de um modelo por esse método envolve a análise d
 degrau, para obter os parâmetros da equação\eqref{eq:firstordertf}, $K$, $\tau$ e $\theta$ e criar
 a função de transferência representativa do modelo do sistema analisado.
 
-Os parâmetros são calculados conforme indicado pela figura a seguir:
+Os parâmetros são calculados conforme indicado pela figura \ref{fig:zn_hg_ident_meth}.
 \begin{figure}[H]
     \centering
     \caption{Métodos de ZN e HAG para a modelagem de processos de primeira ordem}
@@ -170,7 +170,7 @@ Por fim o valor de $K$ pode ser obtido a través da equação,
     \label{eq:dydu}
     K = \frac{\Delta y}{\Delta u}
 \end{equation}
-Ou seja $y_f$ dividido pelo valor do sinal degrau. \cite{CoelhoIdentificacao}.
+Ou seja $y_f$ dividido pelo valor do sinal degrau \cite{CoelhoIdentificacao}.
 
 \subsubsection{Hägglund}\label{subsubsec:hagfun}
 
@@ -214,10 +214,10 @@ conforme as seguintes equações:
 
 Por fim o valor de $K$ pode ser obtido através da equação \eqref{eq:dydu}.
 
-\subsubsection{Sundaresan Krishnaswamy}\label{subsubsec:skfun}
+\subsubsection{Sundaresan e Krishnaswamy}\label{subsubsec:skfun}
 
 O método de Sundaresan e Krishnaswamy, desenvolvido em 1977 é bastante similar ao método Smith \ref{subsubsec:smfun}.
-Apresentando algumas alterações nos valores para o cácluculo das constantes de tempo $t1$ e $t2$, calculadas como
+Apresentando algumas alterações nos valores para o cácluculo das constantes de tempo $t_1$ e $t_2$, calculadas como
 $y(t) = y(0) + 0.353y(\infty)$ e $y(t) = y(0) + 0.853y(\infty)$, respectivamente, como pode ser visto na figura
 \ref{fig:sd_kr_ident_meth} \cite{CoelhoIdentificacao}:
 
@@ -231,8 +231,9 @@ $y(t) = y(0) + 0.353y(\infty)$ e $y(t) = y(0) + 0.853y(\infty)$, respectivamente
     \vspace{0cm}\hspace{0cm}\small{Fonte: \cite{CoelhoIdentificacao}}
 \end{figure}
 
-Além de ter diferenças nas equações de $\tau$ e $\theta$, como pode ser visto nas equações \eqref{eq:sktau} e
-\eqref{eq:sktheta}:
+Além disso, o cálculo dos parâmetros $\tau$ e $\theta$ também tem diferenças,
+para este método os parâmetros podem ser obtidos pelas equações \eqref{eq:sktau} e
+\eqref{eq:sktheta}, respectivamente.
 \begin{equation}
     \label{eq:sktau}
     \tau = 0.67*(t_2 - t_1)
@@ -299,9 +300,9 @@ Através da análise do modelo, é possível prever como o sistema responde a di
 identificar os parâmetros de ganho que resultarão na resposta desejada.
 Este processo de aproximação dos ganhos, permite a sintonia do sistema, assegurando que o controlador PID opere de forma
 eficiente, mantendo a saída do sistema nos parâmetros desejados, minimizando o erro e otimizando a resposta a
-perturbações. \cite{apostpidsint}.
+perturbações \cite{apostpidsint}.
 
-\subsubsection{Ziegler Nichols}\label{subsubsec:znctr}
+\subsubsection{Controlador Z-N}\label{subsubsec:znctr}
 
 Proposto por Ziegler e Nichols, como uma forma de obter os ganhos de controlador para os modelos itentificados
 pelo seu método de indentificação (\ref{subsubsec:znfun}), o objetivo deste método é obter parâmetros de ganho PID que
@@ -333,7 +334,7 @@ Desta forma, são aplicadas as fórmulas do método de acordo com a tabela \ref{
 
 Os valores de $T_I$ e $T_D$ são $1/K_i$ e $1/K_d$, respectivamente.
 
-\subsubsection{Cohen Coon}\label{subsubsec:ccapx}
+\subsubsection{Controlador C-C}\label{subsubsec:ccapx}
 
 Criado por Cohen e Coon como uma forma de obter os ganhos de controlador, de forma similar ao método de Ziegler e Nichols
 (\ref{subsubsec:znctr}), para modelos clássicos de primeira ordem com atraso.
@@ -363,6 +364,8 @@ Os valores de $T_I$ e $T_D$ são $1/K_i$ e $1/K_d$, respectivamente.
 
 \subsection{Bibliotecas em {Python}}
 
+\abreviatura{pip}{package installer for Python}
+
 No ecossistema de programação {Python}, bibliotecas desempenham um papel fundamental, servindo como repositórios ricos de
 funções e métodos pré-construídos que permitem aos desenvolvedores executar uma gama ampla de tarefas com eficiência e
 precisão.
@@ -372,7 +375,7 @@ biblioteca requests.
 A habilidade de reutilizar e adaptar código pré-existente não apenas acelera o processo de desenvolvimento, mas também
 assegura a adesão a padrões de código testados e confiáveis \cite{pipy,pydocs} .
 
-A ferramenta pip e o Python Package Index (PyPI) são componentes centrais na gestão e instalação de bibliotecas {Python}.
+A ferramenta pip (package installer for Python) e o Python Package Index (PyPI) são componentes centrais na gestão e instalação de bibliotecas {Python}.
 O pip, recomendado pela {Python} Packaging Authority (PyPA), é essencial para a instalação de pacotes {Python},
 facilitando a integração de bibliotecas de terceiros em projetos de desenvolvimento.
 Por meio do pip, os usuários podem instalar pacotes diretamente do PyPI, um vasto repositório que hospeda milhares de
@@ -389,15 +392,18 @@ A documentação de código é uma parte essencial do desenvolvimento de softwar
 flexíveis como Python.
 Uma boa documentação não apenas facilita a compreensão e o uso do código por outros desenvolvedores, mas também serve
 como uma referência valiosa para o autor durante manutenções e atualizações futuras.
-Em Python, a documentação eficaz geralmente inclui docstrings detalhadas para funções, classes e módulos, além de
-comentários explicativos no código.
+Em Python, a documentação eficaz geralmente inclui \textit{docstrings}, \textit{strings} literais que aparecem logo após
+a definição de uma função, método, classe ou módulo e são usadas para documentar de forma detalhada o propósito e o uso
+do código.
 Essas práticas de documentação são fundamentais para garantir a legibilidade e a manutenção do código, permitindo que
 outros desenvolvedores e usuários compreendam rapidamente a finalidade e o funcionamento das diversas partes do software
 \cite{pydocs}.
 
 Sphinx é uma ferramenta robusta e versátil para a criação de documentação, amplamente utilizada na comunidade Python.
-Ela transforma docstrings escritas em reStructuredText em uma variedade de formatos de saída ricos, incluindo HTML,
-LaTeX, man pages e outros.
+Ela transforma \textit{docstrings} escritas em \textit{reStructuredText}, um sistema de marcação simples e poderoso
+usado principalmente em documentação técnica, que utiliza uma sintaxe de texto plano para formatação e organização de
+conteúdo.
+Em uma variedade de formatos de saída ricos, incluindo HTML, LaTeX e outros.
 O Sphinx é particularmente conhecido por sua capacidade de gerar automaticamente documentação a partir do código-fonte,
 além de suportar a escrita de documentação extensiva separadamente.
 Esta ferramenta desempenha um papel crucial na manutenção de documentações claras e atualizadas, essencial para projetos
@@ -441,7 +447,7 @@ NumPy é especialmente valorizado por sua eficiência em cálculos numéricos, d
 em linguagens de baixo nível como C e Fortran.
 Isso permite que operações que seriam lentas em Python puro sejam executadas de maneira muito mais rápida.
 A biblioteca é amplamente utilizada em diversas áreas que requerem cálculos numéricos e análise de dados, incluindo
-engenharia, física, estatística e machine learning \cite{numpy}.
+engenharia, física e estatística \cite{numpy}.
 
 \subsubsection{Pandas}
 
@@ -449,7 +455,9 @@ Pandas é uma biblioteca escrita para Python, focada na manipulação e análise
 Ela oferece estruturas de dados e operações para manipular tabelas numéricas e séries temporais, tornando-se uma
 ferramenta indispensável na ciência de dados e em aplicações analíticas.
 A biblioteca é construída sobre o NumPy e torna a análise de dados complexos acessível e eficiente, com estruturas como
-DataFrame e Series.
+\textit{Series}, similar a um array do Numpy mas com mais funcionalidades de análise e manipulação de dados, e
+\textit{DataFrame}, um conjunto de \textit{Series} formando uma estrutura semelhante a uma tabela, além de implementar
+uma série de funcionalidades de análise, cruzamento e manipulação de dados.
 A biblioteca facilita tarefas como a leitura de dados de várias fontes, limpeza de dados, transformações, e visualização
 de dados \cite{pandas}.
 
@@ -473,7 +481,7 @@ gráficos e visualizações de dados em 2D e 3D de alta qualidade.
 É conhecida pela sua flexibilidade e capacidade de gerar uma ampla variedade de gráficos e diagramas, incluindo
 histogramas, gráficos de dispersão, gráficos de linhas, gráficos de área, barras de erro, boxplots, entre outros.
 A biblioteca é altamente personalizável e pode ser usada em \textit{scripts Python}, \textit{shell Python} e Jupyter,
-interfaces gráficas de aplicativos e servidores de aplicativos da ‘web’.
+interfaces gráficas de aplicativos e servidores de aplicativos da \textit{web}.
 Sua capacidade de integrar-se bem com muitas plataformas de desenvolvimento e sua interface semelhante ao MATLAB tornam
 ela uma escolha popular para visualização de dados, análise exploratória de dados e apresentação de resultados
 científicos \cite{matplotlib}.
