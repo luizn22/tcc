@@ -82,10 +82,29 @@ A estrutura geral do diagrama pode ser visualizada na figura \ref{fig:class_diag
 A documentação desenvolvida juntamente a biblioteca foi compilada com sucesso e disponibilizada no link apresentado
 no apêndice \ref{ch:actdocs}.
 Ela abrange todas as classes implementadas bem como uma visão ampla da biblioteca e um guia rápido, além de possuir
-explicações didáticas sobre o funcionamento de cada método implementado com referências bibliográficas.
+explicações didáticas sobre o funcionamento de cada método implementado com referências bibliográficas, como pode ser
+visto em seu sumário na figura \ref{fig:doc_summary}.
 
-TODO: adicionar figura de sumário e explicação mais detalhada de cada página dedicada que foi criada
+\begin{figure}[H]
+    \centering
+    \caption{Sumário da documentação da biblioteca}
+    \includegraphics[scale=0.6]{figuras/doc_summary}
+    \label{fig:doc_summary}
+    \\
+    \vspace{0cm}\hspace{0cm}\small{Fonte: Do autor}
+\end{figure}
 
+Cada uma das páginas desenvolvida abora um ponto importante sobre o projeto, da seguinte forma:
+\begin{itemize}
+    \item ``Sobre'': fornece uma breve descrição do projeto, seguida de uma explicação de como realizar a instalação da
+    biblioteca;
+    \item ``Introdução'': apresenta um guia rápido, ensinando e exemplificando de forma simples e prática o uso básico das
+    funcionalidades, após isso é descrita uma visão estrutural do projeto;
+    \item ``Referência de Classes'': Lista todas as classes implementadas, agrupando por função;
+    \item ``Referências'': contempla o glossário e as referências utilizadas por toda a documentação;
+    \item ``Desenvolvimento'': explora o desenvolvimento da biblioteca e traz breve listagem de scripts úteis para
+    o desenvolvimento.
+\end{itemize}
 
 \section{Testes}
 
@@ -270,7 +289,7 @@ aproximação de ganhos de controladores PID implementados.
 
 \subsection{Biblioteca versus Apostila sobre PID e Métodos de Sintonia}
 
-O primeiro caso a ser explorado será o do exemplo do tanque aquecido de \cite{apostpidsint}.
+Para validarmos os resultados obtidos, podemos usar o exemplo do tanque aquecido de \cite{apostpidsint}.
 Nele é apresentado o gráfico da figura \ref{fig:bib_comp_1_graph} e determinados os parâmetros $K$, $\tau$ e $\theta$ para
 obtenção do modelo clássico que a classe FirstOrderModel da seção \ref{subsubsec:fom} se especializa.
 Os valores calculados podem ser vistos em \ref{eq:bib_comp_1_id} e o modelo obtido é apresentado em
@@ -452,10 +471,6 @@ idênticos ao apresentado pela biblioteca foram observados.
     \\
     \vspace{0cm}\hspace{0cm}\small{Fonte: Do autor}
 \end{figure}
-
-\subsection{Biblioteca versus Bishop}
-
-TODO: Pegar caso do bishop e comparar
 
 
 \section{Comaprações com Experimentos Anteriores}

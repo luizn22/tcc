@@ -79,6 +79,7 @@ As seguintes funções da biblioteca de controle foram consideradas boas opçõe
     de controlador PID de forma interativa utilizando a função sisotool por trás dos panos.
 \end{itemize}
 
+
 \subsection{Especialização para casos de ordens mais altas}
 Os métodos de identificação implementados neste trabalho se especializam apenas no caso de sistemas de primeira ordem
 com atraso, que entregam um objeto de modelo do sistema igualmente especializado.
@@ -87,17 +88,91 @@ controlador PID para sistemas de ordens mais altas, a criação de uma classe es
 segunda ordem, por exemplo, é um passo crucial, que deve ser feito antes de qualquer método que trate de sistemas
 de ordens mais altas especializados nesses casos clássicos.
 
-\subsection{Outros métodos de identificação de modelo}
-more id methods
-1
-2
-3
+\subsection{Outros métodos de identificação de modelo}\label{subsec:outros-metodos-de-identificacao-de-modelo}
+A biblioteca desenvolvida se propõe a implementar formas rápidas e práticas de realizar diveros métodos de identificação
+de modelo diferentes, dessa forma se torna evidente a importância da implementação de mais destes métodos.
+A seguir nesta sessão serão listadas algumas propostas de métodos que podem ser implementados em melhorias futuras.
+
+\subsubsection{Método de Dorf e Bishop}
+Conforme introduzido na sessão 4.3 de \cite{CoelhoIdentificacao}, é possível realizar a manipulação das equações
+apresentadas para realizar a identificação de modelos de segunda ordem.
+Acompanhado por novas ferramentas de análise da resposta, este método pode ser implementado da mesma forma
+que os demais já desenvolvidos.
+
+\subsubsection{Método de Mollenkamp}
+Da mesma forma que na seção anterior, o método de Mollenkamp combina a análise do gráfico da resposta a sinal degrau
+e o uso de equações pré-determinadas para obtenção do modelo clássico de segunda ordem \cite{CoelhoIdentificacao}.
+Caracterizando assim como uma boa opção de melhoria futura.
+
+\subsubsection{Resposta em frequência}
+O método de resposta em frequência envolve aplicar um sinal de entrada ao sistema e medir a saída correspondente,
+com foco particular na frequência do sinal.
+Ele analisa como as diferentes frequências do sinal de entrada afetam a saída do sistema, baseando-se nos
+diagramas de’Bode’.
+Através da comparação das características de frequência da entrada e da saída, é possível identificar parâmetros do
+sistema \cite{CoelhoIdentificacao}.
+
+Este método utiliza um sinal de entrada diferente do sinal degrau implementado na maioria dos outros métodos,
+e exige o desenvolvimento novas formas de análise dos dados recebidos.
+Contudo, o resultado é um modelo do caso geral, podendo ser de ordens maiores do que primeira ou segunda, uma
+introdução importante a biblioteca.
+
+\subsubsection{Resposta impulsiva}
+A identificação via resposta impulsiva, conforme descrito em \cite{CoelhoIdentificacao}, é um método de identificação
+de sistemas que utiliza a resposta do sistema a um impulso unitário para estimar seus parâmetros.
+Neste método, um sinal de impulso é aplicado à entrada do sistema, e a saída resultante, que é a resposta impulsiva, é
+observada e analisada.
+O resultado obtido é a resposta do sistema no domínio da frequência para sistemas discretos.
+
+Da mesma forma que o método de resposta em frequência, este método exitem o deselvolvimento de novas ferramentas
+com o adicional da conversão de seu resultado para o domínio da frequência para sistemas contínuos, para que seu
+resultado seja compatível com as outras implementações da biblioteca.
+
 
 \subsection{Outros métodos de aproximação de ganhos de controlador}
-model aprox methods
-1
-2
-3
+Da mesma forma que na sessão \ref{subsec:outros-metodos-de-identificacao-de-modelo}, esta sessão lista propostas
+de novos métodos de aproximação de controlador que podem ser implementadas como melhorias futuras.
+
+\subsubsection{Método de Shamsuzzoha e Skogestad}
+O método de Setpoint Overshoot proposto por Shamsuzzoha e Skogestad para a afinação de controladores PID baseia-se em
+experimentos de resposta a mudanças de setpoint em laço fechado, sem necessidade de realizar a identificação de um
+modelo do sistema \cite{skoge}.
+O processo começa com a realização de um experimento de resposta a um degrau de entrada usando um controlador apenas
+proporcional.
+A partir dos dados do experimento, especialmente o primeiro pico de ultrapassagem (overshoot) e o tempo para alcançá-lo,
+o método estabelece fórmulas diretas para calcular os parâmetros do controlador, como o ganho proporcional e o tempo
+integral.
+
+Este método se torna um pouco diferente de outros métodos de aproximação de controlador, visto que não recebe um modelo
+pronto, de forma que faria mais sentido cria-lo como um método em separado, que retorne apenas os ganhos encontrados.
+Esses ganhos podem ser utilizados para instanciar um objeto da classe Controller juntamente a um objeto de modelo.
+Possibilitando assim a plotagem da resposta a sinal degrau.
+
+\subsubsection{Sintonia Baseada em Minimização da Integral do Erro}
+O método de Sintonia Baseada em Minimização da Integral do Erro tem o objetivo de minimizar o erro de controle ao
+longo do tempo.
+Este método foca em otimizar critérios como a Integral do Valor Absoluto do Erro (IAE) ou a Integral Ponderada pelo
+Tempo do Valor Absoluto do Erro (ITAE), que medem o erro acumulado de maneiras distintas, sendo a segunda mais severa
+com erros prolongado.
+Este método se aplica ao modelo clássico de primeira ordem da equação \eqref{eq:firstordertf}, e os calculos de ganho
+de controlador são feitos através de fórmulas espessíficas, que utilizam os parâmetros $K$, $\tau$ e $\theta$ da equação
+\eqref{eq:firstordertf} e além de constantes tabeladas, calculadas a partir das integrais IAE e ITAE.
+De forma que pode ser implementado juntamente aos outros métodos de tabela para este caso de modelo clássico
+implementados \cite{apostpidsint}.
+
+\subsubsection{Sintonia pelo método do IMC}
+Este é mais um método de tabela introduzido em \cite{apostpidsint}.
+Ele possui fórmulas tabeladas para o caso da equação \eqref{eq:firstordertf} e pode ser implementado sem grandes
+mudanças no projeto.
+
+\subsubsection{Otimização por enxame de partículas baseado em gradiente}
+A partir do método de otimização por enxame de partículas baseado em gradiente, explorado em \cite{gpsopt} e uma função
+de pontuação que receba métricas de desempenho do sistema, como tempo de acomodação e sobre sinal, fornecida pelo usuário,
+é possível realizar a aproximação de ganhos de controlador PID por otimização.
+Os valores dos ganhos do controlador podem ser tomados como as coordenadas das partículas, e a função, onde devem ser
+buscados os mínimos locais, é dada pela obtenção do valor da pontuação, calculado pela função fornecida pelo
+usuário, com base nas métricas de desempenho, obtidas pela análise da resposta a sinal degrau, para cada partícula.
+Este método pode ser aplicado para qualquer tipo de modelo, contudo seu custo operacional pode variar conforme o caso.
 
 \subsection{Análise de resposta a outros sinais de entrada}
 Atualmente os métodos de plotagem de gráficos de resposta dos sistemas se especializam apenas em respostas a sinal
