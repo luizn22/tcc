@@ -32,9 +32,10 @@ necessários.
 
 \section{Requisitos da Biblioteca}
 
-O levantamento de requisitos e concepção inicial da dinâmica e uso da biblioteca, foi realizado com base no caminho de
-acesso as funcionalidades que um usuário da biblioteca faria, de forma a levar em conta os objetivos específicos
-propostos na introdução do trabalho.
+Com base nos objetivos específicos propostos na introdução do trabalho, foi realizado o estudo dos casos de uso da
+biblioteca, levantando requisitos de forma mais detalhada e concebendo uma visão inicial das dinâmicas de uso e
+funcionamento da biblioteca.
+Isso foi realizado tendo como base a uma sequencia de ações prováveis que um usuário faria durante o uso da ferramenta.
 
 O resultado da análise foi o seguinte diagrama de casos de uso, que denota um caminho provável de ações do usuário:
 
@@ -51,7 +52,7 @@ As tabelas \ref{tab:uc1}, \ref{tab:uc2}, \ref{tab:uc3}, \ref{tab:uc4}, \ref{tab:
 na figura \ref{fig:use_cases}, especificando o objetivo, os pré requisitos e o cenário de cada caso de uso.
 
 
-\begin{table}[!htbp]
+\begin{table}[H]
     \begin{center}
         \begin{tabularx}{\textwidth}{|>{\bfseries\raggedright\arraybackslash\center}m{5cm}|X|}
             \hline
@@ -68,11 +69,11 @@ na figura \ref{fig:use_cases}, especificando o objetivo, os pré requisitos e o 
     \end{center}
 \end{table}
 
-\begin{table}[!htbp]
+\begin{table}[H]
     \begin{center}
         \begin{tabularx}{\textwidth}{|>{\bfseries\raggedright\arraybackslash\center}m{5cm}|X|}
             \hline
-            Identificador UC: UC-2\newline Diagrama ID: D-2 & Nome: Indentificação de sistema\newline Prioridade: Alta                                                                                                                                                                                                                                             \\ \hline
+            Identificador UC: UC-2\newline Diagrama ID: D-2 & Nome: Identificação de sistema\newline Prioridade: Alta                                                                                                                                                                                                                                             \\ \hline
             Objetivo                                        & Realizar processo de identificação do sistema baseado nos dados e obter modelo.                                                                                                                                                                                                                      \\ \hline
             Atores                                          & Usuário                                                                                                                                                                                                                                                                                              \\ \hline
             Restrições                                      & Deve-se obter o modelo do sistema.                                                                                                                                                                                                                                                                   \\ \hline
@@ -80,12 +81,12 @@ na figura \ref{fig:use_cases}, especificando o objetivo, os pré requisitos e o 
             Cenário principal                               & 1. O método de identificação é chamado, recebendo o caminho do arquivo de layout e possívelmente os parâmetros referentes ao método em espessífico.\newline 2. São realizados os cálculos e é obtido o objeto de modelo do sistema.\newline 3. O objeto de modelo do sistema é retornado ao usuário. \\ \hline
             Pós condições                                   & O Usuário possui um objeto de modelo do sistema.                                                                                                                                                                                                                                                     \\ \hline
         \end{tabularx}
-        \caption{Indentificação de sistema}
+        \caption{Identificação de sistema}
         \label{tab:uc2}
     \end{center}
 \end{table}
 
-\begin{table}[!htbp]
+\begin{table}[H]
     \begin{center}
         \begin{tabularx}{\textwidth}{|>{\bfseries\raggedright\arraybackslash\center}m{5cm}|X|}
             \hline
@@ -102,7 +103,7 @@ na figura \ref{fig:use_cases}, especificando o objetivo, os pré requisitos e o 
     \end{center}
 \end{table}
 
-\begin{table}[!htbp]
+\begin{table}[H]
     \begin{center}
         \begin{tabularx}{\textwidth}{|>{\bfseries\raggedright\arraybackslash\center}m{5cm}|X|}
             \hline
@@ -119,7 +120,7 @@ na figura \ref{fig:use_cases}, especificando o objetivo, os pré requisitos e o 
     \end{center}
 \end{table}
 
-\begin{table}[!htbp]
+\begin{table}[H]
     \begin{center}
         \begin{tabularx}{\textwidth}{|>{\bfseries\raggedright\arraybackslash\center}m{5cm}|X|}
             \hline
@@ -142,20 +143,10 @@ na figura \ref{fig:use_cases}, especificando o objetivo, os pré requisitos e o 
 \section{Descrição da arquitetura}\label{sec:descarc}
 
 A fim de construir uma biblioteca com arquitetura de código compreensível e escalável, optou-se pela orientação
-da mesma a classes e objetos.
-Baseado nisso e nos casos de uso, foi desenvolvido o diagrama de classes da figura \ref{fig:class_diag}.
-Onde foram definidas as seguintes classes:
-\begin{alineas}
-    \item \textbf{DataInputUtils}: Classe utilitária para a entrada de dados externos - pode ser melhor visualizada na figura \ref{fig:class_diag_diubmi};
-    \item \textbf{DataUtils}: Classe utilitária para manipulação de dados em memória - pode ser melhor visualizada na figura \ref{fig:class_diag_dupu};
-    \item \textbf{PlotUtils}: Classe utilitária para plot de funções de transferência e outras informações relacionadas - pode ser melhor visualizada na figura \ref{fig:class_diag_dupu};
-    \item \textbf{Model}: Classe representativa do Modelo matemático de uma planta de sistemas de controle - pode ser melhor visualizada na figura \ref{fig:class_diag_model};
-    \item \textbf{ModelView}: Classe utilizada pra visualização de dados de um objeto da classe Model - pode ser melhor visualizada na figura \ref{fig:class_diag_model};
-    \item \textbf{BaseModelIdentification}: Classe utilitária base para Identificação de modelos (Model), herdada por classes que implementam métodos de identificação - pode ser melhor visualizada na figura \ref{fig:class_diag_diubmi};
-    \item \textbf{Controller}: Classe representativa do Modelo matemático de uma planta de sistemas de controle em Malha Fechada com Controlador PID - pode ser melhor visualizada na figura \ref{fig:class_diag_controller};
-    \item \textbf{ControllerView}: Classe utilizada pra visualização de dados de um objeto da classe Controller - pode ser melhor visualizada na figura \ref{fig:class_diag_controller};
-    \item \textbf{BaseControllerAproximation}: Classe utilitária base para aproximação de controladores (Controller), herdada por classes que implementam métodos de aproximação de parâmetros de controlador PID - pode ser melhor visualizada na figura \ref{fig:class_diag_bcacontroller}.
-\end{alineas}
+da mesma a classes e objetos, visto que este tipo de abordagem resulta em uma estrutura clara e amplamente utilizada.
+Baseado nisso e nos casos de uso, foi desenvolvido o diagrama de classes da figura \ref{fig:class_diag}, que caracteriza
+as classes da biblioteca, detalhando seus atributos e métodos, além de apontar os relacionamentos e dependências entre
+as classes.
 
 \begin{figure}[H]
     \centering
@@ -166,6 +157,17 @@ Onde foram definidas as seguintes classes:
     \vspace{0cm}\hspace{0cm}\small{Fonte: Do autor}
 \end{figure}
 
+Tendo em vista que o diagrama da figura \ref{fig:class_diag} é grande demais para ser discutido em apenas uma figura,
+as subseções desta sessão tratam das classes específicas presentes no diagrama, com visões ampliadas das mesmas para
+facilitar a visualização.
+
+\subsection{DataInputUtils}
+
+Classe utilitária, ou seja, não deve ser instanciada como objeto, para a entrada de dados externos.
+É previsto nela o método create\_table\_with\_fields cujo intuito é a criação de uma tabela com campos espessíficos,
+conforme requisitado pelo caso de uso descrito na tabela \ref{tab:uc1}.
+A visão ampliada da classe no diagrama pode ser melhor observada na figura \ref{fig:class_diag_diubmi};
+
 \begin{figure}[H]
     \centering
     \caption{Diagrama de classes ampliado - DataInputUtils e BaseModelIdentification}
@@ -174,6 +176,15 @@ Onde foram definidas as seguintes classes:
     \\
     \vspace{0cm}\hspace{0cm}\small{Fonte: Do autor}
 \end{figure}
+
+\subsection{DataUtils}
+
+Esta é outra classe utilitária, similar a DataInputUtils, mas com o foco na manipulação de dados em memória.
+Seu objetivo é fornecer e centralizar ferramentas de manipulação de dados que serão utilizadas em toda a biblioteca.
+A classe, e seus relacionamentos inicialmente idealizados, pode ser vista na figura \ref{fig:class_diag_dupu}.
+Os métodos dessa classe foram criados de acordo com as necessidades encontradas durante o desenvolvimento, de forma que
+neste diagrama inicial consta apenas o método pprint\_dict, criado a caráter de exemplo, que mais tarde foi reenquadrado
+para a classe PlotUtils.
 
 \begin{figure}[H]
     \centering
@@ -184,6 +195,26 @@ Onde foram definidas as seguintes classes:
     \vspace{0cm}\hspace{0cm}\small{Fonte: Do autor}
 \end{figure}
 
+\subsection{PlotUtils}
+
+PlotUtils é mais uma classe utilitária, seu objetivo é fornecer e centralizar ferramentas de visualização de dados
+a serem utilizadas pelas classes ModelView e ControllerView, como apresentado na figura \ref{fig:class_diag_dupu}.
+Em sua lista de métodos é definido plot, uma ferramenta crucial para viabilizar os requerimentos dos usos de caso
+\ref{tab:uc3} e \ref{tab:uc5}, visto que seu objetivo é a impressão dos gráficos de resposta a sinal degrau de funções de
+transferência.
+De forma similar a classe DataUtils, também foram criados outros métodos para esta classe de acordo com as necessidades de
+desenvolvimento.
+
+\subsection{Model}
+
+Classe representativa do Modelo matemático de uma planta de sistemas de controle, apresentada na figura
+\ref{fig:class_diag_model}, foi projetada para guardar atributos
+referentes a função de transferência e ordem do modelo, além dos dados discretos utilizados para obtenção do modelo,
+caso existam, um dicionário para metadados (mais tarde removido), e view, um objeto da classe ModelView, para
+possibilita o acesso as funcionalidades de visualização de dados a partir do objeto de modelo.
+Também são descritos no diagrama os métodos de inicialização, que recebe alguns dos atributos da classe, e um método
+interno para obtenção da ordem da função de transferência do modelo.
+
 \begin{figure}[H]
     \centering
     \caption{Diagrama de classes ampliado - Model e ModelView}
@@ -192,6 +223,31 @@ Onde foram definidas as seguintes classes:
     \\
     \vspace{0cm}\hspace{0cm}\small{Fonte: Do autor}
 \end{figure}
+
+\subsection{ModelView}
+
+A classe ModelView foi concebida como um meio termo entre a classe de modelo, Model, cujo foco é guardar os dados
+referentes a um modelo, e não necessariamente apresenta-los ao usuário, e a classe PlotUtils, que fornece ferramentas
+de visualização de dados gerais, que precisam de configurações espessíficas para apresentar os dados de modelo
+corretamente.
+Desta forma isolando as responsabilidades de cada componente.
+Na figura \ref{fig:class_diag_model} é possível visualizar a classe, bem como seu atributo model recebido em sua
+instanciação e seus métodos de instanciação (\_\_init\_\_), plot\_model\_graph, utilizado para apresentação de dados de
+resposta do modelo a sinal degrau e comparação do modelo com so dados discretos utilizados para obte-lo,
+get\_model\_data, que retorna dados de resposta a sinal degram do modelo, como sobressinal e tempo de acomodação, e
+print\_model\_data que apresenta os dados de get\_model\_data ao usuário de forma formatada.
+
+\subsection{BaseModelIdentification}
+
+Na figura \ref{fig:class_diag_diubmi}, é apresentada a classe utilitária e abstrata BaseModelIdentification, seu
+propósito é padronizar os métodos de identificação de modelo, de forma que todos eles sejam subclasses dela.
+Assim sendo, o método abstrato get\_model, que calcula e retorna um objeto de modelo (Model), deve ser implementado em
+todas as suas subclasses obrigatoriamente.
+Além disso também é previsto o método get\_data\_input para fornecer ao usuário o modelo de tabela a ser preenchido
+com os dados para identificação.
+
+Ainda na figura \ref{fig:class_diag_diubmi} são denotadas as classes ModelItentificationA e ModelItentificationN de
+forma ilustrativa, representando subclasses que criadas durante o desenvolvimento da biblioteca.
 
 \begin{figure}[H]
     \centering
@@ -202,6 +258,29 @@ Onde foram definidas as seguintes classes:
     \vspace{0cm}\hspace{0cm}\small{Fonte: Do autor}
 \end{figure}
 
+\subsection{Controller}
+
+Controller é bastante similar a Model, no quesito de que sua finalidade é salvar os dados de uma função de
+transferência, bem como dados acessórios a mesma, além de possibilitar sua visualização pelo atributo view, uma
+instância de ControllerView em vez de ModelView.
+Em sua instanciação, recebe um objeto de modelo e os ganhos PID a serem considerados para o controlador, que, ainda no
+momento da instanciação, serão utilizados para o fechamento da malha, sendo a função de transferência salva referente
+ao modelo da planta em malha fechada.
+A classe pode ser melhor visualizada na figura \ref{fig:class_diag_controller};
+
+\subsection{ControllerView}
+
+ControllerView implementa métodos identicos a ModelView, mas com o foco no objeto controller, e com a diferença de que
+o método plot\_model\_graph entende por padrão mostrar a comparação entre a resposta a sinal degrau do modelo em malha
+aberta e o modelo em malha fechada com o controlador, ao invés da comparação com os dados discretos.
+Pode ser visualizada na figura \ref{fig:class_diag_controller};
+
+\subsection{BaseControllerAproximation}
+
+Classe idêntica a BaseModelIdentification mas com o foco em obter um objeto da classe Controller.
+Ao invés de get\_model, implementa o método abstrato get\_controller.
+A classe e as visões ilustrativas de suas subclasses podem ser observadas na figura \ref{fig:class_diag_bcacontroller}.
+
 \begin{figure}[H]
     \centering
     \caption{Diagrama de classes ampliado - BaseControllerAproximation}
@@ -210,6 +289,7 @@ Onde foram definidas as seguintes classes:
     \\
     \vspace{0cm}\hspace{0cm}\small{Fonte: Do autor}
 \end{figure}
+
 
 \section{Descrição do ambiente de implementação}
 
