@@ -9,72 +9,11 @@ práticos já realizados e também a aplicação em um sistema real.
 \section{Arquitetura}
 Com o Desenvolvimento do projeto a arquitetura geral das classes se manteve.
 Contudo, os métodos já existentes foram melhor definidos, além de serem adicionados diversos outros.
-A estrutura geral do diagrama pode ser visualizada na figura \ref{fig:class_diag_new} e os detalhes nas figuras
-\ref{fig:class_diag_diubmi_new}, \ref{fig:class_diag_du_new}, \ref{fig:class_diag_pu_new},
-\ref{fig:class_diag_model_new}, \ref{fig:class_diag_controller_new} e \ref{fig:class_diag_bcacontroller_new} .
+O novo diagrama de classes é uma atualização direta do diagrama da figura \ref{fig:class_diag}, suas considerações
+estruturais se mantém as mesmas, ele pode ser visualizado na íntegra na figura \ref{fig:class_diag_new}
+do apêndice \ref{ch:nwclassdiag}.
+As alterações em cada uma das classes já foram descritas na sessão referente a implementação \ref{sec:imp}.
 
-\begin{figure}[H]
-    \centering
-    \caption{Novo diagrama de classes}
-    \includegraphics[scale=0.17]{figuras/class_diag_new}
-    \label{fig:class_diag_new}
-    \\
-    \vspace{0cm}\hspace{0cm}\small{Fonte: Do autor}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \caption{Novo diagrama de classes ampliado - DataInputUtils e BaseModelIdentification}
-    \includegraphics[scale=0.35]{figuras/class_diag_diubmi_new}
-    \label{fig:class_diag_diubmi_new}
-    \\
-    \vspace{0cm}\hspace{0cm}\small{Fonte: Do autor}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \caption{Novo diagrama de classes ampliado - DataUtils e PlotUtils}
-    \includegraphics[scale=0.35]{figuras/class_diag_du_new}
-    \label{fig:class_diag_du_new}
-    \\
-    \vspace{0cm}\hspace{0cm}\small{Fonte: Do autor}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \caption{Novo diagrama de classes ampliado - DataUtils e PlotUtils}
-    \includegraphics[scale=0.22]{figuras/class_diag_pu_new}
-    \label{fig:class_diag_pu_new}
-    \\
-    \vspace{0cm}\hspace{0cm}\small{Fonte: Do autor}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \caption{Novo diagrama de classes ampliado - Model e ModelView}
-    \includegraphics[scale=0.32]{figuras/class_diag_model_new}
-    \label{fig:class_diag_model_new}
-    \\
-    \vspace{0cm}\hspace{0cm}\small{Fonte: Do autor}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \caption{Novo diagrama de classes ampliado - Controller e ControllerView}
-    \includegraphics[scale=0.35]{figuras/class_diag_controller_new}
-    \label{fig:class_diag_controller_new}
-    \\
-    \vspace{0cm}\hspace{0cm}\small{Fonte: Do autor}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \caption{Novo diagrama de classes ampliado - BaseControllerAproximation}
-    \includegraphics[scale=0.40]{figuras/class_diag_bcacontroller_new}
-    \label{fig:class_diag_bcacontroller_new}
-    \\
-    \vspace{0cm}\hspace{0cm}\small{Fonte: Do autor}
-\end{figure}
 
 
 \section{Documentação}
@@ -174,8 +113,10 @@ Para os dados fornecidos, a execução do código imprime as seguintes informaç
 \end{lstlisting}
 
 Além disso é aberta uma janela interativa, onde pode ser comparado o resultado da identificação com os dados de entrada
-como pode ser visto na figura \ref{fig:get_model_plot}.
-Nesse caso a resposta do modelo está sendo redimensionada em relação ao valor do setpoint, para ser possível a
+como pode ser visto na figura \ref{fig:get_model_plot}, que apresenta a janela com a visualização dos dados discretos
+com a resposta a sinal degrau do modelo gerado sobreposta, para fins de visualização da proximidade entre o modelo
+gerado e os dados discretos inseridos.
+Nesse caso a resposta do modelo está sendo redimensionada em relação ao valor do \textit{setpoint}, para ser possível a
 comparação com os dados de entrada.
 
 \begin{figure}[H]
@@ -220,7 +161,10 @@ fechada com o controlador gerado:
 
 O gráfico de resposta plotado por padrão também traz a resposta do modelo em malha aberta para comparação.
 Esse comportamento pode ser alterado informando o parâmetro plot\_model como False.
-O resultado da plotagem pode ser visto na figura \ref{fig:get_controller_plot}.
+O resultado da plotagem pode ser visto na figura \ref{fig:get_controller_plot}, em que é apresentada a resposta a sinal
+degrau unitário do modelo em comparação a resposta a um \textit{setpoint} unitário da planta em malha fechada,
+possibilitando assim tanto a comparação da do caso de malha aberta com o caso de malha fechada, quanto a observação
+gráfica do desempenho do controlador.
 
 \begin{figure}[H]
     \centering
@@ -246,11 +190,15 @@ Uma vista ampliada pode ser observada na figura \ref{fig:get_controller_plot_zoo
 
 As mesmas operações podem ser executadas em qualquer ambiente com uma versão de Python suportada, inclusive em
 ambientes Jupyter.
-A seguir, nas figuras \ref{fig:colab_example1}, \ref{fig:colab_example2} e \ref{fig:colab_example3}, é demonstrada a
-execução do mesmo código do exemplo anterior, mas desta vez no Google Colab, um serviço gratuito da empresa Google que
-permite escrever e executar código Python através do navegador em um ambiente baseado em Jupyter.
+A seguir, é demonstrada a execução do mesmo código do exemplo anterior, mas desta vez no Google Colab,
+um serviço gratuito da empresa Google que permite escrever e executar código Python através do navegador em um ambiente
+baseado em Jupyter.
 Além de estar sendo executado em nuvem, o ambiente baseado em Jupyter possibilita uma formatação mais visualmente
 agradável das funções de transferência e das informações de resposta a sinal degrau.
+
+Na figura \ref{fig:colab_example1}, são apresentadas duas células de execução, a primeira fazendo a instalação da
+biblioteca utilizando pip, e a segunda importando a biblioteca e também é obtido o modelo de input de dados para
+o método de identificação a ser utilizado.
 
 \begin{figure}[H]
     \centering
@@ -261,6 +209,10 @@ agradável das funções de transferência e das informações de resposta a sin
     \vspace{0cm}\hspace{0cm}\small{Fonte: Do autor}
 \end{figure}
 
+Em seguida, na figura \ref{fig:colab_example2} é realizado o processo de identificação pelo método de Nishikawa,
+além de serem apresentados a função de transferência referente ao modelo obtido, os dados referentes a resposta do
+modelo a sinal degrau, e o mesmo gráfico apresentado na figura \ref{fig:get_model_plot}.
+
 \begin{figure}[H]
     \centering
     \caption{Exemplo de uso da biblioteca - execução no colab - obtenção e visualização de modelo}
@@ -269,6 +221,11 @@ agradável das funções de transferência e das informações de resposta a sin
     \\
     \vspace{0cm}\hspace{0cm}\small{Fonte: Do autor}
 \end{figure}
+
+Por fim, é apresentada na figura \ref{fig:colab_example3} a célula com o código referente ao processo de aproximação de
+ganhos de controlador PID pelo método C-C, além de serem apresentados a função de transferência referente ao sistema em
+malha fechada, os dados referentes a resposta do sistema em malha fechada a um \textit{setpoint} unitário, e o mesmo
+gráfico apresentado na figura \ref{fig:get_controller_plot}.
 
 \begin{figure}[H]
     \centering

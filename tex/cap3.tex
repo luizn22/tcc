@@ -199,7 +199,7 @@ para a classe PlotUtils.
 
 PlotUtils é mais uma classe utilitária, seu objetivo é fornecer e centralizar ferramentas de visualização de dados
 a serem utilizadas pelas classes ModelView e ControllerView, como apresentado na figura \ref{fig:class_diag_dupu}.
-Em sua lista de métodos é definido plot, uma ferramenta crucial para viabilizar os requerimentos dos usos de caso
+Em sua lista de métodos é definido plot, uma ferramenta crucial para viabilizar os requerimentos dos casos de uso
 \ref{tab:uc3} e \ref{tab:uc5}, visto que seu objetivo é a impressão dos gráficos de resposta a sinal degrau de funções de
 transferência.
 De forma similar a classe DataUtils, também foram criados outros métodos para esta classe de acordo com as necessidades de
@@ -212,6 +212,7 @@ Classe representativa do Modelo matemático de uma planta de sistemas de control
 referentes a função de transferência e ordem do modelo, além dos dados discretos utilizados para obtenção do modelo,
 caso existam, um dicionário para metadados (mais tarde removido), e view, um objeto da classe ModelView, para
 possibilita o acesso as funcionalidades de visualização de dados a partir do objeto de modelo.
+Conforme requerido pelos casos de uso das tabelas \ref{tab:uc2} e \ref{tab:uc3}.
 Também são descritos no diagrama os métodos de inicialização, que recebe alguns dos atributos da classe, e um método
 interno para obtenção da ordem da função de transferência do modelo.
 
@@ -229,7 +230,7 @@ interno para obtenção da ordem da função de transferência do modelo.
 A classe ModelView foi concebida como um meio termo entre a classe de modelo, Model, cujo foco é guardar os dados
 referentes a um modelo, e não necessariamente apresenta-los ao usuário, e a classe PlotUtils, que fornece ferramentas
 de visualização de dados gerais, que precisam de configurações espessíficas para apresentar os dados de modelo
-corretamente.
+corretamente, atendendo o caso de uso da tabela \ref{tab:uc3}.
 Desta forma isolando as responsabilidades de cada componente.
 Na figura \ref{fig:class_diag_model} é possível visualizar a classe, bem como seu atributo model recebido em sua
 instanciação e seus métodos de instanciação (\_\_init\_\_), plot\_model\_graph, utilizado para apresentação de dados de
@@ -245,6 +246,7 @@ Assim sendo, o método abstrato get\_model, que calcula e retorna um objeto de m
 todas as suas subclasses obrigatoriamente.
 Além disso também é previsto o método get\_data\_input para fornecer ao usuário o modelo de tabela a ser preenchido
 com os dados para identificação.
+Assim complementado as necessidades levantadas pelos casos de uso das tabelas \ref{tab:uc1} e \ref{tab:uc2}.
 
 Ainda na figura \ref{fig:class_diag_diubmi} são denotadas as classes ModelItentificationA e ModelItentificationN de
 forma ilustrativa, representando subclasses que criadas durante o desenvolvimento da biblioteca.
@@ -266,13 +268,15 @@ instância de ControllerView em vez de ModelView.
 Em sua instanciação, recebe um objeto de modelo e os ganhos PID a serem considerados para o controlador, que, ainda no
 momento da instanciação, serão utilizados para o fechamento da malha, sendo a função de transferência salva referente
 ao modelo da planta em malha fechada.
+Conforme requerido pelos casos de uso das tabelas \ref{tab:uc4} e \ref{tab:uc5}.
 A classe pode ser melhor visualizada na figura \ref{fig:class_diag_controller};
 
 \subsection{ControllerView}
 
 ControllerView implementa métodos identicos a ModelView, mas com o foco no objeto controller, e com a diferença de que
 o método plot\_model\_graph entende por padrão mostrar a comparação entre a resposta a sinal degrau do modelo em malha
-aberta e o modelo em malha fechada com o controlador, ao invés da comparação com os dados discretos.
+aberta e o modelo em malha fechada com o controlador, ao invés da comparação com os dados discretos, atendendo o caso de
+uso da tabela \ref{tab:uc5}.
 Pode ser visualizada na figura \ref{fig:class_diag_controller};
 
 \subsection{BaseControllerAproximation}
@@ -280,6 +284,7 @@ Pode ser visualizada na figura \ref{fig:class_diag_controller};
 Classe idêntica a BaseModelIdentification mas com o foco em obter um objeto da classe Controller.
 Ao invés de get\_model, implementa o método abstrato get\_controller.
 A classe e as visões ilustrativas de suas subclasses podem ser observadas na figura \ref{fig:class_diag_bcacontroller}.
+Assim complementado as necessidades levantadas pelo caso de uso das tabela \ref{tab:uc4}.
 
 \begin{figure}[H]
     \centering
@@ -415,7 +420,7 @@ para instalação.
 Por fim o pacote foi carregado o PyPI utilizando a ferramenta twine, garantindo um upload seguro.
 Este processo tornou o a biblioteca acessível para instalação via pip para qualquer pessoa.
 
-\section{Implementação}
+\section{Implementação}\label{sec:imp}
 Esta seção detalha a implementação do código-fonte principal da biblioteca, contendo todas as funcionalidades
 disponibilizadas a usuários dela.
 Da mesma forma que na documentação da biblioteca as subseções desta seção representam grupos de classes implementadas
@@ -425,7 +430,7 @@ baseando-se nos diagramas apresentados na seção \ref{sec:descarc}.
 
 Classes de modelo, representativas do Modelo matemático de uma planta de sistemas de controle.
 
-\subsubsection{Model}
+\subsubsection{Model}\label{subsubsec:devModel}
 
 Classe representativa do Modelo matemático de uma planta de sistemas de controle.
 Tipicamente o modelo matemático de uma planta no domínio da frequenica pode ser definido por um numerador e um
@@ -446,7 +451,7 @@ referentes a função de transferência.
 Para ser instanciada, recebe um parâmetro tf, referente a função de transferência, e um parâmetro opcional source\_data
 referente aos dados utilizados como base para gerar o modelo, caso o modelo tenha sido gerado dessa forma.
 
-\subsubsection{ModelView}
+\subsubsection{ModelView}\label{subsubsec:devModelView}
 
 Classe utilizada pra visualização de dados de um objeto da classe Model.
 Recebe Model como parâmetro e tem como foco a visualização dos dados do mesmo.
@@ -478,7 +483,7 @@ Classes de identificação são subclasses de BaseModelIdentification, e impleme
 identificação de dados discretos de resposta a sinal degrau de um sistema de controle e retorna objeto da classe Model
 ou de uma de suas subclasses.
 
-\subsubsection{BaseModelIdentification}
+\subsubsection{BaseModelIdentification}\label{subsubsec:devBaseModelIdentification}
 Classe abstrata que serve de base para identificação de modelos (Model).
 Classes de métodos de identificação de modelos devem ser subclasses desta classe.
 Elas também devem implementar o método get\_model para retornar um objeto da classe Model que represente o modelo
@@ -569,7 +574,7 @@ A implementação de get\_model de NishikawaModelIdentification funciona da segu
 Classes de controlador, representativas de um sistema em Malha Fechada ocorrendo o controle de um Modelo através de um
 Controlador PID\@.
 
-\subsubsection{Controller}
+\subsubsection{Controller}\label{subsubsec:devController}
 
 Classe base para controle PID\@.
 Esta é uma classe representativa do Modelo matemático de uma planta de sistemas de controle em Malha Fechada com
@@ -582,7 +587,7 @@ Para isso, atua encima do objeto de Função de Transferência da biblioteca de 
 Além disso o atributo view possibilita a visualização de dados, estatísticas e gráficos referentes ao resultado do
 controle (função de transferência resultante do fechamento da malha com controlador).
 
-\subsubsection{ControllerView}
+\subsubsection{ControllerView}\label{subsubsec:devControllerView}
 
 Classe utilizada pra visualização de dados de um objeto da classe Controller.
 Recebe Controller como parâmetro e tem como foco a visualização dos dados do mesmo.
@@ -606,7 +611,7 @@ Classes de Aproximação de Controlador são subclasses de BaseControllerAproxim
 get\_controller, que faz a Aproximação de Ganhos de um Controlador PID para um objeto de Modelo da classe Model ou
 uma de suas subclasses, retornando um objeto da classe Controller.
 
-\subsubsection{BaseControllerAproximation}
+\subsubsection{BaseControllerAproximation}\label{subsubsec:devBaseControllerAproximation}
 
 Classe base para aproximação de controladores (Controller).
 Métodos de aproximação de controladores devem ser subclasses desta classe.
@@ -663,7 +668,7 @@ A fim de concentrar ferramentas comuns de visualização de dados, foi criada a 
 tanto nas implementações das classes ModelView como Controller View.
 Desta forma não há a necessidade de repetir o código de funcionalidades comuns entre seções diferentes da biblioteca.
 
-\subsubsection{PlotUtils}
+\subsubsection{PlotUtils}\label{subsubsec:devPlotUtils}
 Classe utilitária para plotagem de funções de transferência e outras informações relacionadas.
 Nela foram implementados os métodos plot\_tf, print\_tf e pprint\_dict, detalhados a seguir.
 
@@ -709,7 +714,7 @@ agradável.
 A fim de concentrar ferramentas comuns de manipulação de dados, foram criadas as classes utilitárias DataInputUtils e
 DataUtils utilizadas em quase todos os módulos da biblioteca.
 
-\subsubsection{DataInputUtils}
+\subsubsection{DataInputUtils}\label{subsubsec:devDataInputUtils}
 Classe utilitária para facilitar a entrada de dados, nela são implementados diversos métodos para criação e leitura de
 tabelas referentes a entrada dos dados utilizados para identificação de plantas de sistemas de controle.
 Foram implementados os seguintes métodos:
@@ -724,7 +729,7 @@ Foram implementados os seguintes métodos:
     \item \textbf{get\_model\_data\_default}: Salva planilha de leiaute com os campos esperados para preenchimento.
 \end{alineas}
 
-\subsubsection{DataUtils}
+\subsubsection{DataUtils}\label{subsubsec:devDataUtils}
 
 Classe utilitária para manipulação de dados, nela foram implementados diversos métodos para manipulação de dados e
 cálculo de constantes, como pose ser visto a seguir.
