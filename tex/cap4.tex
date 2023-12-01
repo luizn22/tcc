@@ -15,7 +15,6 @@ do apêndice \ref{ch:nwclassdiag}.
 As alterações em cada uma das classes já foram descritas na sessão referente a implementação \ref{sec:imp}.
 
 
-
 \section{Documentação}
 
 A documentação desenvolvida juntamente a biblioteca foi compilada com sucesso e disponibilizada no link apresentado
@@ -44,6 +43,7 @@ Cada uma das páginas desenvolvida abora um ponto importante sobre o projeto, da
     \item ``Desenvolvimento'': explora o desenvolvimento da biblioteca e traz breve listagem de scripts úteis para
     o desenvolvimento.
 \end{itemize}
+
 
 \section{Testes}
 
@@ -397,15 +397,15 @@ ganhos concordam com a bibliográfica, conforme detalha a tabela \ref{tab:bib_co
     \begin{center}
         \begin{tabular}{ | l | c | c | c | }
             \hline
-            {}                         & {$K_P$} & {$T_I$}   & {$T_D$}   \\
+            {}                                    & {$K_P$}              & {$T_I$}         & {$T_D$}         \\
             \hline
-            {\textbf{Ziegler-Nichols}} & {3,46}  & {2,96min} & {0,74min} \\
+            {\textbf{Ziegler-Nichols}}            & {3,46}               & {2,96min}       & {0,74min}       \\
             \hline
-            {\textbf{Cohen-Coon}}      & {3,97}  & {3,39min} & {0,52min} \\
+            {\textbf{Cohen-Coon}}                 & {3,97}               & {3,39min}       & {0,52min}       \\
             \hline
-            {\textbf{Ziegler-Nichols Biblioteca}} & {3.4636174636174637}  & {2,96} & {0,74} \\
+            {\textbf{Ziegler-Nichols Biblioteca}} & {3.4636174636174637} & {2,96}          & {0,74}          \\
             \hline
-            {\textbf{Cohen-Coon Biblioteca}}      & {3.9766689766689765}  & {3.39341713144} & {0.52134052225} \\
+            {\textbf{Cohen-Coon Biblioteca}}      & {3.9766689766689765} & {3.39341713144} & {0.52134052225} \\
             \hline
         \end{tabular}
         \caption{ Métodos da curva de reação para o tanque aquecido}
@@ -432,78 +432,194 @@ idênticos ao apresentado pela biblioteca foram observados.
 
 \section{Comaprações com Experimentos Anteriores}
 
-Para de validar os resultados obtidos, foram pegos dados já existentes de resposta a sinal degrau de algumas plantas
-didáticas do laboratório de controle do Campus do IFSC.
+Afim demonstrar a capacidade da biblioteca de realizar identificações e aproximações de
+controlador de forma rápida e em massa, foram pegos dados já existentes de resposta a sinal degrau de algumas plantas
+didáticas do laboratório de controle do Campus do IFSC\@.
 Optou-se por fazer o processo de identificação utilizando o método Smith e a aproximação de ganhos de controlador
 com o método Cohen Coon.
 
 As plantas trabalhadas são um forno, uma mesa giratória e o nível de um tanque.
 Detalhes sobre variáveis manipulada e controlada foram abstraídos por não serem o foco da comparação.
 As plantas trabalhadas, em geral, possuíam resposta rápida, com atraso baixo ou nulo, o que, em alguns casos,
-impossibilitou o uso do método de Cohen e Coon. Os resultados das identificações e controladores podem ser observados
+impossibilitou o uso do método de Cohen e Coon.
+Os resultados das identificações e controladores podem ser observados
 nas tabelas \ref{tab:results_forno}, \ref{tab:results_mesa}, \ref{tab:results_tanque}.
 
-
-Não foram recebidas informações sobre os modelos e ganhos obtidos pelos universitários que estavam trabalhando na plata.
-
-
-\begin{table}[!htbp]
-\caption{Resultados obtidos - Forno}
-\centering
-\begin{tabular}{|c|c|c|c|c|c|c|}
-\hline
-\textbf{Setpoint} & \textbf{Modelo} & \textbf{Kp} & \textbf{Ki} & \textbf{Kd} & \textbf{Identificação} & \textbf{Malha fechada} \\
-\hline
-15\% & $\frac{18.08 e^{-22.5s}}{1144.5s + 1.0}$ & 3.76 & 0.068 & 30.70 & \includegraphics[width=0.2\linewidth]{figuras/forno_15} & \includegraphics[width=0.2\linewidth]{figuras/forno_15c} \\
-\hline
-20\% & $\frac{6.90 e^{-19.5s}}{919.5s + 1.0}$ & 9.14 & 0.192 & 64.57 & \includegraphics[width=0.2\linewidth]{figuras/forno_20} & \includegraphics[width=0.2\linewidth]{figuras/forno_20c} \\
-\hline
-25\% & $\frac{6.68 e^{-17.5s}}{997.5s + 1.0}$ & 11.42 & 0.267 & 72.41 & \includegraphics[width=0.2\linewidth]{figuras/forno_25} & \includegraphics[width=0.2\linewidth]{figuras/forno_25c} \\
-\hline
-\end{tabular}
-\label{tab:results_forno}
-\vspace{0cm}\hspace{0cm}\small{Fonte: Do autor}
-\end{table}
-
-\begin{table}[!htbp]
-\caption{Resultados obtidos - Mesa Giratória}
-\centering
-\begin{tabular}{|c|c|c|c|c|c|c|}
-\hline
-\textbf{Setpoint} & \textbf{Modelo} & \textbf{Kp} & \textbf{Ki} & \textbf{Kd} & \textbf{Identificação} & \textbf{Malha fechada} \\
-\hline
-Mesa (5-10\%) & $\frac{25.93 e^{-1.5s}}{52.5s + 1.0}$ & 1.81 & 0.496 & 0.982 & \includegraphics[width=0.2\linewidth]{figuras/mesa_5_10} & \includegraphics[width=0.2\linewidth]{figuras/mesa_5_10c} \\
-\hline
-Mesa (10-15\%) & $\frac{17.81 e^{-3.5s}}{40.5s + 1.0}$ & 0.88 & 0.106 & 1.10 & \includegraphics[width=0.2\linewidth]{figuras/mesa_10_15} & \includegraphics[width=0.2\linewidth]{figuras/mesa_10_15c} \\
-\hline
-Mesa (15-17\%) & $\frac{15.3}{54.0s + 1.0}$ & - & - & - & \includegraphics[width=0.2\linewidth]{figuras/mesa_15_17} & \textbf{Sem Atraso} \\
-\hline
-Mesa (17-20\%) & $\frac{12.0}{37.5s + 1.0}$ & - & - & - & \includegraphics[width=0.2\linewidth]{figuras/mesa_17_20} & \textbf{Sem Atraso} \\
-\hline
-\end{tabular}
-\label{tab:results_mesa}
-\vspace{0cm}\hspace{0cm}\small{Fonte: Do autor}
-\end{table}
-
-\begin{table}[!htbp]
-\caption{Resultados obtidos - Nível Tanque}
-\centering
-\begin{tabular}{|c|c|c|c|c|c|c|}
-\hline
-Tanque (40-50\%) & $\frac{2.58 e^{-2.0s}}{18.0s + 1.0}$ & 4.75 & 1.01 & 3.38 & \includegraphics[width=0.2\linewidth]{figuras/tanque_40_50} & \includegraphics[width=0.2\linewidth]{figuras/tanque_40_50c} \\
-\hline
-Tanque (40-50\%) & $\frac{3.77 e^{-1.0s}}{33.0s + 1.0}$ & 11.73 & 4.83 & 4.24 & \includegraphics[width=0.2\linewidth]{figuras/tanque_50_60} & \includegraphics[width=0.2\linewidth]{figuras/tanque_50_60c} \\
-\hline
-Tanque (40-50\%) & $\frac{3.45}{52.5s + 1.0}$ & - & - & - & \includegraphics[width=0.2\linewidth]{figuras/tanque_60_70} & \textbf{Sem Atraso} \\
-\hline
-Tanque (40-50\%) & $\frac{1.26 e^{-5.0s}}{6.0s + 1.0}$ & 1.47 & 0.156 & 2.32 & \includegraphics[width=0.2\linewidth]{figuras/tanque_70_80} & \includegraphics[width=0.2\linewidth]{figuras/tanque_70_80c} \\
-\hline
-\end{tabular}
-\label{tab:results_tanque}
-\vspace{0cm}\hspace{0cm}\small{Fonte: Do autor}
+\begin{table}[H]
+    \caption{Resultados obtidos - Forno}
+    \centering
+    \begin{tabular}{|c|c|c|c|c|c|c|}
+        \hline
+        \textbf{Setpoint} & \textbf{Modelo}                          & \textbf{Kp} & \textbf{Ki} & \textbf{Kd} & \textbf{Identificação} & \textbf{Malha fechada} \\
+        \hline
+        15\%              & $\frac{18.08 e^{-22.5s}}{1144.5s + 1.0}$ & 3.76        & 0.068       & 30.70       & \includegraphics[width=0.2\linewidth]{figuras/forno_15} & \includegraphics[width=0.2\linewidth]{figuras/forno_15c} \\
+        \hline
+        20\%              & $\frac{6.90 e^{-19.5s}}{919.5s + 1.0}$   & 9.14        & 0.192       & 64.57       & \includegraphics[width=0.2\linewidth]{figuras/forno_20} & \includegraphics[width=0.2\linewidth]{figuras/forno_20c} \\
+        \hline
+        25\%              & $\frac{6.68 e^{-17.5s}}{997.5s + 1.0}$   & 11.42       & 0.267       & 72.41       & \includegraphics[width=0.2\linewidth]{figuras/forno_25} & \includegraphics[width=0.2\linewidth]{figuras/forno_25c} \\
+        \hline
+    \end{tabular}
+    \label{tab:results_forno}
+    \vspace{0cm}\hspace{0cm}\small{Fonte: Do autor}
 \end{table}
 
 
+\begin{table}[H]
+    \caption{Resultados obtidos - Mesa Giratória}
+    \centering
+    \begin{tabular}{|c|c|c|c|c|c|c|}
+        \hline
+        \textbf{Setpoint} & \textbf{Modelo}                       & \textbf{Kp} & \textbf{Ki} & \textbf{Kd} & \textbf{Identificação} & \textbf{Malha fechada} \\
+        \hline
+        Mesa (5-10\%)     & $\frac{25.93 e^{-1.5s}}{52.5s + 1.0}$ & 1.81        & 0.496       & 0.982       & \includegraphics[width=0.2\linewidth]{figuras/mesa_5_10} & \includegraphics[width=0.2\linewidth]{figuras/mesa_5_10c} \\
+        \hline
+        Mesa (10-15\%)    & $\frac{17.81 e^{-3.5s}}{40.5s + 1.0}$ & 0.88        & 0.106       & 1.10        & \includegraphics[width=0.2\linewidth]{figuras/mesa_10_15} & \includegraphics[width=0.2\linewidth]{figuras/mesa_10_15c} \\
+        \hline
+        Mesa (15-17\%)    & $\frac{15.3}{54.0s + 1.0}$            & -           & -           & -           & \includegraphics[width=0.2\linewidth]{figuras/mesa_15_17} & \textbf{Sem Atraso} \\
+        \hline
+        Mesa (17-20\%)    & $\frac{12.0}{37.5s + 1.0}$            & -           & -           & -           & \includegraphics[width=0.2\linewidth]{figuras/mesa_17_20} & \textbf{Sem Atraso} \\
+        \hline
+    \end{tabular}
+    \label{tab:results_mesa}
+    \vspace{0cm}\hspace{0cm}\small{Fonte: Do autor}
+\end{table}
+
+
+\begin{table}[H]
+    \caption{Resultados obtidos - Nível Tanque}
+    \centering
+    \begin{tabular}{|c|c|c|c|c|c|c|}
+        \hline
+        \textbf{Setpoint} & \textbf{Modelo}                      & \textbf{Kp} & \textbf{Ki} & \textbf{Kd} & \textbf{Identificação} & \textbf{Malha fechada} \\
+        \hline
+        Tanque (40-50\%)  & $\frac{2.58 e^{-2.0s}}{18.0s + 1.0}$ & 4.75        & 1.01        & 3.38        & \includegraphics[width=0.2\linewidth]{figuras/tanque_40_50} & \includegraphics[width=0.2\linewidth]{figuras/tanque_40_50c} \\
+        \hline
+        Tanque (40-50\%)  & $\frac{3.77 e^{-1.0s}}{33.0s + 1.0}$ & 11.73       & 4.83        & 4.24        & \includegraphics[width=0.2\linewidth]{figuras/tanque_50_60} & \includegraphics[width=0.2\linewidth]{figuras/tanque_50_60c} \\
+        \hline
+        Tanque (40-50\%)  & $\frac{3.45}{52.5s + 1.0}$           & -           & -           & -           & \includegraphics[width=0.2\linewidth]{figuras/tanque_60_70} & \textbf{Sem Atraso} \\
+        \hline
+        Tanque (40-50\%)  & $\frac{1.26 e^{-5.0s}}{6.0s + 1.0}$  & 1.47        & 0.156       & 2.32        & \includegraphics[width=0.2\linewidth]{figuras/tanque_70_80} & \includegraphics[width=0.2\linewidth]{figuras/tanque_70_80c} \\
+        \hline
+    \end{tabular}
+    \label{tab:results_tanque}
+    \vspace{0cm}\hspace{0cm}\small{Fonte: Do autor}
+\end{table}
+
+Para de validar os resultados obtidos, foram pegos também os modelos e os ganhos de controladores PID obtidos em um dos
+trabalhos realizados para a planta Mesa Giratória.
+Os modelos foram obtidos de forma manual com auxílio do mathlab através do método de identificação de Smith, os
+resultados para as faixas de 5 a 10\%, de 10 a 15\%, de 15 a 17\% e de 17 a 20\% podem ser vistos nas equações
+\ref{eq:comp_prev_eq1}, \ref{eq:comp_prev_eq2}, \ref{eq:comp_prev_eq3} e \ref{eq:comp_prev_eq4}, respectivamente.
+Já os controladores, foram gerados através de ambos os métodos de aproximação de controlador PID Z-N e C-C, para os
+casos de controlador P, PI e PID. Contudo, foram calculados apenas para a faixa de 10 a 15\%.
+Os resultados obtidos para os ganhos de controlador podem ser observados nas tabelas
+\ref{tab:comp_prev_zn} e \ref{tab:comp_prev_cc}.
+
+\begin{equation}
+    \label{eq:comp_prev_eq1}
+    G(s) = \frac{27,6}{49,5 s + 1}e^{-0,5 s}
+\end{equation}
+\begin{equation}
+    \label{eq:comp_prev_eq2}
+    G(s) = \frac{18}{40,5 s + 1}e^{-3,5 s}
+\end{equation}
+\begin{equation}
+    \label{eq:comp_prev_eq3}
+    G(s) = \frac{18}{36 s + 1}e^{-2 s}
+\end{equation}
+\begin{equation}
+    \label{eq:comp_prev_eq4}
+    G(s) = \frac{12}{57 s + 1}e^{-4 s}
+\end{equation}
+
+\begin{table}[H]
+    \caption{Resultados prévios - Controlador por Ziegler-Nichols}
+    \centering
+    \begin{tabular}{|l|l|l|l|}
+        \hline
+        \textbf{Type} & \textbf{$K_P$} & \textbf{$K_I$} & \textbf{$K_D$} \\
+        \hline
+        \textbf{P}    & 0.643          & -              & -              \\
+        \hline
+        \textbf{PI}   & 0.579          & 0.0496         & -              \\
+        \hline
+        \textbf{PID}  & 0.77           & 0.11           & 1.351          \\
+        \hline
+    \end{tabular}
+    \label{tab:comp_prev_zn}
+    \\
+    \vspace{0cm}\hspace{0cm}\small{Fonte: Do autor}
+\end{table}
+
+\begin{table}[H]
+    \caption{Resultados prévios - Controlador por Cohen-Coon}
+    \centering
+    \begin{tabular}{|l|l|l|l|}
+        \hline
+        \textbf{Type} & \textbf{$K_P$} & \textbf{$K_I$} & \textbf{$K_D$} \\
+        \hline
+        \textbf{P}    & 0.66           & -              & -              \\
+        \hline
+        \textbf{PI}   & 0.58           & 0.05876        & -              \\
+        \hline
+        \textbf{PID}  & 0.87           & 0.1047         & 1.088          \\
+        \hline
+    \end{tabular}
+    \label{tab:comp_prev_cc}
+    \\
+    \vspace{0cm}\hspace{0cm}\small{Fonte: Do autor}
+\end{table}
+
+Modelos da planta Mesa Giratória utilizando os mesmos métodos já foram obtidos e apresentados na tabela
+\ref{tab:results_mesa}.
+Comparando os resultados, podemos observar que em geral foram obtidos modelos similares, com algumas divergências
+provavelmente causadas pelos métodos utilizados para aferir o tempo de acomodação e por conseguinte os valores dos
+momentos $t_1$ e $t_2$, com base na descrição do método em \ref{subsubsec:smfun}.
+
+Para fins de comparação, foram gerados os ganhos PID através dos métodos Z-N e C-C para a mesma faixa dos resultados
+anteriores, de 10 a 15\%, mas utilizando os controladores gerados pelo método de identificação de Smith da biblioteca
+desenvolvida.
+Os dados obtidos estão apresentados nas tabelas \ref{tab:comp_nw_zn} e \ref{tab:comp_nw_cc} para os métodos
+Z-N e C-C respectivamente.
+
+
+\begin{table}[H]
+    \caption{Resultados novos - Controlador por Ziegler-Nichols}
+    \centering
+    \begin{tabular}{|l|l|l|l|}
+        \hline
+        \textbf{Type} & \textbf{kp} & \textbf{ki} & \textbf{kd} \\
+        \hline
+        P             & 0.6496      & -           & -           \\
+        \hline
+        PI            & 0.5846      & 0.0501      & -           \\
+        \hline
+        PID           & 0.7795      & 0.1114      & 1.3641      \\
+        \hline
+    \end{tabular}
+    \label{tab:comp_nw_zn}
+    \\
+    \vspace{0cm}\hspace{0cm}\small{Fonte: Do autor}
+\end{table}
+
+\begin{table}[H]
+    \caption{Resultados novos - Controlador por Cohen-Coon}
+    \centering
+    \begin{tabular}{|l|l|l|l|}
+        \hline
+        \textbf{Type} & \textbf{kp} & \textbf{ki} & \textbf{kd} \\
+        \hline
+        P             & 0.6496      & -           & -           \\
+        \hline
+        PI            & 0.5846      & 0.0501      & -           \\
+        \hline
+        PID           & 0.7795      & 0.1114      & 1.3641      \\
+        \hline
+    \end{tabular}
+    \label{tab:comp_nw_cc}
+    \\
+    \vspace{0cm}\hspace{0cm}\small{Fonte: Do autor}
+\end{table}
 
 
 \section{Aplicação em Sistema Real}
