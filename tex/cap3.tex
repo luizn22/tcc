@@ -56,15 +56,15 @@ na figura \ref{fig:use_cases}, especificando o objetivo, os pré requisitos e o 
     \begin{center}
         \begin{tabularx}{\textwidth}{|>{\bfseries\raggedright\arraybackslash\center}m{5cm}|X|}
             \hline
-            Identificador UC: UC-1\newline Diagrama ID: D-1 & Nome: Obtenção de layout de input de dados para identificação\newline Prioridade: Alta                                                                                                                                                                                                   \\ \hline
-            Objetivo                                        & Fornecer planilha de layout para que sejam inseridos os dados necessários para um determinado processo de identificação.                                                                                                                                                                 \\ \hline
+            Identificador UC: UC-1\newline Diagrama ID: D-1 & Nome: Obtenção de leiaute de entrada de dados para identificação\newline Prioridade: Alta                                                                                                                                                                                                   \\ \hline
+            Objetivo                                        & Fornecer planilha de leiaute para que sejam inseridos os dados necessários para um determinado processo de identificação.                                                                                                                                                                 \\ \hline
             Atores                                          & Usuário                                                                                                                                                                                                                                                                                  \\ \hline
-            Restrições                                      & Deve-se salvar a planilha referente ao layout necessário.                                                                                                                                                                                                                                \\ \hline
+            Restrições                                      & Deve-se salvar a planilha referente ao leiaute necessário.                                                                                                                                                                                                                                \\ \hline
             Pré-condições                                   & -                                                                                                                                                                                                                                                                                        \\ \hline
-            Cenário principal                               & 1. O método é chamado, recebendo o caminho onde deve salvar o arquivo e possívelmente os parâmetros referentes ao layout em espessífico, como tipo de arquivo, por exemplo.\newline 2. É construido em memória o layout desejado.\newline 3. É salvo o arquivo no caminho espessificado. \\ \hline
-            Pós condições                                   & O Usuário possui o layout e pode inserir os dados.                                                                                                                                                                                                                                       \\ \hline
+            Cenário principal                               & 1. O método é chamado, recebendo o caminho onde deve salvar o arquivo e possívelmente os parâmetros referentes ao leiaute em espessífico, como tipo de arquivo, por exemplo.\newline 2. É construido em memória o layout desejado.\newline 3. É salvo o arquivo no caminho espessificado. \\ \hline
+            Pós condições                                   & O Usuário possui o leiaute e pode inserir os dados.                                                                                                                                                                                                                                       \\ \hline
         \end{tabularx}
-        \caption{Obtenção de layout de input de dados para identificação}
+        \caption{Obtenção de leiaute de entrada de dados para identificação}
         \label{tab:uc1}
     \end{center}
 \end{table}
@@ -77,8 +77,8 @@ na figura \ref{fig:use_cases}, especificando o objetivo, os pré requisitos e o 
             Objetivo                                        & Realizar processo de identificação do sistema baseado nos dados e obter modelo.                                                                                                                                                                                                                      \\ \hline
             Atores                                          & Usuário                                                                                                                                                                                                                                                                                              \\ \hline
             Restrições                                      & Deve-se obter o modelo do sistema.                                                                                                                                                                                                                                                                   \\ \hline
-            Pré-condições                                   & layout de dados preenchido.                                                                                                                                                                                                                                                                          \\ \hline
-            Cenário principal                               & 1. O método de identificação é chamado, recebendo o caminho do arquivo de layout e possívelmente os parâmetros referentes ao método em espessífico.\newline 2. São realizados os cálculos e é obtido o objeto de modelo do sistema.\newline 3. O objeto de modelo do sistema é retornado ao usuário. \\ \hline
+            Pré-condições                                   & leiaute de dados preenchido.                                                                                                                                                                                                                                                                          \\ \hline
+            Cenário principal                               & 1. O método de identificação é chamado, recebendo o caminho do arquivo de leiaute e possívelmente os parâmetros referentes ao método em espessífico.\newline 2. São realizados os cálculos e é obtido o objeto de modelo do sistema.\newline 3. O objeto de modelo do sistema é retornado ao usuário. \\ \hline
             Pós condições                                   & O Usuário possui um objeto de modelo do sistema.                                                                                                                                                                                                                                                     \\ \hline
         \end{tabularx}
         \caption{Identificação de sistema}
@@ -346,9 +346,9 @@ ambiente virtual e são executadas todas as verificações e testes.
 
 \subsubsection{GitHub Actions}
 
-Foi utilizada a plataforma de CI/CD do GitHub, GitHub Actions para a criação de um workflow de testes, que roda a
-ferramenta tox descrita em \ref{subsubsec:devtox}, em ambientes Windows e Linux, toda vez que um pull é feito em uma
-branch ou que é realizado um merge request.
+Foi utilizada a plataforma de CI/CD do GitHub, GitHub Actions para a criação de um \textit{workflow} de testes, que roda a
+ferramenta tox descrita em \ref{subsubsec:devtox}, em ambientes Windows e Linux, toda vez que um \textit{pull} é feito em uma
+\textit{branch} ou que é realizado um \textit{merge request}.
 Desta forma é automatizado o processo de testagem em diversos ambientes, que pode ser mais demorado e atrapalhar o
 fluxo de desenvolvimento.
 Além de garantir que os testes sejam sempre rodados para toda alteração que for feita no repositório.
@@ -397,7 +397,7 @@ Foi optado pelo uso do tema do projeto Read the Docs por questões gostos visuai
 documentação.
 Além disso, foi utilizada a hospedagem gratuita para projetos de código aberto e da comunidade fornecida pela Read the
 Docs.
-Uma integração com o repositório git é fornecida para que toda vez que a branch principal for atualizada no repositório
+Uma integração com o repositório Git é fornecida para que toda vez que a \textit{branch} principal for atualizada no repositório
 a documentação no Read the Docs também seja atualizada automaticamente.
 
 A documentação de código pode ser acessada por qualquer um na íntegra pelo link disponível no apêndice \ref{ch:actdocs}.

@@ -197,7 +197,7 @@ Além de estar sendo executado em nuvem, o ambiente baseado em Jupyter possibili
 agradável das funções de transferência e das informações de resposta a sinal degrau.
 
 Na figura \ref{fig:colab_example1}, são apresentadas duas células de execução, a primeira fazendo a instalação da
-biblioteca utilizando pip, e a segunda importando a biblioteca e também é obtido o modelo de input de dados para
+biblioteca utilizando pip, e a segunda importando a biblioteca e também é obtido o modelo de entrada de dados para
 o método de identificação a ser utilizado.
 
 \begin{figure}[H]
@@ -430,7 +430,7 @@ idênticos ao apresentado pela biblioteca foram observados.
 \end{figure}
 
 
-\section{Comaprações com Experimentos Anteriores}
+\section{Comparações com Experimentos Anteriores}
 
 Afim demonstrar a capacidade da biblioteca de realizar identificações e aproximações de
 controlador de forma rápida e em massa, foram pegos dados já existentes de resposta a sinal degrau de algumas plantas
@@ -509,7 +509,7 @@ Para de validar os resultados obtidos, foram pegos também os modelos e os ganho
 trabalhos realizados para a planta Mesa Giratória.
 Os modelos foram obtidos de forma manual com auxílio do mathlab através do método de identificação de Smith, os
 resultados para as faixas de 5 a 10\%, de 10 a 15\%, de 15 a 17\% e de 17 a 20\% podem ser vistos nas equações
-\ref{eq:comp_prev_eq1}, \ref{eq:comp_prev_eq2}, \ref{eq:comp_prev_eq3} e \ref{eq:comp_prev_eq4}, respectivamente.
+\eqref{eq:comp_prev_eq1}, \eqref{eq:comp_prev_eq2}, \eqref{eq:comp_prev_eq3} e \eqref{eq:comp_prev_eq4}, respectivamente.
 Já os controladores, foram gerados através de ambos os métodos de aproximação de controlador PID Z-N e C-C, para os
 casos de controlador P, PI e PID. Contudo, foram calculados apenas para a faixa de 10 a 15\%.
 Os resultados obtidos para os ganhos de controlador podem ser observados nas tabelas
@@ -625,5 +625,98 @@ comparar o que foi gerado para cada método e tipo de controlador entre os resul
 
 
 \section{Aplicação em Sistema Real}
+\abreviatura{PWM}{Pulse Width Modulation}
 
-Ainda não ocorreu
+Para um último caso de apresentação de resultados foi escolhido fazer uso das ferramentas da biblioteca para
+realizar o controle PI de uma planta real.
+A planta escolhida foi uma planta térmica didática, utilizando um controlador Twido.
+A variável controlada foi considerada como o valor inteiro pelo sensor utilizado para aferir a temperatura, sem
+qualquer tratamento para conversão para unidade de temperatura, a variável manipulada foi considerada como o valor da
+razão cíclica de PWM (Pulse Width Modulation) utilizado para modular o pulso que o atuador térmico recebe.
+
+Para realizar a identificação, foram obtidos os dados de resposta da planta a um PWM de 50\%.
+Os dados obtidos foram utilizados no método de identificação de Nishikawa, NishikawaModelIdentification.
+O resultado obtido pode ser visto no gráfico da figura \ref{fig:real_planta_ident} que apresenta os dados discretos
+obtidos pela aplicação do sinal degrau no sistema e a resposta a sinal degrau do modelo gerado a partir do processo de
+identificação.
+Como pode ser visto, o modelo gerado parece ter se aproximado bem dos dados discretos.
+A função de transferência obtida referente ao modelo é apresentada na equação \eqref{eq:real_planta_model}.
+
+
+\begin{figure}[H]
+    \centering
+    \caption{Identificação de planta real}
+    \includegraphics[scale=0.8]{figuras/real_planta_ident}
+    \label{fig:real_planta_ident}
+    \\
+    \vspace{0cm}\hspace{0cm}\small{Fonte: Do autor}
+\end{figure}
+
+\begin{equation}
+    \label{eq:real_planta_model}
+    G(s) = \frac{2.61}{426.04 s + 1}e^{-27.7 s}
+\end{equation}
+
+Com o modelo em mãos, foi realizada a aproximação de ganhos de controlador PID através do método de Cohen e Coon,
+CohenCoonControllerAproximation.
+De forma similar a figura \ref{fig:real_planta_ident} resultado obtido, em resposta a sinal degrau unitário e em
+comparação ao modelo em malha aberta, pode ser visualizado
+na figura \ref{fig:real_planta_ctrl1}, e tamém de forma isolada do modelo em malha aberta na figura
+\ref{fig:real_planta_ctrl2}.
+Os ganhos proporcional e integrador encontrados foram $5,33$ e $0,0656$, respectivamente, e os
+dados simulados referentes a resposta do sistema podem ser observados na tabela \ref{tab:real_planta_response_data}.
+
+\begin{figure}[H]
+    \centering
+    \caption{Planta real em malha fechada versus Planta real em malha aberta}
+    \includegraphics[scale=0.8]{figuras/real_planta_ctrl1}
+    \label{fig:real_planta_ctrl1}
+    \\
+    \vspace{0cm}\hspace{0cm}\small{Fonte: Do autor}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \caption{Planta real em malha fechada}
+    \includegraphics[scale=0.8]{figuras/real_planta_ctrl2}
+    \label{fig:real_planta_ctrl2}
+    \\
+    \vspace{0cm}\hspace{0cm}\small{Fonte: Do autor}
+\end{figure}
+
+
+\begin{table}[H]
+    \caption{Dados de resposta simulados para a planta real em malha fechada}
+    \centering
+    \begin{tabular}{|l|l|}
+        \hline
+        \textbf{Parâmetro}    & \textbf{Valor} \\ \hline
+        Sobressinal           & 12,9591        \\ \hline
+        Pico                  & 1,1296         \\ \hline
+        Tempo do Pico         & 138,4986       \\ \hline
+        Tempo de Subida       & 43,0185        \\ \hline
+        Valor Máximo de Acom. & 1,1296         \\ \hline
+        Valor Mínimo de Acom. & 0,9016         \\ \hline
+        Tempo de Acomodação   & 282,7680       \\ \hline
+        Valor de regime       & 1,0000         \\ \hline
+    \end{tabular}
+    \label{tab:real_planta_response_data}
+    \\
+    \vspace{0cm}\hspace{0cm}\small{Fonte: Do autor}
+\end{table}
+
+Por fim, os ganhos de PID foram aplicados no controlador, e foram coletados os dados discretos da resposta da planta
+em malha fechada com o controlador gerado.
+A comparação entre o controlador simulado e os dados discretos obtidos pode ser visualizada no gráfico da figura
+\ref{fig:real_planta_ctrl_vs_disc}.
+Na figura é possível observar que o controle foi bem sucedido, e não apenas isso, a curva de resposta obtida se
+aproxima consideravelmente da simulação realizada.
+
+\begin{figure}[H]
+    \centering
+    \caption{Planta real em malha fechada versus dados discretos da planta real em malha fechada}
+    \includegraphics[scale=0.8]{figuras/real_planta_ctrl_vs_disc}
+    \label{fig:real_planta_ctrl_vs_disc}
+    \\
+    \vspace{0cm}\hspace{0cm}\small{Fonte: Do autor}
+\end{figure}
