@@ -13,7 +13,7 @@ incrementada com as características de metodologia vistas como necessárias par
 Python.
 Esta metodologia permite refinamentos contínuos e adições incrementais de funcionalidades, garantindo que o software
 evolua de forma eficaz ao longo do projeto, além de prever etapas de estudo e estruturação, essenciais para esse
-tipo de de projeto.
+tipo de projeto.
 As etapas incluem:
 
 \begin{itemize}
@@ -22,7 +22,7 @@ As etapas incluem:
     \item Estudo dos casos de uso: Estudo e criação dos casos de uso para compreensão dos requisitos funcionais gerais;
     \item Prototipagem Rápida: Criação de versões iniciais para testar conceitos básicos;
     \item Projeto da Estrutura: Desenvolvimento dos diagramas de classe para estruturar a implementação;
-    \item Desenvolvimento Iterativo: Melhoria contínua do software através de ciclos repetidos de desenvolvimento e teste;
+    \item Desenvolvimento Iterativo: Melhoria contínua do software por meio de ciclos repetidos de desenvolvimento e teste;
     \item Documentação: Desenvolvimento da documentação da biblioteca;
     \item Expansão Incremental: Adição gradual de novas funcionalidades, alinhadas com os requisitos do projeto.
 \end{itemize}
@@ -35,7 +35,7 @@ necessários.
 Com base nos objetivos específicos propostos na introdução do trabalho, foi realizado o estudo dos casos de uso da
 biblioteca, levantando requisitos de forma mais detalhada e concebendo uma visão inicial das dinâmicas de uso e
 funcionamento da biblioteca.
-Isso foi realizado tendo como base a uma sequencia de ações prováveis que um usuário faria durante o uso da ferramenta.
+Isso foi realizado tendo como base a uma sequência de ações prováveis que um usuário faria durante o uso da ferramenta.
 
 O resultado da análise foi o seguinte diagrama de casos de uso, que denota um caminho provável de ações do usuário:
 
@@ -49,7 +49,7 @@ O resultado da análise foi o seguinte diagrama de casos de uso, que denota um c
 \end{figure}
 
 As tabelas \ref{tab:uc1}, \ref{tab:uc2}, \ref{tab:uc3}, \ref{tab:uc4}, \ref{tab:uc5} detalham os casos de uso ilustrado
-na figura \ref{fig:use_cases}, especificando o objetivo, os pré requisitos e o cenário de cada caso de uso.
+na figura \ref{fig:use_cases}, especificando o objetivo, os pré-requisitos e o cenário de cada caso de uso.
 
 
 \begin{table}[H]
@@ -57,12 +57,12 @@ na figura \ref{fig:use_cases}, especificando o objetivo, os pré requisitos e o 
         \begin{tabularx}{\textwidth}{|>{\bfseries\raggedright\arraybackslash\center}m{5cm}|X|}
             \hline
             Identificador UC: UC-1\newline Diagrama ID: D-1 & Nome: Obtenção de leiaute de entrada de dados para identificação\newline Prioridade: Alta                                                                                                                                                                                                   \\ \hline
-            Objetivo                                        & Fornecer planilha de leiaute para que sejam inseridos os dados necessários para um determinado processo de identificação.                                                                                                                                                                 \\ \hline
+            Objetivo                                        & Fornecer planilha de leiaute para serem inseridos os dados necessários para um determinado processo de identificação.                                                                                                                                                                 \\ \hline
             Atores                                          & Usuário                                                                                                                                                                                                                                                                                  \\ \hline
             Restrições                                      & Deve-se salvar a planilha referente ao leiaute necessário.                                                                                                                                                                                                                                \\ \hline
             Pré-condições                                   & -                                                                                                                                                                                                                                                                                        \\ \hline
-            Cenário principal                               & 1. O método é chamado, recebendo o caminho onde deve salvar o arquivo e possívelmente os parâmetros referentes ao leiaute em espessífico, como tipo de arquivo, por exemplo.\newline 2. É construido em memória o layout desejado.\newline 3. É salvo o arquivo no caminho espessificado. \\ \hline
-            Pós condições                                   & O Usuário possui o leiaute e pode inserir os dados.                                                                                                                                                                                                                                       \\ \hline
+            Cenário principal                               & 1. O método é chamado, recebendo o caminho onde deve salvar o arquivo e possivelmente os parâmetros referentes ao leiaute em específico, como tipo de arquivo, por exemplo.\newline 2. É construido em memória o layout desejado.\newline 3. É salvo o arquivo no caminho especificado. \\ \hline
+            Pós-condições                                   & O Usuário possui o leiaute e pode inserir os dados.                                                                                                                                                                                                                                       \\ \hline
         \end{tabularx}
         \caption{Obtenção de leiaute de entrada de dados para identificação}
         \label{tab:uc1}
@@ -78,8 +78,8 @@ na figura \ref{fig:use_cases}, especificando o objetivo, os pré requisitos e o 
             Atores                                          & Usuário                                                                                                                                                                                                                                                                                              \\ \hline
             Restrições                                      & Deve-se obter o modelo do sistema.                                                                                                                                                                                                                                                                   \\ \hline
             Pré-condições                                   & leiaute de dados preenchido.                                                                                                                                                                                                                                                                          \\ \hline
-            Cenário principal                               & 1. O método de identificação é chamado, recebendo o caminho do arquivo de leiaute e possívelmente os parâmetros referentes ao método em espessífico.\newline 2. São realizados os cálculos e é obtido o objeto de modelo do sistema.\newline 3. O objeto de modelo do sistema é retornado ao usuário. \\ \hline
-            Pós condições                                   & O Usuário possui um objeto de modelo do sistema.                                                                                                                                                                                                                                                     \\ \hline
+            Cenário principal                               & 1. O método de identificação é chamado, recebendo o caminho do arquivo de leiaute e possivelmente os parâmetros referentes ao método em específico.\newline 2. São realizados os cálculos e é obtido o objeto de modelo do sistema.\newline 3. O objeto de modelo do sistema é retornado ao usuário. \\ \hline
+            Pós-condições                                   & O Usuário possui um objeto de modelo do sistema.                                                                                                                                                                                                                                                     \\ \hline
         \end{tabularx}
         \caption{Identificação de sistema}
         \label{tab:uc2}
@@ -93,10 +93,10 @@ na figura \ref{fig:use_cases}, especificando o objetivo, os pré requisitos e o 
             Identificador UC: UC-3\newline Diagrama ID: D-3 & Nome: Visualização de modelo de sistema\newline Prioridade: Alta                                                                                                                                                                                                                         \\ \hline
             Objetivo                                        & Visualizar gráfico e dados indicadores importantes de um modelo.                                                                                                                                                                                                                         \\ \hline
             Atores                                          & Usuário                                                                                                                                                                                                                                                                                  \\ \hline
-            Restrições                                      & Deve ser possível visualisar gráfico e dados indicadores importantes do modelo.                                                                                                                                                                                                          \\ \hline
+            Restrições                                      & Deve ser possível visualizar gráfico e dados indicadores importantes do modelo.                                                                                                                                                                                                          \\ \hline
             Pré-condições                                   & O Usuário possui um objeto de modelo do sistema.                                                                                                                                                                                                                                         \\ \hline
-            Cenário principal                               & 1. Um método de visualisação de dados ou gráfico é chamado, passando possíveis parâmetros necessários ou que irão mudar a forma como os dados serão exibidos.\newline 2. São preparados os objetos a serem exibidos ao usuário.\newline 3. São exibidos os dados ou gráficos ao usuário. \\ \hline
-            Pós condições                                   & O Usuário pode visualisar os dados do modelo.                                                                                                                                                                                                                                            \\ \hline
+            Cenário principal                               & 1. Um método de visualização de dados ou gráfico é chamado, passando possíveis parâmetros necessários ou que irão mudar como os dados serão exibidos.\newline 2. São preparados os objetos a serem exibidos ao usuário.\newline 3. São exibidos os dados ou gráficos ao usuário. \\ \hline
+            Pós-condições                                   & O Usuário pode visualizar os dados do modelo.                                                                                                                                                                                                                                            \\ \hline
         \end{tabularx}
         \caption{Visualização de modelo de sistema}
         \label{tab:uc3}
@@ -112,8 +112,8 @@ na figura \ref{fig:use_cases}, especificando o objetivo, os pré requisitos e o 
             Atores                                          & Usuário                                                                                                                                                                                                                                                                                    \\ \hline
             Restrições                                      & Deve-se obter uma aproximação dos parâmetros do controlador.                                                                                                                                                                                                                               \\ \hline
             Pré-condições                                   & O Usuário possui um objeto de modelo do sistema.                                                                                                                                                                                                                                           \\ \hline
-            Cenário principal                               & 1. O método de aproximação é chamado, recebendo o modelo do sistema e possívelmente os parâmetros referentes ao método de aproximação em espessífico.\newline 2. São realizados os cálculos e é obtido o objeto de controlador.\newline 3. O objeto de controlador é retornado ao usuário. \\ \hline
-            Pós condições                                   & O Usuário possui um objeto de controlador.                                                                                                                                                                                                                                                 \\ \hline
+            Cenário principal                               & 1. O método de aproximação é chamado, recebendo o modelo do sistema e possivelmente os parâmetros referentes ao método de aproximação em específico.\newline 2. São realizados os cálculos e é obtido o objeto de controlador.\newline 3. O objeto de controlador é retornado ao usuário. \\ \hline
+            Pós-condições                                   & O Usuário possui um objeto de controlador.                                                                                                                                                                                                                                                 \\ \hline
         \end{tabularx}
         \caption{Aproximação de Controlador baseado em modelo de sistema}
         \label{tab:uc4}
@@ -127,10 +127,10 @@ na figura \ref{fig:use_cases}, especificando o objetivo, os pré requisitos e o 
             Identificador UC: UC-5\newline Diagrama ID: D-5 & Nome: Visualização de controlador\newline Prioridade: Alta                                                                                                                                                                                                                               \\ \hline
             Objetivo                                        & Visualizar gráfico e dados indicadores importantes de um controlador.                                                                                                                                                                                                                    \\ \hline
             Atores                                          & Usuário                                                                                                                                                                                                                                                                                  \\ \hline
-            Restrições                                      & Deve ser possível visualisar gráfico e dados indicadores importantes do controlador gerado.                                                                                                                                                                                              \\ \hline
+            Restrições                                      & Deve ser possível visualizar gráfico e dados indicadores importantes do controlador gerado.                                                                                                                                                                                              \\ \hline
             Pré-condições                                   & O Usuário possui um objeto de controlador.                                                                                                                                                                                                                                               \\ \hline
-            Cenário principal                               & 1. Um método de visualisação de dados ou gráfico é chamado, passando possíveis parâmetros necessários ou que irão mudar a forma como os dados serão exibidos.\newline 2. São preparados os objetos a serem exibidos ao usuário.\newline 3. São exibidos os dados ou gráficos ao usuário. \\ \hline
-            Pós condições                                   & O Usuário pode visualisar os dados do controlador.                                                                                                                                                                                                                                       \\ \hline
+            Cenário principal                               & 1. Um método de visualização de dados ou gráfico é chamado, passando possíveis parâmetros necessários ou que irão mudar como os dados serão exibidos.\newline 2. São preparados os objetos a serem exibidos ao usuário.\newline 3. São exibidos os dados ou gráficos ao usuário. \\ \hline
+            Pós-condições                                   & O Usuário pode visualisar os dados do controlador.                                                                                                                                                                                                                                       \\ \hline
         \end{tabularx}
         \caption{Visualização de controlador}
         \label{tab:uc5}
@@ -182,7 +182,7 @@ A visão ampliada da classe no diagrama pode ser melhor observada na figura \ref
 Esta é outra classe utilitária, similar a DataInputUtils, mas com o foco na manipulação de dados em memória.
 Seu objetivo é fornecer e centralizar ferramentas de manipulação de dados que serão utilizadas em toda a biblioteca.
 A classe, e seus relacionamentos inicialmente idealizados, pode ser vista na figura \ref{fig:class_diag_dupu}.
-Os métodos dessa classe foram criados de acordo com as necessidades encontradas durante o desenvolvimento, de forma que
+Os métodos dessa classe foram criados conforme as necessidades encontradas durante o desenvolvimento, de forma que
 neste diagrama inicial consta apenas o método pprint\_dict, criado a caráter de exemplo, que mais tarde foi reenquadrado
 para a classe PlotUtils.
 
@@ -202,7 +202,7 @@ a serem utilizadas pelas classes ModelView e ControllerView, como apresentado na
 Em sua lista de métodos é definido plot, uma ferramenta crucial para viabilizar os requerimentos dos casos de uso
 \ref{tab:uc3} e \ref{tab:uc5}, visto que seu objetivo é a impressão dos gráficos de resposta a sinal degrau de funções de
 transferência.
-De forma similar a classe DataUtils, também foram criados outros métodos para esta classe de acordo com as necessidades de
+De forma similar a classe DataUtils, também foram criados outros métodos para esta classe conforme as necessidades de
 desenvolvimento.
 
 \subsection{Model}
@@ -211,7 +211,7 @@ Classe representativa do Modelo matemático de uma planta de sistemas de control
 \ref{fig:class_diag_model}, foi projetada para guardar atributos
 referentes a função de transferência e ordem do modelo, além dos dados discretos utilizados para obtenção do modelo,
 caso existam, um dicionário para metadados (mais tarde removido), e view, um objeto da classe ModelView, para
-possibilita o acesso as funcionalidades de visualização de dados a partir do objeto de modelo.
+possibilita o acesso às funcionalidades de visualização de dados a partir do objeto de modelo.
 Conforme requerido pelos casos de uso das tabelas \ref{tab:uc2} e \ref{tab:uc3}.
 Também são descritos no diagrama os métodos de inicialização, que recebe alguns dos atributos da classe, e um método
 interno para obtenção da ordem da função de transferência do modelo.
@@ -227,15 +227,15 @@ interno para obtenção da ordem da função de transferência do modelo.
 
 \subsection{ModelView}
 
-A classe ModelView foi concebida como um meio termo entre a classe de modelo, Model, cujo foco é guardar os dados
-referentes a um modelo, e não necessariamente apresenta-los ao usuário, e a classe PlotUtils, que fornece ferramentas
+A classe ModelView foi concebida como um meio-termo entre a classe de modelo, Model, cujo foco é guardar os dados
+referentes a um modelo, e não necessariamente apresentá-los ao usuário, e a classe PlotUtils, que fornece ferramentas
 de visualização de dados gerais, que precisam de configurações espessíficas para apresentar os dados de modelo
 corretamente, atendendo o caso de uso da tabela \ref{tab:uc3}.
 Desta forma isolando as responsabilidades de cada componente.
 Na figura \ref{fig:class_diag_model} é possível visualizar a classe, bem como seu atributo model recebido em sua
 instanciação e seus métodos de instanciação (\_\_init\_\_), plot\_model\_graph, utilizado para apresentação de dados de
-resposta do modelo a sinal degrau e comparação do modelo com so dados discretos utilizados para obte-lo,
-get\_model\_data, que retorna dados de resposta a sinal degram do modelo, como sobressinal e tempo de acomodação, e
+resposta do modelo a sinal degrau e comparação do modelo com os dados discretos utilizados para obtê-lo,
+get\_model\_data, que retorna dados de resposta a sinal degrau do modelo, como sobressinal e tempo de acomodação, e
 print\_model\_data que apresenta os dados de get\_model\_data ao usuário de forma formatada.
 
 \subsection{BaseModelIdentification}
@@ -244,7 +244,7 @@ Na figura \ref{fig:class_diag_diubmi}, é apresentada a classe utilitária e abs
 propósito é padronizar os métodos de identificação de modelo, de forma que todos eles sejam subclasses dela.
 Assim sendo, o método abstrato get\_model, que calcula e retorna um objeto de modelo (Model), deve ser implementado em
 todas as suas subclasses obrigatoriamente.
-Além disso também é previsto o método get\_data\_input para fornecer ao usuário o modelo de tabela a ser preenchido
+Além disso, também é previsto o método get\_data\_input para fornecer ao usuário o modelo de tabela a ser preenchido
 com os dados para identificação.
 Assim complementado as necessidades levantadas pelos casos de uso das tabelas \ref{tab:uc1} e \ref{tab:uc2}.
 
@@ -273,7 +273,7 @@ A classe pode ser melhor visualizada na figura \ref{fig:class_diag_controller};
 
 \subsection{ControllerView}
 
-ControllerView implementa métodos identicos a ModelView, mas com o foco no objeto controller, e com a diferença de que
+ControllerView implementa métodos idênticos a ModelView, mas com o foco no objeto controller, e com a diferença de que
 o método plot\_model\_graph entende por padrão mostrar a comparação entre a resposta a sinal degrau do modelo em malha
 aberta e o modelo em malha fechada com o controlador, ao invés da comparação com os dados discretos, atendendo o caso de
 uso da tabela \ref{tab:uc5}.
@@ -281,10 +281,10 @@ Pode ser visualizada na figura \ref{fig:class_diag_controller};
 
 \subsection{BaseControllerAproximation}
 
-Classe idêntica a BaseModelIdentification mas com o foco em obter um objeto da classe Controller.
+Classe idêntica a BaseModelIdentification, mas com o foco em obter um objeto da classe Controller.
 Ao invés de get\_model, implementa o método abstrato get\_controller.
 A classe e as visões ilustrativas de suas subclasses podem ser observadas na figura \ref{fig:class_diag_bcacontroller}.
-Assim complementado as necessidades levantadas pelo caso de uso das tabela \ref{tab:uc4}.
+Assim complementado as necessidades levantadas pelo caso de uso da tabela \ref{tab:uc4}.
 
 \begin{figure}[H]
     \centering
@@ -303,16 +303,16 @@ desenvolvimento, todos visando necessidades para implementação e publicação 
 desenvolvimento.
 
 Para possibilitar a manutenção do código e facilitar futuras implementações é necessária a adoção de uma
-estrutura de código e pastas que seja comum a comunidade, além disso existe a necessidade de uma estrutura compatível
-com a publicação do código da biblioteca e do isolamento do código fonte da biblioteca dos testes da mesma.
+estrutura de código e pastas que seja comum a comunidade, além disso, existe a necessidade de uma estrutura compatível
+com a publicação do código da biblioteca e do isolamento do código-fonte da biblioteca dos testes da mesma.
 Com isso em mente, foi adotada a estrutura apresentada em \cite{auto_test_vid}, que atende a essas necessidades.
 
 \subsection{Controle de versão}
 
 Foi escolhido o Git como opção de sistema de controle de versões da biblioteca.
-Ele é um sistema de controle de versões preferido da comunidade, devido a sua alta performance, natureza decentralizada
+Ele é um sistema de controle de versões preferido da comunidade, devido ao seu alto desempenho, natureza decentralizada
 e funcionalidades robustas para manipulação de grandes projetos \cite{usegit}.
-Além de ser gratuito e de código aberto, é amplamente utilizado e integrado em um pletora de ferramentas e repositórios
+Além de ser gratuito e de código aberto, é amplamente utilizado e integrado em uma pletora de ferramentas e repositórios
 como GitHub.
 
 \subsection{Verificações e Testes}
@@ -323,11 +323,11 @@ como GitHub.
     \label{fig:}
 \end{figure}
 Nesta sessão será abordado o uso de ferramentas de verificação de código como Mypy e Flake8, bem como ferramentas
-que foram utilizadas para automação de testes, como Pytest, tox e GitHub actions.
+que foram utilizadas para automação de testes, como Pytest, tox e GitHub Actions.
 
 \subsubsection{Mypy e Flake8}
 Ambas as ferramentas Mypy e Flake8 foram utilizadas durante o desenvolvimento para verificar erros de tipagem e
-adequação ao PEP 8, de forma que o resultado final passa nas verificações de ambas as ferramentas.
+adequação ao PEP 8, de forma que o resultado passa nas verificações de ambas as ferramentas.
 Elas também foram adicionadas ao processo de automação de testes descrito em \ref{subsubsec:devtox}, para que não
 ficassem apenas a cardo do uso manual pelo desenvolvedor.
 
@@ -341,7 +341,7 @@ forma incorreta, não passem despercebidas gerando falhas ao rodar os testes.
 
 A ferramenta tox foi utilizada para automatizar a execução das verificações, com Mypy e Flake8, e testes unitários, com
 PyTest, para as versões 3.9 e 3.10 do Python.
-De forma que ao roda-lo, com base no arquivo de configuração criado, são instaladas as dependências do projeto em um
+De forma que ao rodá-lo, com base no arquivo de configuração criado, são instaladas as dependências do projeto em um
 ambiente virtual e são executadas todas as verificações e testes.
 
 \subsubsection{GitHub Actions}
@@ -372,20 +372,20 @@ Para a documentação em Sphinx foram desenvolvidas diversas páginas em \textit
     \item \textbf{Desenvolvimento}: Página com orientações ao desenvolvimento.
 \end{alineas}
 
-Além disso a documentação de todas as classes e métodos implementados foi feita juntamente ao código fonte, através de
+Além disso, a documentação de todas as classes e métodos implementados foi feita juntamente ao código-fonte, através de
 \textit{docstrings} suportadas que foram interpretadas pelo Sphinx, que gerou páginas da documentação para cada classe, e essas
 ficaram facilmente acessíveis através da página de referência de classes.
 
 Algumas extensões foram adicionadas ao projeto para facilitar a documentação e melhorar a visualização e usabilidade:
 
 \begin{alineas}
-    \item \textbf{autodoc}: Utilizada para gerar documentação automaticamente baseado nas \textit{docstrings};
+    \item \textbf{autodoc}: Utilizada para gerar documentação automaticamente baseada nas \textit{docstrings};
     \item \textbf{intersphinx}: Possibilita links entre documentações de diferentes bibliotecas;
     \item \textbf{mathjax}: Suporte a expressões matemáticas no formato LaTex;
     \item \textbf{autosummary}: Utilizada para gerar sumários de documentação automaticamente baseado nas \textit{docstrings};
     \item \textbf{napoleon}: Facilidade de sintaxe nas \textit{docstrings};
     \item \textbf{numpydoc}: Facilidade de sintaxe nas \textit{docstrings};
-    \item \textbf{linkcode}: Adiciona link direto da documentação para o código fonte no repositório;
+    \item \textbf{linkcode}: Adiciona link direto da documentação para o código-fonte no repositório;
     \item \textbf{sphinx\_paramlinks}: Possibilita referencias parâmetros nas \textit{docstrings};
     \item \textbf{bibtex}: Suporte a referências do tipo BibTex;
     \item \textbf{sphinx\_rtd\_dark\_mode}: Modo escuro para o tema Read the Docs.
@@ -408,9 +408,8 @@ Nesta sessão são descritas as formas como o código foi disponibilizado para u
 
 \subsubsection{GitHub}
 
-Visando disponibilizar o código fonte como código aberto e acessível, foi criado um repositório público e gratuito na
-plataforma GitHub, cujo link pode ser encontrado no apêndice \ref{ch:actgithub}, onde qualquer um pode ter acesso a todo
-o código fonte desenvolvido, bem como apontar bugs e sugerir alterações.
+Visando disponibilizar o código-fonte como código aberto e acessível, foi criado um repositório público e gratuito na plataforma GitHub, cujo link pode ser encontrado no apêndice \ref{ch:actgithub}, onde qualquer um pode ter acesso a todo
+o código-fonte desenvolvido, bem como apontar bugs e sugerir alterações.
 
 \subsubsection{PyPI}
 
@@ -418,12 +417,12 @@ Após a conclusão do desenvolvimento da biblioteca, iniciou-se o processo de di
 Para isso foram criados arquivos de configuração do projeto, com detalhes como nome, versão, autor e requerimentos
 para instalação.
 Por fim o pacote foi carregado o PyPI utilizando a ferramenta twine, garantindo um upload seguro.
-Este processo tornou o a biblioteca acessível para instalação via pip para qualquer pessoa.
+Este processo tornou a biblioteca acessível para instalação via pip para qualquer pessoa.
 
 \section{Implementação}\label{sec:imp}
 Esta seção detalha a implementação do código-fonte principal da biblioteca, contendo todas as funcionalidades
 disponibilizadas a usuários dela.
-Da mesma forma que na documentação da biblioteca as subseções desta seção representam grupos de classes implementadas
+Da mesma forma que na documentação da biblioteca, as subseções desta seção representam grupos de classes implementadas
 baseando-se nos diagramas apresentados na seção \ref{sec:descarc}.
 
 \subsection{Modelo}
@@ -433,7 +432,7 @@ Classes de modelo, representativas do Modelo matemático de uma planta de sistem
 \subsubsection{Model}\label{subsubsec:devModel}
 
 Classe representativa do Modelo matemático de uma planta de sistemas de controle.
-Tipicamente o modelo matemático de uma planta no domínio da frequenica pode ser definido por um numerador e um
+Tipicamente, o modelo matemático de uma planta no domínio da frequência pode ser definido por um numerador e um
 denominador em potências de $s$, como, por exemplo:
 \begin{equation}
     \label{eq:modelex}
@@ -441,11 +440,11 @@ denominador em potências de $s$, como, por exemplo:
 \end{equation}
 
 Esta classe funciona guardando um objeto de Função de Transferência (tf) da biblioteca de sistemas de controle do Python
-(control), representando o modelo matemático de uma planta no domínio da frequenica, além de guardar alguns outros
+(control), representando o modelo matemático de uma planta no domínio da frequência, além de guardar alguns outros
 metadados sobre a função de transferência, que poderão ser utilizados para aproximação de controlador PID
 posteriormente, por exemplo.
 
-Além disso o atributo view, um objeto da classe ModelView possibilita a visualização de dados, estatísticas e gráficos
+Além disso, o atributo view, um objeto da classe ModelView possibilita a visualização de dados, estatísticas e gráficos
 referentes a função de transferência.
 
 Para ser instanciada, recebe um parâmetro tf, referente a função de transferência, e um parâmetro opcional source\_data
@@ -453,7 +452,7 @@ referente aos dados utilizados como base para gerar o modelo, caso o modelo tenh
 
 \subsubsection{ModelView}\label{subsubsec:devModelView}
 
-Classe utilizada pra visualização de dados de um objeto da classe Model.
+Classe utilizada para visualização de dados de um objeto da classe Model.
 Recebe Model como parâmetro e tem como foco a visualização dos dados do mesmo.
 Para as apresentações visuais, faz uso dos métodos explorados em \ref{subsec:dataviz}, e implementa os seguintes
 métodos para possibilitar essa visualização:
@@ -496,16 +495,16 @@ Implementações de get\_model podem ler os dados e aplicar seus métodos de ide
 
 \subsubsection{ZieglerNicholsModelIdentification}
 
-Como uma uma subclasse de BaseModelIdentification, implementa o método de identificação de Ziegler e Nichols,
+Como uma subclasse de BaseModelIdentification, implementa o método de identificação de Ziegler e Nichols,
 descrito em \ref{subsubsec:znfun}.
-Ela sobreescreve o método abstrato da classe pai get\_model, implementando para que, com base nos dados de resposta a
+Ela sobrescreve o método abstrato da classe pai get\_model, implementando para que, com base nos dados de resposta a
 sinal degrau fornecidos e em outros parâmetros opcionais, sejam calculados os parâmetros para instanciar um objeto da
 classe FirstOrderModel:
 
 \begin{alineas}
     \item Utiliza DataInputUtils.get\_model\_data\_default para obter a tabela (pandas.DataFrame) com os dados de
     resposta do modelo;
-    \item Então obtém a pandas.Series tf\_data (lista cujo índice representa o tempo e os valores a saida)
+    \item Então obtém a pandas.Series tf\_data (lista cujo índice representa o tempo e os valores a saída)
     e o valor do sinal degrau através do método DataUtils.setup\_data\_default;
     \item Obtém o valor de regime e o momento de entrada em valor de regime através do método
     DataUtils.get\_vreg;
@@ -527,7 +526,7 @@ classe FirstOrderModel:
 
 Muito similar a ZieglerNicholsModelIdentification a classe HagglundModelIdentification implementa o método de
 identificação de Hägglund descrito em \ref{subsubsec:hagfun}.
-Com a única diferença sendo a determinação de $t2$ baseado em $y_f*0.632$ e o calculo de $\theta$ baseado em $t_1$ e
+Com a única diferença sendo a determinação de $t2$ baseado em $y_f*0,632$ e o cálculo de $\theta$ baseado em $t_1$ e
 $t_2$.
 
 \subsubsection{SmithModelIdentification}
@@ -537,11 +536,11 @@ segunte forma:
 
 \begin{alineas}
     \item Utiliza DataInputUtils.get\_model\_data\_default para obter a tabela (pandas.DataFrame) com os dados de resposta do modelo;
-    \item Então obtém a pandas.Series tf\_data (lista cujo index representa o tempo e os valores a saida) e o valor do sinal degrau através do método DataUtils.setup\_data\_default;
+    \item Então obtém a pandas.Series tf\_data (lista cujo índice representa o tempo e os valores a saída) e o valor do sinal degrau através do método DataUtils.setup\_data\_default;
     \item Obtém o valor de regime e o momento de entrada em valor de regime através do método DataUtils.get\_vreg;
-    \item Calcula $t_1$ e $t_2$ baseado no instante em que a curva atinge 28.3\% e 63.2\% do valor de regime, respectivamente;
+    \item Calcula $t_1$ e $t_2$ baseado no instante em que a curva atinge 28,3\% e 63,2\% do valor de regime, respectivamente;
     \item Obtém $K$ dividindo o valor de regime, pelo valor do sinal degrau;
-    \item Com os valores de $t_1$ e $t_2$ em mãos, calcula o valor de tau e theta, sendo $\tau = 1.5*(t_2 - t_1)$ e $\theta = t_2 - \tau$;
+    \item Com os valores de $t_1$ e $t_2$ em mãos, calcula o valor de tau e theta, sendo $\tau = 1,5*(t_2 - t_1)$ e $\theta = t_2 - \tau$;
     \item Dependendo do valor de theta e de ignore\_delay\_threshold zera o valor de theta;
     \item Instancia um objeto da classe FirstOrderModel com os valores obtidos.
 \end{alineas}
@@ -549,29 +548,29 @@ segunte forma:
 \subsubsection{SundaresanKrishnaswamyModelIdentification}
 
 Implementado de forma idêntica a SmithModelIdentification e com base na seção \ref{subsubsec:skfun}, as únicas
-diferenças na implementação são o cálculo de $t_1$ e $t_2$ baseado no instante em que a curva atinge 35.3\% e 85.3\% do
-valor de regime, respectivamente, e o cálculo do valor de tau e theta, sendo $\tau = 0.67*(t_2 - t_1)$ e
-$\theta = 1.3t_1 - 0.29t_2$.
+diferenças na implementação são o cálculo de $t_1$ e $t_2$ baseado no instante em que a curva atinge 35,3\% e 85,3\% do
+valor de regime, respectivamente, e o cálculo do valor de tau e theta, sendo $\tau = 0,67*(t_2 - t_1)$ e
+$\theta = 1,3t_1 - 0,29t_2$.
 
 \subsubsection{NishikawaModelIdentification}
 A implementação de get\_model de NishikawaModelIdentification funciona da seguinte forma:
 
 \begin{alineas}
     \item Utiliza DataInputUtils.get\_model\_data\_default para obter a tabela (pandas.DataFrame) com os dados de resposta do modelo.
-    \item Então obtém a pandas.Series tf\_data (lista cujo index representa o tempo e os valores a saida) e o valor do sinal degrau através do método DataUtils.setup\_data\_default.
+    \item Então obtém a pandas.Series tf\_data (lista cujo índice representa o tempo e os valores a saída) e o valor do sinal degrau através do método DataUtils.setup\_data\_default.
     \item Obtém o valor de regime e o momento de entrada em valor de regime através do método DataUtils.get\_vreg.
     \item Calcula $A_0$ como a área de um retângulo de lados $\Delta y(\infty)$ e o momento de entrada em valor de regime menos a integral da curva de $t = 0$ até momento de entrada em valor de regime.
     \item Calcula $t_0$ como $A_0$ dividido pelo valor de regime.
     \item Calcula $A_1$ como a integral da curva de $t = 0$ até $t = t_0$.
     \item Obtém $K$ dividindo o valor de regime, pelo valor do sinal degrau.
-    \item Com os valores de $A_0$, $A_1$ e $t_0$ em mãos, calcula o valor de tau e theta, sendo $\tau$ igual a $A_0$ dividido por 0.368 vezes o valor de regime e $\theta = t_0 - \tau$.
+    \item Com os valores de $A_0$, $A_1$ e $t_0$ em mãos, calcula o valor de tau e theta, sendo $\tau$ igual a $A_0$ dividido por 0,368 vezes o valor de regime e $\theta = t_0 - \tau$.
     \item Dependendo do valor de theta e de ignore\_delay\_threshold zera o valor de theta.
     \item Instancia um objeto da classe FirstOrderModel com os valores obtidos.
 \end{alineas}
 
 \subsection{Controlador}
 
-Classes de controlador, representativas de um sistema em Malha Fechada ocorrendo o controle de um Modelo através de um
+Classes de controlador, representativas de um sistema em Malha Fechada, ocorrendo o controle de um Modelo por meio de um
 Controlador PID\@.
 
 \subsubsection{Controller}\label{subsubsec:devController}
@@ -581,15 +580,15 @@ Esta é uma classe representativa do Modelo matemático de uma planta de sistema
 Controlador PID\@.
 Ela se destina a armazenar os valores de ganhos de controlador, bem como realizar o fechamento da manha de controle
 utilizando os parâmetros PID (kp, ki, kd) e o objeto de modelo (model).
-Para isso, atua encima do objeto de Função de Transferência da biblioteca de controle Model.tf
+Para isso, atua em cima do objeto de Função de Transferência da biblioteca de controle Model.tf
 (control.TransferFunction) presente no Model fornecido.
 
-Além disso o atributo view possibilita a visualização de dados, estatísticas e gráficos referentes ao resultado do
+Além disso, o atributo view possibilita a visualização de dados, estatísticas e gráficos referentes ao resultado do
 controle (função de transferência resultante do fechamento da malha com controlador).
 
 \subsubsection{ControllerView}\label{subsubsec:devControllerView}
 
-Classe utilizada pra visualização de dados de um objeto da classe Controller.
+Classe utilizada para visualização de dados de um objeto da classe Controller.
 Recebe Controller como parâmetro e tem como foco a visualização dos dados do mesmo.
 Para as apresentações visuais, faz uso dos métodos explorados em \ref{subsec:dataviz}, e implementa os seguintes
 métodos para possibilitar essa visualização:
@@ -597,7 +596,7 @@ métodos para possibilitar essa visualização:
     \item \textbf{plot\_model\_step\_response\_graph}: Realiza a plotagem do gráfico da resposta a sinal degrau do
     modelo do sistema em malha fechada com o controlador, bem como as retas de tempo de acomodação, sobressinal, e valor
     de regime.
-    Também realiza a plotagem da da resposta a sinal degrau de Model, para comparação por padrão;
+    Também realiza a plotagem da resposta a sinal degrau de Model, para comparação por padrão;
     \item \textbf{get\_model\_step\_response\_data}: Utiliza control.step\_info da biblioteca de controle para
     obtenção dos dados de resposta a sinal degrau do sistema no formato de dicionário do Python;
     \item \textbf{print\_model\_step\_response\_data}: Imprime em tela os dados de resposta a sinal degrau do sistema;
@@ -624,7 +623,7 @@ método \_parse\_controller\_option() para verificar se um tipo de controlador �
 
 Na literatura existem diversos métodos de aproximação de ganhos de controlador para modelos de primeira ordem
 como o descrito na equação \ref{eq:firstordertf}, que possuem tabelas de fórmulas para o cálculo dos ganhos de
-controlador PID, que variam de acordo com o tipo de controlador e fazem uso exclusivo dos parâmetros $K$, $\tau$ e
+controlador PID, que variam conforme o tipo de controlador e fazem uso exclusivo dos parâmetros $K$, $\tau$ e
 $\theta$.
 Com isso em mente foi desenvolvida a classe FirstOrderTableControllerAproximation, uma subclasse de
 BaseControllerAproximation especializada para esses casos.
@@ -737,7 +736,7 @@ cálculo de constantes, como pose ser visto a seguir.
 
 \begin{alineas}
     \item \textbf{linfilter}: Aplica um filtro linear à série temporal de entrada para suavização de dados ruidosos.
-    A intensidade da suavisação depende do parâmetro smoothness;
+    A intensidade da suavização depende do parâmetro smoothness;
     \item \textbf{get\_vreg}: Obtém o valor de regime, dentro de settling\_time\_threshold, de uma resposta a sinal
     degrau.
     Obtido iterando pelos dados e ignorando valores iniciais até que todos os pontos estejam dentro do desvio aceitado
@@ -748,9 +747,9 @@ cálculo de constantes, como pose ser visto a seguir.
     \item \textbf{get\_time\_at\_value}: Encontra o tempo para um valor de uma reta informada.
     Utilizado pelos métodos de identificação Ziegles Nichols e Hägglund para obtenção dos tempos $t_1$, $t_2$ e $t_3$;
     \item \textbf{setup\_data\_default}: Método padrão para preparo dos dados para identificação de modelo.
-    Ele faz o preparo dos dados de adicionando adicionando tempo de aquisição e sinal degrau, caso necessário,
+    Ele faz o preparo dos dados de adicionando tempo de aquisição e sinal degrau, caso necessário,
     e aplicando um filtro linear, caso solicitado.
-    Retorna a pandas.Series referente a série temporal do sinal de saida em relação ao tempo e o valor do sinal degrau;
+    Retorna a pandas.Series referente a série temporal do sinal de saída em relação ao tempo e o valor do sinal degrau;
     \item \textbf{trunk\_data\_input}: Remove dados onde o valor de entrada é nulo;
     \item \textbf{offset\_data\_output}: Remove valores negativos e interpola os dados para encostarem no eixo do tempo.
 \end{alineas}

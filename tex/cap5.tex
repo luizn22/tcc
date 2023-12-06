@@ -38,8 +38,7 @@ destacam-se pela sua eficiência, baseando-se nos modelos da planta e nas metas 
 Essas características demonstram a praticidade e a aplicabilidade da biblioteca em um contexto real.
 
 A documentação clara e acessível da biblioteca é uma de suas maiores forças.
-Não só facilita o uso da ferramenta, mas também serve como um recurso educativo importante, potencializando o impacto
-da biblioteca tanto no ensino quanto na prática de controle de sistemas.
+Não só facilita o uso da ferramenta, mas também serve como um recurso educativo importante, potencializando o impacto da biblioteca tanto no ensino quanto, na prática de controle de sistemas.
 Assim, este trabalho não apenas atende às necessidades técnicas dos profissionais da área, mas também contribui
 significativamente para a formação e o desenvolvimento de futuros profissionais e pesquisadores em automação e controle.
 
@@ -89,8 +88,7 @@ segunda ordem, por exemplo, é um passo crucial, que deve ser feito antes de qua
 de ordens mais altas especializados nesses casos clássicos.
 
 \subsection{Outros métodos de identificação de modelo}\label{subsec:outros-metodos-de-identificacao-de-modelo}
-A biblioteca desenvolvida se propõe a implementar formas rápidas e práticas de realizar diveros métodos de identificação
-de modelo diferentes, dessa forma se torna evidente a importância da implementação de mais destes métodos.
+A biblioteca desenvolvida se propõe a implementar formas rápidas e práticas de realizar diversos métodos de identificação de modelo diferentes, dessa forma se torna evidente a importância da implementação de mais destes métodos.
 A seguir nesta sessão serão listadas algumas propostas de métodos que podem ser implementados em melhorias futuras.
 
 \subsubsection{Método de Dorf e Bishop}
@@ -120,7 +118,7 @@ introdução importante a biblioteca.
 \subsubsection{Resposta impulsiva}
 A identificação via resposta impulsiva, conforme descrito em \cite{CoelhoIdentificacao}, é um método de identificação
 de sistemas que utiliza a resposta do sistema a um impulso unitário para estimar seus parâmetros.
-Neste método, um sinal de impulso é aplicado à entrada do sistema, e a saída resultante, que é a resposta impulsiva, é
+Neste método, um sinal de impulso é aplicado à entrada do sistema, e a saída resultante, a qual é a resposta impulsiva, é
 observada e analisada.
 O resultado obtido é a resposta do sistema no domínio da frequência para sistemas discretos.
 
@@ -135,7 +133,7 @@ de novos métodos de aproximação de controlador que podem ser implementadas co
 
 \subsubsection{Método de Shamsuzzoha e Skogestad}
 O método de \textit{Setpoint Overshoot} proposto por Shamsuzzoha e Skogestad para a afinação de controladores PID baseia-se em
-experimentos de resposta a mudanças de setpoint em laço fechado, sem necessidade de realizar a identificação de um
+experimentos de resposta a mudanças de \textit{setpoint} em laço fechado, sem necessidade de realizar a identificação de um
 modelo do sistema \cite{skoge}.
 O processo começa com a realização de um experimento de resposta a um degrau de entrada usando um controlador apenas
 proporcional.
@@ -144,7 +142,7 @@ o método estabelece fórmulas diretas para calcular os parâmetros do controlad
 integral.
 
 Este método se torna um pouco diferente de outros métodos de aproximação de controlador, visto que não recebe um modelo
-pronto, de forma que faria mais sentido cria-lo como um método em separado, que retorne apenas os ganhos encontrados.
+pronto, de forma que faria mais sentido criá-lo como um método em separado, que retorne apenas os ganhos encontrados.
 Esses ganhos podem ser utilizados para instanciar um objeto da classe Controller juntamente a um objeto de modelo.
 Possibilitando assim a plotagem da resposta a sinal degrau.
 
@@ -153,9 +151,9 @@ O método de Sintonia Baseada em Minimização da Integral do Erro tem o objetiv
 longo do tempo.
 Este método foca em otimizar critérios como a Integral do Valor Absoluto do Erro (IAE) ou a Integral Ponderada pelo
 Tempo do Valor Absoluto do Erro (ITAE), que medem o erro acumulado de maneiras distintas, sendo a segunda mais severa
-com erros prolongado.
-Este método se aplica ao modelo clássico de primeira ordem da equação \eqref{eq:firstordertf}, e os calculos de ganho
-de controlador são feitos através de fórmulas espessíficas, que utilizam os parâmetros $K$, $\tau$ e $\theta$ da equação
+com erros prolongados.
+Este método se aplica ao modelo clássico de primeira ordem da equação \eqref{eq:firstordertf}, e os cálculos de ganho
+de controlador são feitos por meio de fórmulas específicas, que utilizam os parâmetros $K$, $\tau$ e $\theta$ da equação
 \eqref{eq:firstordertf} e além de constantes tabeladas, calculadas a partir das integrais IAE e ITAE.
 De forma que pode ser implementado juntamente aos outros métodos de tabela para este caso de modelo clássico
 implementados \cite{apostpidsint}.
@@ -183,7 +181,7 @@ fosse feito ao realizar plotagens pela biblioteca desenvolvida.
 
 \subsection{Documentação em inglês}
 A documentação de código da biblioteca desenvolvida nesse trabalho foi criada e disponibilizada apenas em português.
-Isso limita o alcance do projeto, dado o alcance da lingua inglesa em comparação, propõe-se a tradução e
+Isso limita o alcance do projeto, dado o alcance da língua inglesa em comparação, propõe-se a tradução e
 disponibilização da documentação em inglês também.
 A ferramenta de documentação utilizada, sphinx, tem suporte a documentações em múltiplos idiomas, de modo que essa
 melhoria não exigiria grandes refatorações do projeto.
@@ -191,7 +189,7 @@ melhoria não exigiria grandes refatorações do projeto.
 \subsection{Automatização do versionamento}
 Atualmente o versionamento da biblioteca exige diversas alterações manuais nos arquivos de configuração do projeto para
 cada nova versão liberada, o que pode causar não idealidades na entrega de novas versões.
-Algumas automações podem ser implementadas para facilitar esse processo, como a orientação das versões a tags do git,
+Algumas automações podem ser implementadas para facilitar esse processo, como a orientação das versões a \textit{tags} do Git,
 por exemplo.
 Um caso onde essas automações foram implementadas de forma compreensível é o da própria biblioteca de controle para o
 Python utilizada neste trabalho, o código dela pode servir de exemplo para a melhoria proposta.

@@ -5,8 +5,7 @@
 
 Os sistemas de controle constituem um conjunto integrado de componentes que visam a regulação e a supervisão do
 comportamento de sistemas dinâmicos.
-Essenciais em uma muitas de aplicações práticas, são empregados para assegurar a estabilidade operacional e a precisão
-de resposta a perturbações.
+Essenciais em uma muitas de aplicações práticas, são empregados para assegurar a estabilidade operacional e a precisão de resposta a perturbações.
 A operação desses sistemas pode ser realizada sob duas configurações principais: sistemas de malha aberta,
 onde não há realimentação do estado do sistema, e sistemas de malha fechada, que se caracterizam pela incorporação de
 realimentação na estratégia de controle.
@@ -38,8 +37,8 @@ assim, minimizar o erro \cite{ogata2010engenharia}.
 Onde:
 \begin{itemize}
     \item $R(s)$: Representa o sinal de referência.
-    \item $G(s)$: Representa o sistema sistema.
-    \item $C(s)$: Representa a saida.
+    \item $G(s)$: Representa o sistema.
+    \item $C(s)$: Representa a saída.
     \item $E(s)$: É o erro ou a diferença entre $R(s)$ e $C(s)$.
 \end{itemize}
 
@@ -78,7 +77,7 @@ Este modelo é particularmente útil para descrever sistemas onde há um atraso 
 resposta observada.
 A exponencial negativa \( e^{-\theta s} \) incorpora o atraso no modelo, deslocando a resposta do sistema no tempo.
 A constante de tempo \( \tau \) e o ganho \( K \) são parâmetros fundamentais que influenciam a dinâmica do sistema.
-Através de simulações baseadas neste modelo, é possível prever o comportamento do sistema sob diferentes
+Por meio de simulações baseadas neste modelo, é possível prever o comportamento do sistema sob diferentes
 condições operacionais e ajustar o projeto de um controlador antes da implementação real.
 
 No contexto da automação industrial, os modelos matemáticos são empregados para previsão, análise e projeto de sistemas
@@ -165,7 +164,7 @@ $t_3$, onde a reta tangente toca o eixo $t$, e onde cruza com a reta $y(t) = y_f
 respectivamente.
 O valor de  $\theta$ é considerado como $t_1$, o intervalo entre a aplicação do sinal degrau e o
 momento em que a reta tangente toca o eixo $t$.
-Por fim o valor de $K$ pode ser obtido a través da equação,
+Por fim, o valor de $K$ pode ser obtido a través da equação,
 \begin{equation}
     \label{eq:dydu}
     K = \frac{\Delta y}{\Delta u}
@@ -178,9 +177,8 @@ O método Hägglund é mais um clássico da literatura para identificação de m
 processos industriais.
 Desenvolvido por Hägglund em 1991 \cite{CoelhoIdentificacao}.
 
-A identificação de modelo pelo método de Hägglund é muito similar a de Ziegler e Nichols (\ref{subsubsec:znfun}), com a
-única diferença sendo que $\tau$ é determinado pelo intervalo de tempo entre $t_1$, e o instante $t_2$, sendo $t_2$
-o momento em que a curva de resposta alcança o valor $y(t) = y(0) + 0.632y_f$, ou seja $63.2\%$ do valor de regime.
+A identificação de modelo pelo método de Hägglund é muito similar a de Ziegler e Nichols (\ref{subsubsec:znfun}), com a única diferença sendo que $\tau$ é determinado pelo intervalo de tempo entre $t_1$, e o instante $t_2$, sendo $t_2$
+o momento em que a curva de resposta alcança o valor $y(t) = y(0) + 0.632y_f$, ou seja, $63.2\%$ do valor de regime.
 Isso pode ser visualizado na figura \ref{fig:zn_hg_ident_meth}.
 
 \subsubsection{Smith}\label{subsubsec:smfun}
@@ -216,7 +214,7 @@ Por fim o valor de $K$ pode ser obtido através da equação \eqref{eq:dydu}.
 
 \subsubsection{Sundaresan e Krishnaswamy}\label{subsubsec:skfun}
 
-O método de Sundaresan e Krishnaswamy, desenvolvido em 1977 é bastante similar ao método Smith \ref{subsubsec:smfun}.
+O método de Sundaresan e Krishnaswamy, desenvolvido em 1977, é bastante similar ao método Smith \ref{subsubsec:smfun}.
 Apresentando algumas alterações nos valores para o cácluculo das constantes de tempo $t_1$ e $t_2$, calculadas como
 $y(t) = y(0) + 0.353y(\infty)$ e $y(t) = y(0) + 0.853y(\infty)$, respectivamente, como pode ser visto na figura
 \ref{fig:sd_kr_ident_meth} \cite{CoelhoIdentificacao}:
@@ -245,8 +243,8 @@ para este método os parâmetros podem ser obtidos pelas equações \eqref{eq:sk
 
 \subsubsection{Nishikawa}\label{subsubsec:nkfun}
 
-Um último um método clássico da literatura para Identificação de modelos é o desenvolvido por Nishikawa em 1984.
-A pesar de buscar os mesmos parâmetros que os métodos anteriores, estes parâmetros são obtidos através de áreas
+Um último método clássico da literatura para Identificação de modelos é o desenvolvido por Nishikawa em 1984.
+A pesar de buscar os mesmos parâmetros que os métodos anteriores, estes parâmetros são obtidos por meio de áreas
 delimitadas pela curva de resposta a sinal degrau, pelo valor de regime e pela constante de tempo $t_0$, como pode ser
 observado na figura \ref{fig:ni_ident_meth}.
 
@@ -271,7 +269,7 @@ As áreas e a constante de tempo podem ser calculadas conforme as seguintes equa
     A_1 = \int_{0}^{t_0} \Delta y(t) dt \;\; ; \;\; t_0 = \frac{A_0}{\Delta y(\infty)}
 \end{equation}
 
-Com isto, podem ser obtodas as constantes $\tau$ e $\theta$:
+Com isto, podem ser obtidas as constantes $\tau$ e $\theta$:
 \begin{equation}
     \label{eq:nitau}
     \tau = \frac{A_1}{0.368\Delta y(\infty)}
@@ -304,15 +302,15 @@ perturbações \cite{apostpidsint}.
 
 \subsubsection{Controlador Z-N}\label{subsubsec:znctr}
 
-Proposto por Ziegler e Nichols, como uma forma de obter os ganhos de controlador para os modelos itentificados
-pelo seu método de indentificação (\ref{subsubsec:znfun}), o objetivo deste método é obter parâmetros de ganho PID que
+Proposto por Ziegler e Nichols, como uma forma de obter os ganhos de controlador para os modelos identificados
+pelo seu método de identificação (\ref{subsubsec:znfun}), o objetivo deste método é obter parâmetros de ganho PID que
 façam a sintonia do controlador \cite{apostpidsint}.
 
-Em espessífico, este método se baseia na curva de reação do sistema a resposta de sinal degrau, que é
+Em específico, este método se baseia na curva de reação do sistema a resposta de sinal degrau, que é
 exatamente o que o resultado da identificação por Ziegler Nichols obtém, utilizando os parâmetros $K$, $\tau$ e $\theta$
 para análise.
 
-Desta forma, são aplicadas as fórmulas do método de acordo com a tabela \ref{tab:zncntb}.
+Desta forma, são aplicadas as fórmulas do método conforme a tabela \ref{tab:zncntb}.
 
 \begin{table}[h]
     \begin{center}
@@ -424,7 +422,7 @@ A biblioteca de controle Python, conhecida como \textit{Python Control Systems L
 engenharia de controle.
 Ela oferece uma gama de funcionalidades para análise e projeto de sistemas de controle.
 Esta biblioteca é projetada para ser compatível com as convenções e práticas de controle já estabelecidas, facilitando
-a transição para aqueles que já estão familiarizados com ferramentas de controle tradicionais como MATLAB.
+a transição para aqueles já familiarizados com ferramentas de controle tradicionais como MATLAB\@.
 A Python Control Systems Library inclui recursos para a modelagem de sistemas dinâmicos, análise de resposta em
 frequência, projeto de controladores, entre outras funcionalidades essenciais no estudo e aplicação de sistemas de
 controle.
@@ -432,14 +430,14 @@ A utilização desta biblioteca em ambientes educacionais e profissionais tem se
 devido à sua eficiência e capacidade de integração com outras ferramentas Python para cálculos numéricos e análise de
 dados \cite{ctrlib}.
 
-A bibliotéca possui uma documentação extensiva, oferecendo uma visão abrangente das capacidades da biblioteca,
+A biblioteca possui uma documentação extensiva, oferecendo uma visão abrangente das capacidades da biblioteca,
 com exemplos e tutoriais detalhados.
 
 \subsection{Outras Bibliotecas}
 
 \subsubsection{NumPy}
 
-NumPy é uma biblioteca essencial para a computação científica em Python, oferecendo suporte para grandes arrays e
+NumPy é uma biblioteca essencial para a computação científica em Python, oferecendo suporte para grandes \textit{arrays} e
 matrizes multidimensionais, juntamente com uma vasta coleção de funções matemáticas de alto nível para operar nessas
 estruturas de dados.
 É a base sobre a qual muitas outras bibliotecas científicas e de análise de dados, incluindo Pandas, são construídas.
@@ -455,7 +453,7 @@ Pandas é uma biblioteca escrita para Python, focada na manipulação e análise
 Ela oferece estruturas de dados e operações para manipular tabelas numéricas e séries temporais, tornando-se uma
 ferramenta indispensável na ciência de dados e em aplicações analíticas.
 A biblioteca é construída sobre o NumPy e torna a análise de dados complexos acessível e eficiente, com estruturas como
-\textit{Series}, similar a um array do Numpy mas com mais funcionalidades de análise e manipulação de dados, e
+\textit{Series}, similar a um \textit{array} do Numpy, mas com mais funcionalidades de análise e manipulação de dados, e
 \textit{DataFrame}, um conjunto de \textit{Series} formando uma estrutura semelhante a uma tabela, além de implementar
 uma série de funcionalidades de análise, cruzamento e manipulação de dados.
 A biblioteca facilita tarefas como a leitura de dados de várias fontes, limpeza de dados, transformações, e visualização
@@ -468,7 +466,7 @@ numéricas.
 Isso significa que, com o SymPy, é possível manipular expressões matemáticas exatamente, em vez de aproximá-las
 numericamente.
 A biblioteca permite a execução de tarefas como a simplificação de expressões, cálculo de derivadas, integrais e
-limites, solução de equações, manipulação de algebra linear, entre outras operações simbólicas.
+limites, solução de equações, manipulação de álgebra linear, entre outras operações simbólicas.
 O SymPy é especialmente útil em contextos educacionais e de pesquisa, onde a precisão das expressões matemáticas é
 crucial.
 Sua natureza simbólica o torna uma ferramenta valiosa para a verificação analítica de soluções, exploração matemática e

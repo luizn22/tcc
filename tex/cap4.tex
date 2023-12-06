@@ -19,7 +19,7 @@ As alterações em cada uma das classes já foram descritas na sessão referente
 
 A documentação desenvolvida juntamente a biblioteca foi compilada com sucesso e disponibilizada no link apresentado
 no apêndice \ref{ch:actdocs}.
-Ela abrange todas as classes implementadas bem como uma visão ampla da biblioteca e um guia rápido, além de possuir
+Ela abrange todas as classes implementadas, bem como uma visão ampla da biblioteca e um guia rápido, além de possuir
 explicações didáticas sobre o funcionamento de cada método implementado com referências bibliográficas, como pode ser
 visto em seu sumário na figura \ref{fig:doc_summary}.
 
@@ -40,7 +40,7 @@ Cada uma das páginas desenvolvida abora um ponto importante sobre o projeto, da
     funcionalidades, após isso é descrita uma visão estrutural do projeto;
     \item ``Referência de Classes'': Lista todas as classes implementadas, agrupando por função;
     \item ``Referências'': contempla o glossário e as referências utilizadas por toda a documentação;
-    \item ``Desenvolvimento'': explora o desenvolvimento da biblioteca e traz breve listagem de scripts úteis para
+    \item ``Desenvolvimento'': explora o desenvolvimento da biblioteca e traz breve listagem de \textit{scripts} úteis para
     o desenvolvimento.
 \end{itemize}
 
@@ -76,7 +76,7 @@ import auto_control_tools as act
 act.NishikawaModelIdentification.get_data_input_layout('./', save_as='csv', no_sample_time=True)
 \end{lstlisting}
 
-Com isso um arquivo \("\)data\_input.csv\("\) será criado no diretório atual.
+Com isso, um arquivo \("\)data\_input.csv\("\) será criado no diretório atual.
 Os dados de resposta do sistema devem ser inseridos nele, nesse caso no formato CSV, com os dados separados por vírgula.
 O parâmetro no\_sample\_time foi marcado como verdadeiro, indicando para o método de criação do leiaute que não
 se deseja informar os dados de tempo de aquisição na planilha fornecida.
@@ -112,7 +112,7 @@ Para os dados fornecidos, a execução do código imprime as seguintes informaç
  'Undershoot': 0.6269523372311043}
 \end{lstlisting}
 
-Além disso é aberta uma janela interativa, onde pode ser comparado o resultado da identificação com os dados de entrada
+Além disso, é aberta uma janela interativa, onde pode ser comparado o resultado da identificação com os dados de entrada
 como pode ser visto na figura \ref{fig:get_model_plot}, que apresenta a janela com a visualização dos dados discretos
 com a resposta a sinal degrau do modelo gerado sobreposta, para fins de visualização da proximidade entre o modelo
 gerado e os dados discretos inseridos.
@@ -240,7 +240,7 @@ gráfico apresentado na figura \ref{fig:get_controller_plot}.
 \section{Comparação com a Bibliografia}
 
 As bibliografias de \cite{ogata2010engenharia} e \cite{CoelhoIdentificacao}, apesar de tratarem de identificação de
-modelos, não fornecem dados discretos de resposta a sinal degram para poderem ser comparados aos métodos de
+modelos, não fornecem dados discretos de resposta a sinal degrau para poderem ser comparados aos métodos de
 identificação implementados, desta forma esta seção de comparação com a bibliografia tratará apenas dos métodos de
 aproximação de ganhos de controladores PID implementados.
 
@@ -291,7 +291,7 @@ E os resultados da aproximação de ganhos de controlador obtidos são descritos
 \end{table}
 
 Para comparação, pode-se instanciar um objeto de modelo com FirstOrderModel, utilizando os mesmos parâmetros fornecidos,
-e então utilizar os métodos de aproximação de Ziegler e Nichols e de Cohen e Coon, como é disposto no trecho de código
+e então utilizar os métodos de aproximação de Ziegler e Nichols e de Cohen e Coon, conforme disposto no trecho de código
 a seguir:
 \begin{lstlisting}[label={lst:bib_comp_1_code1}]
 import auto_control_tools as act
@@ -385,7 +385,7 @@ e os gráficos das figuras \ref{fig:bib_comp_1_code1_out_fig1}, \ref{fig:bib_com
     \vspace{0cm}\hspace{0cm}\small{Fonte: Do autor}
 \end{figure}
 
-Calculando $T_I$ e $T_D$ de acordo com a equação \ref{eq:titd}, podemos verificar que os resultados das aproximações de
+Calculando $T_I$ e $T_D$ conforme a equação \ref{eq:titd}, podemos verificar que os resultados das aproximações de
 ganhos concordam com a bibliográfica, conforme detalha a tabela \ref{tab:bib_comp_1_pid_comp}.
 
 \begin{equation}
@@ -510,7 +510,7 @@ trabalhos realizados para a planta Mesa Giratória.
 Os modelos foram obtidos de forma manual com auxílio do mathlab através do método de identificação de Smith, os
 resultados para as faixas de 5 a 10\%, de 10 a 15\%, de 15 a 17\% e de 17 a 20\% podem ser vistos nas equações
 \eqref{eq:comp_prev_eq1}, \eqref{eq:comp_prev_eq2}, \eqref{eq:comp_prev_eq3} e \eqref{eq:comp_prev_eq4}, respectivamente.
-Já os controladores, foram gerados através de ambos os métodos de aproximação de controlador PID Z-N e C-C, para os
+Já os controladores, foram gerados por ambos os métodos de aproximação de controlador PID Z-N e C-C, para os
 casos de controlador P, PI e PID. Contudo, foram calculados apenas para a faixa de 10 a 15\%.
 Os resultados obtidos para os ganhos de controlador podem ser observados nas tabelas
 \ref{tab:comp_prev_zn} e \ref{tab:comp_prev_cc}.
@@ -572,7 +572,7 @@ Os resultados obtidos para os ganhos de controlador podem ser observados nas tab
 
 Modelos da planta Mesa Giratória utilizando os mesmos métodos já foram obtidos e apresentados na tabela
 \ref{tab:results_mesa}.
-Comparando os resultados, podemos observar que em geral foram obtidos modelos similares, com algumas divergências
+Comparando os resultados, podemos observar que, em geral foram obtidos modelos similares, com algumas divergências
 provavelmente causadas pelos métodos utilizados para aferir o tempo de acomodação e por conseguinte os valores dos
 momentos $t_1$ e $t_2$, com base na descrição do método em \ref{subsubsec:smfun}.
 
@@ -661,7 +661,7 @@ Com o modelo em mãos, foi realizada a aproximação de ganhos de controlador PI
 CohenCoonControllerAproximation.
 De forma similar a figura \ref{fig:real_planta_ident} resultado obtido, em resposta a sinal degrau unitário e em
 comparação ao modelo em malha aberta, pode ser visualizado
-na figura \ref{fig:real_planta_ctrl1}, e tamém de forma isolada do modelo em malha aberta na figura
+na figura \ref{fig:real_planta_ctrl1}, e também de forma isolada do modelo em malha aberta na figura
 \ref{fig:real_planta_ctrl2}.
 Os ganhos proporcional e integrador encontrados foram $5,33$ e $0,0656$, respectivamente, e os
 dados simulados referentes a resposta do sistema podem ser observados na tabela \ref{tab:real_planta_response_data}.
@@ -709,7 +709,7 @@ Por fim, os ganhos de PID foram aplicados no controlador, e foram coletados os d
 em malha fechada com o controlador gerado.
 A comparação entre o controlador simulado e os dados discretos obtidos pode ser visualizada no gráfico da figura
 \ref{fig:real_planta_ctrl_vs_disc}.
-Na figura é possível observar que o controle foi bem sucedido, e não apenas isso, a curva de resposta obtida se
+Na figura é possível observar que o controle foi bem-sucedido, e não apenas isso, a curva de resposta obtida se
 aproxima consideravelmente da simulação realizada.
 
 \begin{figure}[H]
